@@ -1,0 +1,657 @@
+import type { BlogPost } from "@/types";
+
+export const seedBlog: BlogPost[] = [
+  {
+    id: "b-1",
+    slug: "how-to-apply-to-azerbaijani-universities",
+    title: {
+      en: "How to Apply to Azerbaijani Universities",
+      tr: "Azerbaycan \u00fcniversitelerine Nas\u0131l Ba\u015fvurulur",
+      az: "Az\u0259rbaycan Universitetl\u0259rin\u0259 Nec\u0259 M\u00fcraci\u0259t Etm\u0259k Olar",
+      ru: "\u041a\u0430\u043a \u043f\u043e\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u0432 \u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0438\u0435 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u044b",
+      de: "So bewirbst du dich an aserbaidschanischen Universit\u00e4ten",
+      fr: "Comment postuler aux universit\u00e9s azerba\u00efdjanaises",
+      fa: "\u0646\u062d\u0648\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0628\u0647 \u062f\u0627\u0646\u0634\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646",
+      ar: "\u0643\u064a\u0641\u064a\u0629 \u0627\u0644\u062a\u0642\u062f\u064a\u0645 \u0625\u0644\u0649 \u0627\u0644\u062c\u0627\u0645\u0639\u0627\u062a \u0627\u0644\u0623\u0630\u0631\u0628\u0627\u064a\u062c\u0627\u0646\u064a\u0629",
+      tk: "Azerba\u011fan uniwersitetlerine n\u00e4dip \u00fczmek bolar",
+      kk: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0456\u043d\u0435 \u043a\u0430\u043b\u0430\u0439 \u00f6\u0442\u0456\u043d\u0456\u043c \u0431\u0435\u0440\u0443\u0433\u0435 \u0431\u043e\u043b\u0430\u0434\u044b",
+      ky: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0438\u043d\u0435 \u043a\u0430\u043d\u0442\u0438\u043f \u0430\u0440\u044b\u0437 \u0431\u0435\u0440\u0443\u0443 \u043a\u0435\u0440\u0435\u043a",
+      zh: "\u5982\u4f55\u7533\u8bf7\u963f\u585e\u62dc\u7586\u5927\u5b66",
+      bg: "\u041a\u0430\u043a \u0434\u0430 \u043a\u0430\u043d\u0434\u0438\u0434\u0430\u0442\u0435 \u0432 \u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0438 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442",
+      ur: "\u0622\u0630\u0631\u0628\u0627\u0626\u062c\u0627\u0646 \u06cc\u0648\u0646\u06cc\u0648\u0631\u0633\u0679\u06cc\u0648\u0646 \u0645\u06cc\u06ba \u06a9\u06cc\u0633\u0679\u06be \u06a9\u0631\u06cc\u06ba",
+      uz: "Ozarbayjon universitetlariga qanday hujjat topshirish kerak",
+      sw: "Jinsi ya kuomba katika vyuo vikuu vya Azerbaijan",
+      so: "Sida loo diiwaan galiyo jaamacadaha Azerbaijan",
+      id: "Cara Melamar ke Universitas Azerbaijan",
+    },
+    excerpt: {
+      en: "A comprehensive guide for international students on how to apply to Azerbaijani universities.",
+      tr: "Uluslararas\u0131 \u00f6\u011frenciler i\u011fin Azerbaycan \u00fcniversitelerine ba\u015fvuru s\u00fcreci hakk\u0131nda rehber.",
+      az: "Beyn\u0259lxalq t\u0259l\u0259b\u0259l\u0259r \u00fc\u00e7\u00fcn Az\u0259rbaycan universitetl\u0259rin\u0259 m\u00fcraci\u0259t prosesi \u00fczr\u0259 rehber.",
+      ru: "\u041f\u043e\u043b\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0434\u043b\u044f \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0445 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432.",
+    },
+    content: {
+      en: "Azerbaijan offers quality higher education at affordable costs. This comprehensive guide walks international students through every step of the application process.\n\n## Why Study in Azerbaijan?\n\nAzerbaijan has emerged as a top destination for international students seeking affordable, quality education. With over 50 accredited universities, including both state and private institutions, students can choose from a wide range of programs taught in Azerbaijani, Turkish, English, and Russian.\n\n## Step 1: Choose Your University\n\nResearch universities based on your field of study, budget, and preferred language of instruction. Popular choices include Baku State University, ADA University, and Ganja State University. Each institution has its own admission requirements and deadlines.\n\n## Step 2: Prepare Your Documents\n\n- Valid passport (minimum 6 months validity)\n- High school diploma or equivalent (apostilled)\n- Transcript of records\n- Language proficiency certificate (if applicable)\n- Motivation letter\n- Passport-sized photographs\n\n## Step 3: Submit Your Application\n\nMost universities accept online applications through their official websites. Some institutions may require in-person submission. Application fees typically range from $50 to $150.\n\n## Step 4: Await Acceptance\n\nProcessing times vary by university, typically 2-4 weeks. Once accepted, you will receive an official acceptance letter needed for your visa application.\n\n## Step 5: Apply for a Student Visa\n\nContact your nearest Azerbaijano embassy or consulate to begin the visa process. Required documents include your acceptance letter, financial proof, and valid passport.\n\n## Step 6: Arrive and Register\n\nUpon arrival in Azerbaijan, register with local authorities within 30 days and apply for your residence permit.",
+      tr: "Azerbaycan, uygun fiyatlara kaliteli y\u00fcksek e\u011fitim sunmaktad\u0131r. Bu kapsaml\u0131 rehber, uluslararas\u0131 \u00f6\u011frencileri ba\u015fvuru s\u00fcrecinin her a\u015famas\u0131nda y\u00f6nlendirmektedir.\n\n## Neden Azerbaycan'da \u00c7al\u0131\u015fmal\u0131?\n\nAzerbaycan, uygun fiyatlarla kaliteli e\u011fitim arayan uluslararas\u0131 \u00f6\u011frenciler i\u011fin \u00fcst d\u00fczey bir destinasyon haline gelmi\u015ftir. Hem devlet hem \u00f6zel olmak \u00fczere 50'den fazla akredite \u00fcniversite ile \u00f6\u011frenciler Azerbaycan\u00e7a, T\u00fcrk\u00e7e, \u0130ngilizce ve Rus\u00e7a verilen geni\u015f yelpazede programlar aras\u0131ndan se\u00e7im yapabilir.\n\n## Ad\u0131m 1: \u00dcniversitenizi Se\u00e7in\n\n\u00c7al\u0131\u015fma alan\u0131n\u0131za, b\u00fct\u00e7enize ve tercih etti\u011finiz \u00f6\u011fretim diline g\u00f6re \u00fcniversiteleri ara\u015ft\u0131r\u0131n. Pop\u00fcler se\u00e7enekler aras\u0131nda Bak\u00fc Devlet \u00dcniversitesi, ADA \u00dcniversitesi ve Gan\u00e7a Devlet \u00dcniversitesi bulunmaktad\u0131r.\n\n## Ad\u0131m 2: Belgelerinizi Haz\u0131rlay\u0131n\n\n- Ge\u00e7erli pasaport (en az 6 ay ge\u00e7erlilik)\n- Lise diplomas\u0131 veya e\u015fde\u011feri (apostil)\n- Not d\u00fck\u00fcman\u0131\n- Dil yeterlilik sertifikas\u0131 (varsa)\n- Motivasyon mektubu\n- Vesikal\u0131k foto\u011fraflar\n\n## Ad\u0131m 3: Ba\u015fvurunuzu G\u00f6nderin\n\n\u00c7o\u011fu \u00fcniversite, resmi web siteleri \u00fczerinden \u00e7evrimi\u00e7i ba\u015fvurular\u0131 kabul etmektedir.\n\n## Ad\u0131m 4: Kab\u00fcl Yan\u0131t\u0131n\u0131 Bekleyin\n\n\u0130\u015flem s\u00fcreleri \u00fcniversiteye g\u00f6re de\u011fi\u015fir, genellikle 2-4 hafta s\u00fcrer.\n\n## Ad\u0131m 5: \u00d6ğrenci Vizesi i\u00e7in Ba\u015fvurun\n\nEn yak\u0131n Azerbaycan elçiliğine başvurarak vize sürecini başlat\u0131n.\n\n## Ad\u0131m 6: Var\u0131n ve Kay\u0131t Olun\n\nAzerbaycan'a vard\u0131ğ\u0131n\u0131zda 30 g\u00fcn içinde yerel makamlara kay\u0131t olun.",
+      az: "Az\u0259rbaycan m\u00fcqayis\u0259li olaraq s\u00fck\u00fcnilmi\u015f qiym\u0259tl\u0259rl\u0259 keyfiyy\u0259tli y\u00fcksek t\u0259hsil t\u0259klif edir. Bu h\u0259rt\u0259fli b\u0131l\u0131\u015f\u0131c\u0131q beyn\u0259lxalq t\u0259l\u0259b\u0259l\u0259ri m\u00fcraci\u0259t prosesinin h\u0259r m\u0259rh\u0259l\u0259sind\u0259 y\u00f6nl\u0259ndirir.\n\n## Niy\u0259 Az\u0259rbaycanda T\u0259hsil Almal\u0131y\u0131q?\n\nAz\u0259rbaycan keyfiyy\u0259tli t\u0259hsil axtaran beyn\u0259lxalq t\u0259l\u0259b\u0259l\u0259r \u00fc\u00e7\u00fcn \u00fcst d\u00fczey m\u0259qs\u0259d\u0259 \u00f6lk\u0259y\u0259 \u00e7evrilmi\u015fdir.\n\n## Add\u0131m 1: Universitet\u0259 Se\u00e7in\n\nT\u0259hsil sah\u0259n\u0131za, b\u00fct\u00e7\u0259niz\u0259 v\u0259 t\u0259rcih etdiyiniz t\u0259dris dilin\u0259 g\u00f6r\u0259 universitetl\u0259ri ara\u015ft\u0131r\u0131n.\n\n## Add\u0131m 2: S\u0259n\u0259dl\u0259rinizi Haz\u0131rlay\u0131n\n\n- G\u00fc\u00e7l\u00fc pasport\n- Attestat v\u0259 ya ekvivalenti\n- Dil bacar\u0131q sertifikat\u0131\n- M\u0259ktub\n\n## Add\u0131m 3: M\u00fcraci\u0259tinizi G\u00f6nd\u0259rin\n\n## Add\u0131m 4: Q\u00fcbul Cavab\u0131n\u0131 G\u00f6zl\u0259yin\n\n## Add\u0131m 5: Viza\u00e7\u0131 m\u00fcraci\u0259t Edin\n\n## Add\u0131m 6: G\u0259lin v\u0259 Qeydiyyatdan Ke\u00e7in\n\nAz\u0259rbaycana g\u0259li\u015finizd\u0259n 30 g\u00fcn \u00e7ind\u0259 yerli miqrasiya idar\u0259sin\u0259 qeydiyyatdan ke\u00e7in.",
+      ru: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u043c \u0446\u0435\u043d\u0430\u043c. \u042d\u0442\u043e \u043f\u043e\u043b\u043d\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u043f\u043e\u043c\u043e\u0436\u0435\u0442 \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u043c \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430\u043c \u043f\u0440\u043e\u0439\u0442\u0438 \u0432\u0435\u0441\u044c \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f.\n\n## \u041f\u043e\u0447\u0435\u043c\u0443 \u0443\u0447\u0438\u0442\u044c\u0441\u044f \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0435?\n\n\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d \u0441\u0442\u0430\u043b \u043e\u0434\u043d\u0438\u043c \u0438\u0437 \u043b\u0443\u0447\u0448\u0438\u0445 \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432 \u0434\u043b\u044f \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f.\n\n## \u0428\u0430\u0433 1: \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\n\n## \u0428\u0430\u0433 2: \u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u044c\u0442\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b\n\n## \u0428\u0430\u0433 3: \u041f\u043e\u0434\u0430\u0439\u0442\u0435 \u0437\u0430\u044f\u0432\u043a\u0443\n\n## \u0428\u0430\u0433 4: \u041e\u0436\u0438\u0434\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435\n\n## \u0428\u0430\u0433 5: \u041f\u043e\u0434\u0430\u0439\u0442\u0435 \u0437\u0430\u044f\u0432\u043a\u0443 \u043d\u0430 \u0432\u0438\u0437\u0443\n\n## \u0428\u0430\u0433 6: \u041f\u0440\u0438\u0431\u044b\u0442\u0438\u0435 \u0438 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f",
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-01-15",
+    coverImage: "/images/blog/apply-azerbaijan.webp",
+    category: {
+      en: "Admissions",
+      tr: "Ba\u015fvuru",
+      az: "M\u00fcraci\u0259t",
+      ru: "\u041f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u0435",
+    },
+    readingMinutes: 8,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "How to Apply to Azerbaijani Universities 2026 — Step-by-Step Guide",
+    },
+    metaDescription: {
+      en: "Complete guide to applying to Azerbaijani universities: required documents, application steps, deadlines and visa process for international students.",
+    },
+    faqs: [
+      { q: "What documents are needed to apply to an Azerbaijani university?", a: "You need a valid passport (6+ months), high school diploma (apostilled), transcript, language certificate, motivation letter, and passport photos." },
+      { q: "How long does the application process take?", a: "Processing times vary by university, typically 2-4 weeks. After acceptance, the student visa process takes an additional 2-4 weeks at the consulate." },
+      { q: "Can I apply to multiple Azerbaijani universities at once?", a: "Yes. Most universities accept concurrent applications. We recommend applying to 3-5 universities to maximize your chances of acceptance and scholarship." },
+      { q: "Is there an application fee?", a: "Application fees typically range from $50 to $150 depending on the university. Some institutions waive fees for online applications." },
+    ],
+  },
+  {
+    id: "b-2",
+    slug: "top-universities-in-baku",
+    title: {
+      en: "Top Universities in Baku: Your Complete Guide",
+      tr: "Bak\u00fc'deki En \u0130yi \u00fcniversiteler",
+      az: "Bak\u0131dak\u0131 \u0259n Yax\u015f\u0131 Universitetl\u0259r",
+      ru: "\u041b\u0443\u0447\u0448\u0438\u0435 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u044b \u0411\u0430\u043a\u0443",
+      de: "Die besten Universit\u00e4ten in Baku",
+      fr: "Meilleures universit\u00e9s de Bakou",
+      fa: "\u0628\u0647\u062a\u0631\u06cc\u0646 \u062f\u0627\u0646\u0634\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u0628\u0627\u06a9\u0648",
+      ar: "\u0623\u0641\u0636\u0644 \u0627\u0644\u062c\u0627\u0645\u0639\u0627\u062a \u0641\u064a \u0628\u0627\u0643\u0648",
+      tk: "Bakydaky i\u0148 iyi uniwersitetler",
+      kk: "\u0411\u0430\u043a\u044b\u0434\u0430\u0433\u044b \u0435\u04a3 \u043b\u0435\u043f\u0442\u0456 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0442\u0435\u0440",
+      ky: "\u0411\u0430\u043a\u044b\u0434\u0430\u0433\u044b \u044d\u043d \u043b\u0435\u043f\u0442\u0435\u0439 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0442\u0435\u0440",
+      zh: "\u5df4\u5e93\u6700\u4f73\u5927\u5b66",
+      bg: "\u041d\u0430\u0439-\u0434\u043e\u0431\u0440\u0438\u0442\u0435 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0438 \u0432 \u0411\u0430\u043a\u0443",
+      ur: "\u0628\u0627\u06a9\u0648 \u0645\u06cc\u06ba \u0628\u06be\u062a\u0631\u06cc\u0646 \u06cc\u0648\u0646\u06cc\u0648\u0631\u0633\u0679\u06cc\u0627\u0646",
+      uz: "Bakudagi eng yaxshi universitetlar",
+      sw: "Vyuo bora vya elimu ya juu huko Baku",
+      so: "Jaamacadaha ugu fiican ee Baku",
+      id: "Universitas Terbaik di Baku",
+    },
+    excerpt: {
+      en: "Discover the top universities in Baku, Azerbaijan's capital, including Baku State University and ADA.",
+      tr: "Bak\u00fc Devlet \u00dcniversitesi ve ADA dahil Bak\u00fc'deki en iyi \u00fcniversiteleri ke\u015ffedin.",
+      az: "Bak\u0131 D\u00f6vl\u0259t Universiteti v\u0259 ADA daxil olmaqla Bak\u0131dak\u0131 \u0259n yax\u015f\u0131 universitetl\u0259ri k\u0259\u0259f \u0259din.",
+      ru: "\u0418\u0437\u0443\u0447\u0438\u0442\u0435 \u043b\u0443\u0447\u0448\u0438\u0435 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u044b \u0411\u0430\u043a\u0443.",
+    },
+    content: {
+      en: "Baku, the capital of Azerbaijan, is home to several prestigious universities. This guide covers the top institutions for international students.\n\n## Baku State University (BSU)\n\nFounded in 1919, BSU is the oldest and largest university in Azerbaijan. It offers programs across 15 faculties including medicine, law, sciences, and humanities. Tuition starts from $1,000/year for state programs.\n\n## ADA University\n\nEstablished in 2006, ADA is a leading private university focused on international education. All programs are taught in English, with strong offerings in business, diplomacy, and computer science. Annual tuition ranges from $10,000-$15,000.\n\n## Azerbaijan Medical University (AMU)\n\nOne of the oldest medical universities in the Caucasus, AMU has been training doctors since 1930. Programs include general medicine, dentistry, pharmacy, and nursing.\n\n## UNEC - Azerbaijan State University of Economics\n\nThe largest economics-focused university in Azerbaijan with over 15,000 students. Programs in business, finance, economics, and public administration are available in multiple languages.\n\n## Khazar University\n\nA pioneering private university founded in 1991, offering English-taught programs in engineering, business, and social sciences. Known for its international partnerships.\n\n## Living in Baku\n\nBaku offers a vibrant student life with affordable living costs ($400-600/month), modern infrastructure, and rich cultural heritage. The city blends historical charm with contemporary development.",
+      tr: "Azerbaycan'ın başkenti Bakı, birçok prestijli üniversiteye ev sahipliği yapmaktadır.\n\n## Bakı Devlet Üniversitesi (BSU)\n\n1919'da kurulan BSU, Azerbaycan'ın en eski ve en büyük üniversitesidir.\n\n## ADA Üniversitesi\n\n2006'da kurulan ADA, uluslararası eğitime odaklanan lider özel bir üniversitedir.\n\n## Azerbaycan Tıp Üniversitesi (AMU)\n\nKafkasya'nın en eski tıp üniversitelerinden biri olan AMU, 1930'dan beri doktor yetiştirmektedir.\n\n## UNEC - Azerbaycan Devlet İktisat Üniversitesi\n\n15.000'den fazla öğrencisi ile Azerbaycan'ın en büyük iktisat odaklı üniversitesi.\n\n## Hazar Üniversitesi\n\n1991'de kurulan öncü özel bir üniversite, İngilizce programlar sunmaktadır.",
+      az: "Azərbaycanın paytaxtı Bakı bir çox nüfuzlu universitetlərə ev sahibliyi edir.\n\n## Bakı Dövlət Universiteti (BDU)\n\n1919-cu ildə təsis olunmuş BDU, Azərbaycanın ən qədim və ən böyük universitetidir.\n\n## ADA Universiteti\n\n2006-cı ildə təsis olunmuş ADA, beynəlxalq təhsilə yönəlmiş aparıcı özəl universitetdir.\n\n## Azərbaycan Tibb Universiteti (ATU)\n\nQafqaz regionunun ən qədim tibb universitetlərindən biri olan ATU, 1930-cu ildən bəri həkimlər yetişdirir.\n\n## UNEC - Azərbaycan Dövlət İqtisad Universiteti\n\n15.000-dən çox tələbəsi ilə Azərbaycanın ən böyük iqtisadiyyat universitetidir.\n\n## Xəzər Universiteti\n\n1991-ci ildə təsis olunmuş öncü özəl universitetdir.",
+      ru: "\u0411\u0430\u043a\u0443 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0434\u043e\u043c\u043e\u043c \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u0438\u0445 \u043f\u0440\u0435\u0441\u0442\u0438\u0436\u043d\u044b\u0445 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u043e\u0432.\n\n## \u0411\u0430\u043a\u0438\u043d\u0441\u043a\u0438\u0439 \u0433\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 (\u0411\u0413\u0423)\n\n\u041e\u0441\u043d\u043e\u0432\u0430\u043d \u0432 1919 \u0433\u043e\u0434\u0443, \u0411\u0413\u0423 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0441\u0442\u0430\u0440\u0435\u0439\u0448\u0438\u043c \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u043e\u043c \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0430.\n\n## \u0423\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 ADA\n\n\u041e\u0441\u043d\u043e\u0432\u0430\u043d \u0432 2006 \u0433\u043e\u0434\u0443, ADA \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0432\u0435\u0434\u0443\u0449\u0438\u043c \u0447\u0430\u0441\u0442\u043d\u044b\u043c \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u043e\u043c.\n\n## \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0438\u0439 \u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 (\u0410\u041c\u0423)\n\n\u041e\u0434\u043d\u0438\u043c \u0438\u0437 \u0441\u0442\u0430\u0440\u0435\u0439\u0448\u0438\u0445 \u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0445 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u043e\u0432 \u041a\u0430\u0432\u043a\u0430\u0437\u0430.\n\n## UNEC\n\n\u041a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0439 \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0430.\n\n## \u0423\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442 \u0425\u0430\u0437\u0430\u0440\n\n\u041f\u0435\u0440\u0435\u0434\u043e\u0432\u044b\u0439 \u0447\u0430\u0441\u0442\u043d\u044b\u0439 \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442.",
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-02-10",
+    coverImage: "/images/blog/baku-universities.webp",
+    category: {
+      en: "Universities",
+      tr: "\u00dcniversiteler",
+      az: "Universitetl\u0259r",
+      ru: "\u0423\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u044b",
+    },
+    readingMinutes: 6,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "Top Universities in Baku 2026 — Rankings, Fees & Programs",
+    },
+    metaDescription: {
+      en: "Discover the best universities in Baku for international students. Compare BSU, ADA, Khazar and UNEC with fees, programs and rankings.",
+    },
+    faqs: [
+      { q: "What is the best university in Baku for international students?", a: "Baku State University (BSU), ADA University, and Khazar University are the top choices. BSU is the largest and oldest; ADA focuses on international education in English; Khazar offers English-medium private education." },
+      { q: "How much does it cost to study at Baku universities?", a: "State universities like BSU charge $600-2,000/year. Private universities like ADA and Khazar range from $8,000-15,000/year. Living costs in Baku are $400-600/month." },
+      { q: "Are there English-taught programs in Baku?", a: "Yes. ADA University teaches all programs in English. BSU, UNEC, and Khazar University also offer English-taught programs in business, computer science, and engineering." },
+    ],
+  },
+  {
+    id: "b-3",
+    slug: "education-in-azerbaijan-language",
+    title: {
+      en: "Education in Azerbaijani Language",
+      tr: "Azerbaycanca E\u011fitim",
+      az: "Az\u0259rbaycan dilind\u0259 t\u0259hsil",
+      ru: "\u041e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 \u043d\u0430 \u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u043e\u043c \u044f\u0437\u044b\u043a\u0435",
+      de: "Bildung in aserbaidschanischer Sprache",
+      fr: "L\u2019enseignement en langue az\u00e9rie\u00e7anne",
+      fa: "\u062a\u0639\u0644\u06cc\u0645 \u0628\u0647 \u0632\u0628\u0627\u0646 \u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646\u06cc",
+      ar: "\u0627\u0644\u062a\u0639\u0644\u064a\u0645 \u0628\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0630\u0631\u0628\u0627\u064a\u062c\u0627\u0646\u064a\u0629",
+      tk: "Azerba\u011fan dilinde okuw",
+      kk: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d \u0442\u0456\u043b\u0456\u043d\u0434\u0435\u0433\u0456 \u0431\u0456\u043b\u0456\u043c",
+      ky: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d \u0442\u0438\u043b\u0438\u043d\u0434\u0435\u0433\u0438 \u0431\u0438\u043b\u0438\u043c",
+      zh: "\u963f\u585e\u62dc\u7586\u8bed\u6559\u80b2",
+      bg: "\u041e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 \u043d\u0430 \u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0438 \u0435\u0437\u0438\u043a",
+      ur: "\u0622\u0630\u0631\u0628\u0627\u0626\u062c\u0627\u0646\u06cc \u0632\u0628\u0627\u0646 \u0645\u06cc\u06ba \u062a\u0639\u0644\u06cc\u0645",
+      uz: "Ozarbayjon tilida ta'lim",
+      sw: "Elimu kwa lugha ya Azerbaijan",
+      so: "Waxbarashada Afafka Azerbaijan",
+      id: "Pendidikan dalam Bahasa Azerbaijan",
+    },
+    excerpt: {
+      en: "Learn about the Azerbaijani language education system and opportunities for studying in Azerbaijani.",
+      tr: "Azerbaycan dilinde e\u011fitim sistemi ve f\u0131rsatlar\u0131 hakk\u0131nda bilgi edinin.",
+      az: "Az\u0259rbaycan dilind\u0259 t\u0259hsil sistemi v\u0259 imkanlar haqq\u0131nda m\u0259lumat \u0259ld\u0259 edin.",
+      ru: "\u0423\u0437\u043d\u0430\u0439\u0442\u0435 \u043e \u0441\u0438\u0441\u0442\u0435\u043c\u0435 \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u044f \u043d\u0430 \u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u043e\u043c \u044f\u0437\u044b\u043a\u0435.",
+    },
+    content: {
+      en: "Azerbaijani is the official language of Azerbaijan and the primary language of instruction at most universities.",
+      tr: "Azerbaycanca, Azerbaycan\u2019\u0131n resmi dilidir ve \u00fcniversitelerdeki temel e\u011fitim dilidir.",
+      az: "Az\u0259rbaycan dili Az\u0259rbaycan\u0131n r\u0259smi dilidir v\u0259 universitetl\u0259rd\u0259 \u0259sas t\u0259dris dilidir.",
+      ru: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a \u2014 \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u044f\u0437\u044b\u043a \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0430.",
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-03-05",
+    coverImage: "/images/blog/azerbaijani-language.webp",
+    category: {
+      en: "Education",
+      tr: "E\u011fitim",
+      az: "T\u0259hsil",
+      ru: "\u041e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435",
+    },
+    readingMinutes: 5,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "Education in Azerbaijani Language — Programs & Universities",
+    },
+    metaDescription: {
+      en: "Learn about Azerbaijani-language education: which universities offer programs in Azerbaijani, Russian, Turkish and English.",
+    },
+    faqs: [
+      { q: "What languages are programs taught in at Azerbaijani universities?", a: "Programs are available in Azerbaijani, Russian, Turkish, and English. English-taught programs are growing rapidly, especially in business, IT, and medicine." },
+      { q: "Do I need to learn Azerbaijani to study in Azerbaijan?", a: "No. Many universities offer programs entirely in English, Russian, or Turkish. However, basic Azerbaijani helps with daily life outside campus." },
+      { q: "Which universities offer English-taught programs?", a: "ADA University (all English), Khazar University, Baku State University, UNEC, and Azerbaijan Medical University all offer English-medium programs." },
+    ],
+  },
+  {
+    id: "b-4",
+    slug: "cost-of-living-in-azerbaijan",
+    title: {
+      en: "Cost of Living in Azerbaijan",
+      tr: "Azerbaycan'da Ya\u015fam Giderleri",
+      az: "Az\u0259rbaycanda \u00f6m\u00fcr x\u0259rcl\u0259ri",
+      ru: "\u0420\u0430\u0441\u0445\u043e\u0434\u044b \u043d\u0430 \u0436\u0438\u0437\u043d\u044c \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0435",
+      de: "Lebenshaltungskosten in Aserbaidschan",
+      fr: "Co\u00fbt de la vie en Azerba\u00efdjan",
+      fa: "\u0647\u0632\u06cc\u0646\u0647\u0627\u06cc \u0632\u0646\u062f\u06af\u06cc \u062f\u0631 \u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646",
+      ar: "\u062a\u0643\u0627\u0644\u064a\u0641 \u0627\u0644\u0645\u0639\u064a\u0634 \u0641\u064a \u0623\u0630\u0631\u0628\u0627\u064a\u062c\u0627\u0646",
+      tk: "Azerba\u011fanda \u00fcmr ba\u015f\u00e7y",
+      kk: "\u00d6\u043c\u0456\u0440 \u0448\u044b\u0433\u044b\u043d\u044b \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d\u0434\u0430",
+      ky: "\u00d6\u043c\u0443\u0440 \u0448\u044b\u0433\u044b\u043d\u044b\u043d \u0447\u044b\u0439\u043e\u0442\u0443 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d\u0434\u0430",
+      zh: "\u963f\u585e\u62dc\u7586\u751f\u6d3b\u6210\u672c",
+      bg: "\u0420\u0430\u0437\u0445\u043e\u0434\u0438 \u0437\u0430 \u0436\u0438\u0432\u043e\u0442 \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d",
+      ur: "\u0622\u0630\u0631\u0628\u0627\u0626\u062c\u0627\u0646 \u0645\u06cc\u06ba \u0631\u0648\u0632\u06af\u0630\u0627\u0631",
+      uz: "Ozarbayjon hayot xarajatlari",
+      sw: "Gharama za maisha huko Azerbaijan",
+      so: "Kharashyada nolosha Azerbaijan",
+      id: "Biaya Hidup di Azerbaijan",
+    },
+    excerpt: {
+      en: "A detailed breakdown of living costs for students in Azerbaijan, including accommodation, food and transport.",
+      tr: "Azerbaycan'da \u00f6\u011frenciler i\u011fin ya\u015fam maliyetleri hakk\u0131nda ayr\u0131nt\u0131l\u0131 bilgi.",
+      az: "Az\u0259rbaycanda t\u0259l\u0259b\u0259l\u0259r \u00fc\u00e7\u00fcn \u00f6m\u00fcr x\u0259rcl\u0259ri haqq\u0131nda \u0259trafl\u0131 m\u0259lumat.",
+      ru: "\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u044b\u0439 \u0440\u0430\u0441\u043a\u043b\u0430\u0434 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432 \u043d\u0430 \u0436\u0438\u0437\u043d\u044c.",
+    },
+    content: {
+      en: "Azerbaijan offers an affordable cost of living compared to many European countries.",
+      tr: "Azerbaycan, bir\u00e7ok Avrupa \u00fclkesine k\u0131yasla uygun ya\u015fam maliyetleri sunmaktad\u0131r.",
+      az: "Az\u0259rbaycan \u00e7ox Avropa \u00f6lk\u0259l\u0259ri il\u0259 m\u00fcqayis\u0259d\u0259 \u00fcst\u00fcnl\u00fckl\u00fc \u00f6m\u00fcr x\u0259rcl\u0259ri t\u0259klif edir.",
+      ru: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u0440\u0430\u0441\u0445\u043e\u0434\u044b.",
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-03-20",
+    coverImage: "/images/blog/cost-of-living.webp",
+    category: {
+      en: "Student Life",
+      tr: "\u00d6\u011frenci Ya\u015fam\u0131",
+      az: "T\u0259l\u0259b\u0259 H\u0259yat\u0131",
+      ru: "\u0421\u0442\u0443\u0434\u0435\u043d\u0447\u0435\u0441\u043a\u0430\u044f \u0436\u0438\u0437\u043d\u044c",
+    },
+    readingMinutes: 7,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "Cost of Living in Azerbaijan 2026 — Student Budget Guide",
+    },
+    metaDescription: {
+      en: "Detailed breakdown of student living costs in Azerbaijan: rent, food, transport and utilities in Baku and other cities.",
+    },
+    faqs: [
+      { q: "How much does it cost to live in Azerbaijan as a student?", a: "Monthly living costs range from $270-600 depending on the city. Baku is $400-600/month; smaller cities like Ganja and Sumgait are $200-350/month." },
+      { q: "What is the average rent for student accommodation in Baku?", a: "University dormitories cost $50-150/month. Private room rentals in Baku range from $200-400/month. Shared apartments reduce costs significantly." },
+      { q: "How much does food cost in Azerbaijan?", a: "Student meal costs average $100-200/month. Cafeteria meals cost $2-5, and local restaurants offer meals for $5-10. Grocery shopping is affordable at $150-200/month." },
+    ],
+  },
+  {
+    id: "b-5",
+    slug: "scholarships-in-azerbaijan",
+    title: {
+      en: "Scholarships in Azerbaijan",
+      tr: "Azerbaycan Burslar\u0131",
+      az: "Az\u0259rbaycanda T\u0259qa\u00fddl\u0259r",
+      ru: "\u0421\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0438 \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0435",
+      de: "Stipendien in Aserbaidschan",
+      fr: "Bourses en Azerba\u00efdjan",
+      fa: "\u0628\u0631\u0633\u0647\u0627 \u062f\u0631 \u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646",
+      ar: "\u0645\u0643\u0627\u0641\u062d\u0627\u062a \u0641\u064a \u0623\u0630\u0631\u0628\u0627\u064a\u062c\u0627\u0646",
+      tk: "Azerba\u011fanda \u00f6s kimi",
+      kk: "\u0421\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u044f\u043b\u0430\u0440 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d\u0434\u0430",
+      ky: "\u0421\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u044f\u043b\u0430\u0440 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d\u0434\u0430",
+      zh: "\u963f\u585e\u62dc\u7586\u5956\u5b66\u91d1",
+      bg: "\u0421\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0438 \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d",
+      ur: "\u0622\u0630\u0631\u0628\u0627\u0626\u062c\u0627\u0646 \u0645\u06cc\u06ba \u0633\u0688\u0627\u0631\u0634\u06cc\u0627\u06ba",
+      uz: "Ozarbayjon stipendiyalari",
+      sw: "Ufundishaji huko Azerbaijan",
+      so: "Stipendiyada Azerbaijan",
+      id: "Beasiswa di Azerbaijan",
+    },
+    excerpt: {
+      en: "Everything you need to know about scholarships available for international students studying in Azerbaijan.",
+      tr: "Azerbaycan'da e\u011fitim g\u00f6ren uluslararas\u0131 \u00f6\u011frenciler i\u011fin mevcut burslar.",
+      az: "Az\u0259rbaycanda t\u0259hsil alan beyn\u0259lxalq t\u0259l\u0259b\u0259l\u0259r \u00fc\u00e7\u00fcn movcud t\u0259qa\u00fddl\u0259r.",
+      ru: "\u0412\u0441\u0435, \u0447\u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0437\u043d\u0430\u0442\u044c \u043e \u0441\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u044f\u0445.",
+    },
+    content: {
+      en: "Azerbaijan offers various scholarship opportunities for international students.",
+      tr: "Azerbaycan uluslararas\u0131 \u00f6\u011frenciler i\u011f\u00e7in \u00e7e\u015fitli burs f\u0131rsatlar\u0131 sunmaktad\u0131r.",
+      az: "Az\u0259rbaycan beyn\u0259lxalq t\u0259l\u0259b\u0259l\u0259r \u00fc\u00e7\u00fcn m\u00fcxt\u0259lif t\u0259qa\u00fdd imkanlar\u0131 t\u0259klif edir.",
+      ru: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0435 \u0441\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0438.",
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-04-01",
+    coverImage: "/images/blog/scholarships.webp",
+    category: {
+      en: "Scholarships",
+      tr: "Burslar",
+      az: "T\u0259qa\u00fddl\u0259r",
+      ru: "\u0421\u0442\u0438\u043f\u0435\u043d\u0434\u0438\u0438",
+    },
+    readingMinutes: 6,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "Scholarships in Azerbaijan 2026 — Full & Partial Funding",
+    },
+    metaDescription: {
+      en: "Complete guide to scholarships in Azerbaijan: government scholarships, university merit aid and how to apply for international students.",
+    },
+    faqs: [
+      { q: "Are there full scholarships for international students in Azerbaijan?", a: "Yes. The Azerbaijan Government Scholarship offers full tuition, accommodation, and stipend. Several universities also offer 25-100% merit-based discounts." },
+      { q: "How do I apply for an Azerbaijan Government Scholarship?", a: "Applications open annually (typically March-May). You apply through the Ministry of Education portal with academic transcripts, motivation letter, and language certificates." },
+      { q: "Which universities offer the most scholarships?", a: "ADA University, Khazar University, and UNEC are known for generous merit scholarships. State universities like BSU also offer government-funded scholarships for international students." },
+      { q: "Can I work while studying on a scholarship in Azerbaijan?", a: "Scholarship holders can work part-time (up to 20 hours/week) with a work permit. Some programs include paid internships as part of the scholarship package." },
+    ],
+  },
+  {
+    id: "b-6",
+    slug: "why-study-in-azerbaijan",
+    title: {
+      en: "Why Study in Azerbaijan? 10 Reasons",
+      tr: "Neden Azerbaycan'da E\u011fitim G\u00f6rmeli?",
+      az: "Niy\u0259 Az\u0259rbaycanda t\u0259hsil almal\u0131yam?",
+      ru: "\u041f\u043e\u0447\u0435\u043c\u0443 \u0443\u0447\u0438\u0442\u044c\u0441\u044f \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0435? 10 \u043f\u0440\u0438\u0447\u0438\u043d",
+      de: "Warum in Aserbaidschan studieren? 10 Gr\u00fcnde",
+      fr: "Pourquoi \u00e9tudier en Azerba\u00efdjan? 10 raisons",
+      fa: "\u0686\u0631\u0627 \u062f\u0631 \u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646 \u062a\u0639\u0644\u06cc\u0645 \u06a9\u0646\u06cc\u0645\u061f 10 \u062f\u0644\u06cc\u0644",
+      ar: "\u0644\u0645\u0627\u0630\u0627 \u062a\u062f\u0631\u0633 \u0641\u064a \u0623\u0630\u0631\u0628\u0627\u064a\u062c\u0627\u0646\u061f 10 \u0623\u0633\u0628\u0627\u0628",
+      tk: "N\u00e4d\u00e4n Azerba\u011fanda okamaly?",
+      kk: "\u041d\u0435\u0433\u0435 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d\u0434\u0430 \u043e\u043a\u0443 \u043a\u0435\u0440\u0435\u043a \u0436\u04d9\u0442\u043f\u0456 \u0431\u043e\u043b\u0430\u0434\u044b?",
+      ky: "\u042d\u043c\u043d\u0435\u0433\u0435 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0436\u0430\u043d\u0434\u0430 \u043e\u043a\u0443 \u043a\u0435\u0440\u0435\u043a \u0436\u0430\u0442\u0441\u044b\u043d?",
+      zh: "\u4e3a\u4ec0\u4e48\u5728\u963f\u585e\u62dc\u7586\u5b66\u4e60\uff1f10\u4e2a\u7406\u7531",
+      bg: "\u0417\u0430\u0448\u043e \u0434\u0430 \u0443\u0447\u0438\u0442\u0435 \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d? 10 \u043f\u0440\u0438\u0447\u0438\u043d\u0438",
+      ur: "\u0622\u0630\u0631\u0628\u0627\u0626\u062c\u0627\u0646 \u0645\u06cc\u06ba \u06a9\u06cc\u0648\u0646 \u0632\u0646\u062f\u06af\u06cc \u06a9\u0648\u0646\u061f 10 \u0648\u062c\u0648\u06c1",
+      uz: "Nima uchun Ozarbayjonda o'qish kerak? 10 sabab",
+      sw: "Kwa nini soma Azerbaijan? Sababu 10",
+      so: "Maxaa lagu barto Azerbaijan? 10 sabab",
+      id: "Mengapa Belajar di Azerbaijan? 10 Alasan",
+    },
+    excerpt: {
+      en: "Discover the top reasons to study in Azerbaijan, from affordable tuition to rich cultural heritage.",
+      tr: "Uygun e\u011fitimcretinden zengin k\u00fclt\u00fcr\u00fcrel miras\u0131na kadar Azerbaycan'da e\u011fitim g\u00f6rmenin nedenlerini ke\u015ffedin.",
+      az: "Ucuz t\u0259dris haqq\u0131ndan z\u0259ngin m\u0259d\u0259ni irs\u0259 q\u0259d\u0259r Az\u0259rbaycanda t\u0259hsil alma\u0131n s\u0259b\u0259bl\u0259rini k\u0259\u0259f \u0259din.",
+      ru: "\u0423\u0437\u043d\u0430\u0439\u0442\u0435 \u043b\u0443\u0447\u0448\u0438\u0435 \u043f\u0440\u0438\u0447\u0438\u043d\u044b \u0443\u0447\u0438\u0442\u044c\u0441\u044f \u0432 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0435.",
+    },
+    content: {
+      en: "Azerbaijan is an emerging destination for international education.",
+      tr: "Azerbaycan uluslararas\u0131 e\u011fitim i\u011fin y\u00fckselen bir destinasyondur.",
+      az: "Az\u0259rbaycan beyn\u0259lxalq t\u0259hsil \u00fc\u00e7\u00fcn y\u00fcks\u0259l\u0259n istiqam\u0259tdir.",
+      ru: "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d \u2014 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u044e\u0449\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0430.",
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-04-15",
+    coverImage: "/images/blog/why-azerbaijan.webp",
+    category: {
+      en: "Why Azerbaijan",
+      tr: "Neden Azerbaycan",
+      az: "Niy\u0259 Az\u0259rbaycan",
+      ru: "\u041f\u043e\u0447\u0435\u043c\u0443 \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d",
+    },
+    readingMinutes: 5,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "Why Study in Azerbaijan? 10 Reasons for International Students",
+    },
+    metaDescription: {
+      en: "Top 10 reasons to study in Azerbaijan: affordable tuition, English programs, scholarships, safe environment and recognized degrees.",
+    },
+    faqs: [
+      { q: "Is Azerbaijan a good destination for international students?", a: "Yes. Azerbaijan offers affordable tuition ($600-15,000/year), English-taught programs, Ministry-accredited degrees, and a safe, multicultural environment with 143 country guides available." },
+      { q: "What are the top reasons to study in Azerbaijan?", a: "Affordable education, English-taught programs, government scholarships, internationally recognized degrees, low cost of living, rich cultural heritage, and growing economy." },
+      { q: "Is an Azerbaijani degree recognized internationally?", a: "Yes. Degrees from Ministry of Education-accredited Azerbaijani universities are recognized across Europe, the Middle East, Africa, and Asia." },
+    ],
+  },
+
+  // ============================================================
+  // NEW BLOGS: Azerbaijan Travel & Student Life
+  // ============================================================
+
+  {
+    id: "b-7",
+    slug: "top-10-must-visit-places-in-azerbaijan",
+    title: {
+      en: "Top 10 Must-Visit Places in Azerbaijan for Students",
+      tr: "Azerbaycan'da Ogrenciler Icin 10 Onemli Yer",
+      az: "Telebeler Uchun Azarbaycanda Gedilmesi Gereken 10 Yer",
+      ru: "Top-10 mest dlya poseshcheniya v Azerbaydzhane"
+    },
+    excerpt: {
+      en: "Discover the most breathtaking destinations in Azerbaijan — from the ancient streets of Icherisheher to the fire mountains of Gobustan.",
+      tr: "Azerbaycan'daki en buyuleyici destinasyonlari kesfedin.",
+      az: "Azarbaycanin en gozel yerlerini kesfedin.",
+      ru: "Otkroyte samye vvlekatelnye napravleniya v Azerbaydzhane."
+    },
+    content: {
+      en: "Azerbaijan is a land of contrasts — where ancient history meets modern architecture. According to the State Tourism Agency, Azerbaijan welcomed over 3.5 million international visitors in 2024.\n\n## 1. Icherisheher (Old City) — UNESCO World Heritage Site\n\nThe walled Old City of Baku is a UNESCO World Heritage Site and one of the most well-preserved medieval cities in the world.\n\n### Key Attractions\n- Maiden Tower — A 12th-century stone tower\n- Palace of the Shirvanshahs — A 15th-century royal residence\n- Traditional carpet workshops\n\n## 2. Gobustan National Park — Ancient Rock Art\n\nGobustan is home to over 6,000 rock carvings dating back 40,000 years. This UNESCO World Heritage Site provides a fascinating glimpse into prehistoric life.\n\n### Key Attractions\n- Rock Art Museum\n- Mud Volcanoes — Azerbaijan has 400+ mud volcanoes\n- Ancient Petroglyphs\n\n## 3. Yanar Dag (Burning Mountain)\n\nYanar Dag is a natural gas fire that has been burning for centuries.\n\n### Interesting Facts\n- Height: 116 meters above sea level\n- Fire: Burns 24/7\n- Entry Fee: Approximately $2\n\n## 4. Sheki — Historic Silk Road City\n\nSheki is a UNESCO World Heritage City located in the foothills of the Greater Caucasus mountains.\n\n### Must-See Sites\n- Sheki Khan's Palace\n- Caravanserai\n- Sheki Fortress\n\n## 5. Gabala — Mountain Adventure Hub\n\nGabala is Azerbaijan's adventure capital, offering:\n- Tufandag Mountain Resort\n- Tufandag Cable Car\n- Nohur Lake\n\n## 6. Naftalan — Oil Bath Therapies\n\nNaftalan is famous for its unique crude oil baths, believed to have healing properties since the 13th century.\n\n## 7. Lankaran — Caspian Sea Coast\n\nLankaran offers a subtropical climate and beautiful beaches along the Caspian Sea.\n\n## 8. Gobustan Mountain Range\n\nLocated in the northwest, offering hiking trails from beginner to advanced.\n\n## 9. Absheron Peninsula\n\nThe Absheron Peninsula is home to Ateshgah Fire Temple and Yanar Dag.\n\n## 10. Lahij — Copper Craft Village\n\nLahij is a historic mountain village famous for its copper craftsmen.\n\n## Student Travel Tips\n\n### Getting Around\n- Baku Metro: $0.25 per ride\n- Buses: $0.15-0.25 per ride\n- Taxis: Affordable ($0.50-1/km)\n\n### Best Time to Visit\n- Spring (March-May): Mild weather\n- Summer (June-August): Warm, beach season\n- Autumn (September-November): Cool, wine festivals\n- Winter (December-February): Skiing in Gabala",
+      tr: "Azerbuyuk CONTRasts — tarihi ve mimariyi birlestirir.",
+      az: "Azarbuyuk CONTRasts — tarixi ve memariyi birlestirir.",
+      ru: "Azerbuyuk CONTRasts — istoriyu i arkhitekturu sochetaet."
+    },
+    author: "AzStudy Travel Guide",
+    publishedAt: "2025-05-15",
+    coverImage: "/images/blog/why-azerbaijan.webp",
+    category: { en: "Travel Guide", tr: "Gezi Rehberi", az: "Seyar Rehberi", ru: "Putevoditel" },
+    readingMinutes: 12,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "What are the must-visit places in Azerbaijan for students?", a: "Icherisheher (Old City), Flame Towers, Gobustan National Park, Maiden Tower, Heydar Aliyev Center, Yanar Dag, Sheki Khan Palace, and the Absheron Peninsula are top student destinations." },
+      { q: "How much does it cost to visit tourist attractions in Azerbaijan?", a: "Many attractions are free (Flame Towers viewpoint, Old City walking). Paid attractions range from $2-10. Student discounts are available at most museums." },
+    ],
+  },
+  {
+    id: "b-8",
+    slug: "student-life-in-baku-azerbaijan",
+    title: {
+      en: "Student Life in Baku: What to Expect",
+      tr: "Baku'de Ogrenci Hayati: Neler Beklemeli",
+      az: "Bakida Telebe Heyati: Ne Gozlemek Lazimdir",
+      ru: "Studencheskaya zhizn v Baku"
+    },
+    excerpt: {
+      en: "Everything you need to know about student life in Baku — from campus culture to weekend adventures.",
+      tr: "Baku'de ogrenci hayati hakkinda bilmeniz gereken her sey.",
+      az: "Bakida telebe heyati haqqinda bilmeli oldugunuz her sey.",
+      ru: "Vse chto nuzhno znat o studencheskoj zhizni v Baku."
+    },
+    content: {
+      en: "Baku is one of the most vibrant and affordable student cities in the Caucasus region. According to the Baku City Executive Authority, over 80,000 students study in Baku's universities.\n\n## Campus Culture\n\n### Academic Environment\n- Class sizes: 15-30 students\n- Teaching style: Mix of lectures and seminars\n- Libraries: Modern facilities\n\n## Accommodation Options\n\n### University Dormitories\n- Cost: $50-150/month\n- Capacity: Shared rooms (2-4 students)\n\n### Private Apartments\n- Studio: $300-500/month\n- 1-bedroom: $400-700/month\n- Shared apartment: $200-400/month\n\n## Food and Dining\n\n### Popular Azerbaijani Dishes\n1. Plov — Rice with meat and saffron\n2. Dolma — Grape leaves stuffed with meat\n3. Kebab — Grilled meat on skewers\n4. Piti — Lamb soup\n5. Pakhlava — Sweet pastry\n\n## Transportation\n\n### Public Transport\n- Metro: $0.25 per ride\n- Buses: $0.15-0.25 per ride\n\n## Cost of Living\n\n| Category | Monthly Cost |\n|----------|-------------|\n| Accommodation | $100-400 |\n| Food | $150-250 |\n| Transportation | $20-50 |\n| Entertainment | $50-100 |\n| **Total** | **$370-900** |\n\n## Practical Tips\n\n### Banking\n- Currency: Azerbaijani Manat (AZN)\n- Exchange rate: ~1.7 AZN = 1 USD\n\n### Health and Safety\n- Health insurance: Required\n- Emergency: 112",
+      tr: "Baku'de ogrenci hayati hakkinda bilmeniz gereken her sey.",
+      az: "Bakida telebe heyati haqqinda bilmeli oldugunuz her sey.",
+      ru: "Vse chto nuzhno znat o studencheskoj zhizni v Baku."
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-05-20",
+    coverImage: "/images/blog/baku-universities.webp",
+    category: { en: "Student Life", tr: "Ogrenci Hayati", az: "Telebe Heyati", ru: "Studencheskaya zhizn" },
+    readingMinutes: 10,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "What is student life like in Baku?", a: "Baku offers a vibrant student scene with modern campuses, affordable cafes, waterfront walks, cultural events, and a mix of traditional and contemporary entertainment." },
+      { q: "Where do international students live in Baku?", a: "Most international students live in university dormitories ($50-150/month) or shared apartments in the city center ($200-400/month)." },
+    ],
+  },
+  {
+    id: "b-9",
+    slug: "best-universities-medicine-azerbaijan",
+    title: {
+      en: "Best Universities for Medicine in Azerbaijan",
+      tr: "Azerbaycan'da Tip Egitimi Icin En Iyi Universiteler",
+      az: "Azerbaycanda Tibb Teshili Uchun En Yaxshi Universitetler",
+      ru: "Luchshie universitety dlya meditsiny v Azerbaydzhane"
+    },
+    excerpt: {
+      en: "Compare medical universities in Azerbaijan — tuition, programs, and career prospects for international students.",
+      tr: "Azerbaycan'daki tip universitelerini karsilastirin.",
+      az: "Azerbaycandaki tibb universitetlerini mukayise edin.",
+      ru: "Sravnite meditsinskie universitety v Azerbaydzhane."
+    },
+    content: {
+      en: "Azerbaijan is becoming a popular destination for medical education, with several internationally recognized medical universities.\n\n## Top Medical Universities\n\n### 1. Azerbaijan Medical University (AMU)\n\nThe oldest and largest medical university in Azerbaijan, founded in 1930.\n\n| Feature | Details |\n|---------|---------|\n| Founded | 1930 |\n| Students | 8,000+ |\n| Programs | General Medicine, Dentistry, Pharmacy |\n| Language | Azerbaijani, English |\n| Tuition | $2,000-4,000/year |\n\n### 2. Baku State University — Medical Faculty\n\n| Feature | Details |\n|---------|---------|\n| Founded | 1919 |\n| Students | 1,500+ |\n| Programs | General Medicine, Dentistry |\n| Tuition | $1,500-3,000/year |\n\n### 3. Nakhchivan Medical University\n\n| Feature | Details |\n|---------|---------|\n| Founded | 2014 |\n| Students | 2,000+ |\n| Tuition | $2,500-4,000/year |\n\n## Admission Requirements\n\n1. High school diploma with Biology, Chemistry, Physics\n2. Entrance exam at the university\n3. IELTS 5.5+ or TOEFL 70+ for English programs\n4. Valid passport\n5. Medical certificate\n\n## Career Prospects\n\n### Salary Expectations\n| Position | Monthly Salary |\n|----------|---------------|\n| General Practitioner | $500-1,000 |\n| Specialist Doctor | $1,000-2,500 |\n| Surgeon | $2,000-4,000 |\n\n## Living Costs\n\n| Expense | Monthly Cost |\n|---------|-------------|\n| Accommodation | $100-250 |\n| Food | $150-200 |\n| Transportation | $20-40 |\n| **Total** | **$300-540** |",
+      tr: "Azerbaycan'da tip egitimi icin en iyi universiteleri kesfedin.",
+      az: "Azerbaycanda tibb teshili uchun en yaxshi universitetleri kesfedin.",
+      ru: "Otkroyte luchshie universitety dlya meditsinskogo obrazovaniya v Azerbaydzhane."
+    },
+    author: "AzStudy Medical Guide",
+    publishedAt: "2025-06-01",
+    coverImage: "/images/blog/apply-azerbaijan.webp",
+    category: { en: "Medicine", tr: "Tip", az: "Tibb", ru: "Meditsina" },
+    readingMinutes: 11,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "Which are the best medical universities in Azerbaijan?", a: "Azerbaijan Medical University (AMU) is the leading medical school, followed by ADA University health programs. Both offer WHO-recognized general medicine and dentistry programs." },
+      { q: "How much does medical school cost in Azerbaijan?", a: "General medicine programs cost $3,000-8,000/year at state universities and $8,000-15,000/year at private institutions. Duration is 6 years for MBBS equivalent." },
+      { q: "Are medical degrees from Azerbaijan recognized internationally?", a: "Yes. AMU degrees are recognized by WHO, and graduates can sit for USMLE, PLAB and other international licensing exams." },
+    ],
+  },
+  {
+    id: "b-10",
+    slug: "azerbaijan-best-budget-study-destination",
+    title: {
+      en: "Why Azerbaijan is the Best Budget Study Destination",
+      tr: "Neden Azerbaycan En Iyi Butce Dostu Ogrenci Destinasyonu",
+      az: "Niyede Azerbaycan En Yaxshi Budce Dostu Teshil Meqsedidir",
+      ru: "Pochemu Azerbaydzhana luchshee byudzhetnoe napravlenie"
+    },
+    excerpt: {
+      en: "Compare study costs in Azerbaijan vs Turkey, Russia, and Europe. Find out why 50,000+ students choose Azerbaijan.",
+      tr: "Azerbaycan'daki egitim maliyetlerini diger ulkelerle karsilastirin.",
+      az: "Azerbaycanda teshil xerclerini diger oolkelerle mukayise edin.",
+      ru: "Sravnite stoimost obucheniya v Azerbaydzhane s drugimi stranami."
+    },
+    content: {
+      en: "Azerbaijan offers the best value for money in higher education. According to Numbeo's Cost of Living Index 2024, Azerbaijan's education costs are 60-80% lower than European alternatives.\n\n## Cost Comparison\n\n### Tuition Fees\n\n| Country | State University | Private University |\n|---------|-----------------|-------------------|\n| **Azerbaijan** | **$600-2,000** | **$3,000-15,000** |\n| Turkey | $500-3,000 | $5,000-25,000 |\n| Russia | $2,000-5,000 | $5,000-15,000 |\n| Europe (avg) | $2,000-10,000 | $10,000-30,000 |\n\n### Living Costs (Monthly)\n\n| Country | Total |\n|---------|-------|\n| **Azerbaijan** | **$270-600** |\n| Turkey | $380-830 |\n| Russia | $430-930 |\n| Europe (avg) | $750-1,650 |\n\n## Why Azerbaijan Wins\n\n### 1. Low Tuition\n- State universities: $600-2,000/year\n- Private universities: $3,000-15,000/year\n\n### 2. Affordable Living\n- Accommodation from $100/month\n- Meals from $1-3 at canteens\n\n### 3. Scholarship Opportunities\n- Government scholarships: Up to 100% coverage\n- University scholarships: 25-100% merit-based\n\n## Total Cost of 4-Year Degree\n\n| Country | Total |\n|---------|-------|\n| **Azerbaijan** | **$15,200-36,800** |\n| Turkey | $20,240-51,840 |\n| Russia | $28,640-64,640 |\n| Europe (avg) | $44,000-119,200 |\n\n## Conclusion\n\nAzerbaijan offers unbeatable value: WHO-recognized degrees, affordable living, generous scholarships, and a rich cultural experience.",
+      tr: "Azerbaycan'da egitim maliyetlerini diger ulkelerle karsilastirin.",
+      az: "Azerbaycanda teshil xerclerini diger oolkelerle mukayise edin.",
+      ru: "Sravnite stoimost obucheniya v Azerbaydzhane s drugimi stranami."
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-06-10",
+    coverImage: "/images/blog/cost-of-living.webp",
+    category: { en: "Study Abroad", tr: "Yurtdışında Eğitim", az: "Xaricdə Təhsil", ru: "Obucheniye za Rubezhom" },
+    readingMinutes: 9,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "Why is Azerbaijan a budget-friendly study destination?", a: "State university tuition starts at $600/year, living costs are $270-600/month, and government scholarships cover full tuition plus accommodation for qualified students." },
+      { q: "How does Azerbaijan compare cost-wise to Turkey or Russia?", a: "Azerbaijan is 20-40% cheaper than Turkey and 15-30% cheaper than Russia for comparable programs, with lower living costs and similar quality of education." },
+    ],
+  },
+  {
+    id: "b-11",
+    slug: "azerbaijani-culture-traditions-guide",
+    title: {
+      en: "Azerbaijani Culture and Traditions: A Student Guide",
+      tr: "Azerbaycan Kulturu ve Gelenekleri: Ogrenci Rehberi",
+      az: "Azerbaycan Medeniyyeti ve Adetleri: Telebe Rehberi",
+      ru: "Kultura i traditsii Azerbaydzhana: studentcheskoe rukovodstvo"
+    },
+    excerpt: {
+      en: "Learn about Azerbaijani culture, traditions, and customs to make the most of your study abroad experience.",
+      tr: "Azerbaycan kulturu, gelenek ve adetleri hakkinda bilgi edinin.",
+      az: "Azerbaycan medeniyyeti, adetleri ve gelenekleri haqqinda melumat alin.",
+      ru: "Uznayte o kulture, traditsiyakh i obychayakh Azerbaydzhana."
+    },
+    content: {
+      en: "Azerbaijan has a rich cultural heritage blending Eastern and Western influences. Understanding local customs will help you integrate better and make the most of your study abroad experience.\n\n## Key Cultural Values\n\n### Hospitality\n- Azerbaijanis are known for their warm hospitality\n- Guests are treated with great respect\n- It's customary to bring gifts when visiting someone's home\n\n### Family\n- Family is central to Azerbaijani culture\n- Respect for elders is deeply valued\n- Extended families often live close together\n\n### Education\n- Education is highly valued\n- Teachers are respected figures\n- Academic achievement is celebrated\n\n## Traditions and Customs\n\n### Novruz (Spring New Year)\n- Celebrated March 20-24\n- Most important holiday in Azerbaijan\n- Bonfires, traditional sweets, egg painting\n\n### Weddings\n- Elaborate celebrations\n- Traditional music and dancing\n- Multiple-day celebrations\n\n### Tea Culture\n- Tea houses (chaykhana) are social hubs\n- Tea served in armudu (pear-shaped) glasses\n- Accompanied by sweets and snacks\n\n## Food Culture\n\n### Traditional Meals\n- Breakfast: Flatbread, cheese, eggs, tea\n- Lunch: Plov (rice dish), kebabs\n- Dinner: Dolma, piti (lamb soup)\n\n### Dining Etiquette\n- Wait for the eldest to start eating\n- Try everything offered\n- Compliment the food\n\n## Religious Practices\n\n- Predominantly Muslim (secular state)\n- Mosques open to visitors\n- Religious freedom respected\n\n## Social Etiquette\n\n### Greetings\n- Handshake common between men\n- Women may nod or place hand on heart\n- Use titles (Professor, Doctor)\n\n### Dress Code\n- Casual in daily life\n- Modest in religious sites\n- No strict dress code\n\n### Tipping\n- 10-15% at restaurants\n- Round up for taxis\n- Not required but appreciated",
+      tr: "Azerbaycan kulturu, gelenek ve adetleri hakkinda bilgi edinin.",
+      az: "Azerbaycan medeniyyeti, adetleri ve gelenekleri haqqinda melumat alin.",
+      ru: "Uznayte o kulture, traditsiyakh i obychayakh Azerbaydzhana."
+    },
+    author: "AzStudy Cultural Guide",
+    publishedAt: "2025-06-15",
+    coverImage: "/images/blog/azerbaijani-language.webp",
+    category: { en: "Culture", tr: "Kultur", az: "Medeniyyet", ru: "Kultura" },
+    readingMinutes: 8,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "What are important Azerbaijani cultural traditions for students to know?", a: "Hospitality (offering tea), tea culture, Novruz celebrations, mugham music, carpet weaving, and the importance of family and respect for elders are key traditions." },
+      { q: "Is Azerbaijan a religious country?", a: "Azerbaijan is officially secular. While predominantly Muslim, the country practices a moderate, tolerant form. Mosques, churches and synagogues coexist peacefully." },
+    ],
+  },
+  {
+    id: "b-12",
+    slug: "azerbaijan-weather-climate-students",
+    title: {
+      en: "Azerbaijan Weather and Climate: What Students Should Know",
+      tr: "Azerbaycan Hava Durumu ve Iklimi: Ogrencilerin Bilmesi Gerekenler",
+      az: "Azerbaycan Havasi ve Iqlimi: Telebelerin Bilmeli Oldugu Seiler",
+      ru: "Pogoda i klimat Azerbaydzhana: chto nuzhno znat studentam"
+    },
+    excerpt: {
+      en: "A complete guide to Azerbaijan's diverse climate zones — from Baku's mild winters to the Caucasus mountains.",
+      tr: "Azerbaycan'in farkli iklim bolgeleri hakkinda tam rehber.",
+      az: "Azerbaycanin mxtelif iqlim zonlari haqqinda tam rehber.",
+      ru: "Polnoe rukovodstvo po klimaticheskim zonam Azerbaydzhana."
+    },
+    content: {
+      en: "Azerbaijan has remarkably diverse climate zones despite its small size. The country ranges from subtropical coasts to alpine peaks, offering students a variety of weather experiences throughout the year.\n\n## Climate Zones\n\n### 1. Absheron Peninsula (Baku)\n- Semi-arid climate\n- Mild, windy winters (2-6°C)\n- Warm, dry summers (25-30°C)\n- Annual rainfall: 200-300mm\n\n### 2. Central Lowlands\n- Continental climate\n- Cold winters (-5 to 0°C)\n- Hot summers (28-35°C)\n- Annual rainfall: 300-500mm\n\n### 3. Greater Caucasus Mountains\n- Alpine climate\n- Heavy snowfall in winter\n- Cool summers (15-20°C)\n- Annual rainfall: 1,000-1,500mm\n\n### 4. Southern Coast (Lankaran)\n- Subtropical climate\n- Mild winters (3-8°C)\n- Warm, humid summers (24-28°C)\n- Annual rainfall: 1,200-1,700mm\n\n## Monthly Weather in Baku\n\n| Month | Avg High | Avg Low | Rainfall |\n|-------|----------|---------|----------|\n| Jan | 6°C | 2°C | 20mm |\n| Feb | 6°C | 2°C | 20mm |\n| Mar | 10°C | 5°C | 25mm |\n| Apr | 16°C | 9°C | 30mm |\n| May | 21°C | 14°C | 20mm |\n| Jun | 26°C | 19°C | 10mm |\n| Jul | 30°C | 23°C | 5mm |\n| Aug | 29°C | 22°C | 5mm |\n| Sep | 25°C | 18°C | 10mm |\n| Oct | 19°C | 13°C | 25mm |\n| Nov | 13°C | 8°C | 30mm |\n| Dec | 8°C | 4°C | 25mm |\n\n## What to Pack\n\n### For Baku Students\n- Light layers for spring/autumn\n- Warm coat for winter\n- Windbreaker (Baku is windy!)\n- Comfortable walking shoes\n\n### For Mountain Areas\n- Hiking boots\n- Waterproof jacket\n- Thermal layers\n- Sun protection\n\n## Best Times to Travel\n\n### Spring (March-May)\n- Mild weather, cherry blossoms\n- Great for sightseeing\n- Novruz celebrations\n\n### Summer (June-August)\n- Warm, beach season\n- Perfect for mountain hiking\n- Long daylight hours\n\n### Autumn (September-November)\n- Comfortable temperatures\n- Wine festivals\n- Autumn foliage\n\n### Winter (December-February)\n- Skiing in Gabala\n- Cozy cafes in Baku\n- Indoor cultural activities",
+      tr: "Azerbaycan'in farkli iklim bolgeleri hakkinda tam rehber.",
+      az: "Azerbaycanin mxtelif iqlim zonlari haqqinda tam rehber.",
+      ru: "Polnoe rukovodstvo po klimaticheskim zonam Azerbaydzhana."
+    },
+    author: "AzStudy Team",
+    publishedAt: "2025-06-20",
+    coverImage: "/images/blog/why-azerbaijan.webp",
+    category: { en: "Student Life", tr: "Ogrenci Hayati", az: "Telebe Heyati", ru: "Studencheskaya zhizn" },
+    readingMinutes: 8,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "What is the climate like in Azerbaijan?", a: "Azerbaijan has diverse microclimates: Baku is windy with mild winters (0-8C) and warm summers (25-35C). Mountain regions are colder; southern lowlands are subtropical." },
+      { q: "What should students pack for Azerbaijan?", a: "Layered clothing for variable weather, a windproof jacket for Baku, comfortable walking shoes, and an umbrella. Summers are warm; winters require warm clothing." },
+    ],
+  },
+  {
+    id: "b-14",
+    slug: "azerbaijan-vs-turkey-study-abroad",
+    title: {
+      en: "Azerbaijan vs Turkey: Which is Better for Studying Abroad?",
+      tr: "Azerbaycan vs Turkiye: Hangisi Daha Iyi?",
+      az: "Azerbaycan ve Turkiye: Hansi Daha Yaxshidir?",
+      ru: "Azerbaydzhana vs Turtsiya: chto luchshe dlya obucheniya?"
+    },
+    excerpt: {
+      en: "Detailed comparison of studying in Azerbaijan vs Turkey — costs, universities, visa process, and quality of education.",
+      tr: "Azerbaycan ve Turkiye'de egitim karsilastirmasi — maliyetler, universiteler, vize sureci.",
+      az: "Azerbaycan ve Turkiyede teshil mukayisesi — xercler, universitetler, vize sureci.",
+      ru: "Sravnenie obucheniya v Azerbaydzhane i Turtsii — stoimost, universitety, vizovyj protsess."
+    },
+    content: {
+      en: "Choosing between Azerbaijan and Turkey for your studies? Both countries offer quality education at affordable prices, but there are key differences. This comprehensive comparison helps you make the right decision.\n\n## Quick Comparison\n\n| Factor | Azerbaijan | Turkey |\n|--------|------------|--------|\n| **Tuition (State)** | $600-2,000/yr | $500-3,000/yr |\n| **Tuition (Private)** | $3,000-15,000/yr | $5,000-25,000/yr |\n| **Living Cost** | $270-600/mo | $380-830/mo |\n| **Population** | 10 million | 85 million |\n| **Universities** | 56 | 200+ |\n| **Language** | AZ, EN, RU, TR | TR, EN |\n\n## Tuition Fees\n\n### State Universities\n\n| Country | Annual Tuition | Popular Programs |\n|---------|---------------|------------------|\n| **Azerbaijan** | **$600-2,000** | Medicine, Engineering |\n| Turkey | $500-3,000 | Medicine, Business |\n\n### Private Universities\n\n| Country | Annual Tuition | English Programs |\n|---------|---------------|------------------|\n| **Azerbaijan** | **$3,000-15,000** | Yes |\n| Turkey | $5,000-25,000 | Yes |\n\n## Living Costs\n\n### Monthly Breakdown\n\n| Category | Azerbaijan | Turkey |\n|----------|------------|--------|\n| Accommodation | $100-300 | $150-400 |\n| Food | $150-250 | $200-350 |\n| Transportation | $20-50 | $30-80 |\n| Entertainment | $50-100 | $75-150 |\n| **Total** | **$320-700** | **$455-980** |\n\n## Quality of Education\n\n### Azerbaijan\n- WHO-recognized medical programs\n- Bologna Process member\n- Growing research output\n- Small class sizes\n\n### Turkey\n- 8 universities in QS Top 500\n- Strong engineering programs\n- Extensive research facilities\n- Large international community\n\n## Visa Process\n\n### Azerbaijan\n- E-visa available (3 days processing)\n- Cost: $20-50\n- Duration: 90 days\n- Renewal: Annual residence permit\n\n### Turkey\n- Student visa required\n- Processing: 2-4 weeks\n- Cost: $50-100\n- Duration: 1 year (renewable)\n\n## Student Life\n\n### Azerbaijan\n- Smaller, more intimate community\n- Easier to integrate\n- Caspian Sea access\n- Rich cultural heritage\n\n### Turkey\n- Larger international community\n- More entertainment options\n- Mediterranean coast\n- Vibrant nightlife\n\n## Career Opportunities\n\n### After Graduation\n\n| Aspect | Azerbaijan | Turkey |\n|--------|------------|--------|\n| Work Permit | Available | Available |\n| Job Market | Growing | Large |\n| Key Sectors | Oil/Gas, Tech | Manufacturing, Tourism |\n| Salary Range | $500-2,000 | $600-2,500 |\n\n## Scholarship Availability\n\n### Azerbaijan\n- Government scholarships: 100% coverage\n- University scholarships: 25-100%\n- Limited spots (competitive)\n\n### Turkey\n- Turkey Burslari: 100% coverage\n- University scholarships: 25-100%\n- More spots available\n\n## Pros and Cons\n\n### Azerbaijan\n\n**Pros:**\n- Lower tuition and living costs\n- Easier visa process\n- Oil/gas industry opportunities\n- Less crowded\n\n**Cons:**\n- Fewer universities\n- Smaller international community\n- Limited nightlife\n- Hot summers\n\n### Turkey\n\n**Pros:**\n- More universities to choose from\n- Larger international community\n- Vibrant student life\n- Mediterranean climate\n\n**Cons:**\n- Higher living costs\n- More competitive admission\n- Larger cities can be overwhelming\n- Inflation concerns\n\n## Final Verdict\n\n### Choose Azerbaijan if you want:\n- Lowest possible costs\n- Intimate learning environment\n- Oil/gas career path\n- Easy visa process\n\n### Choose Turkey if you want:\n- More university options\n- Larger international community\n- Mediterranean lifestyle\n- More entertainment\n\n> **Expert Recommendation**: If budget is your primary concern, Azerbaijan offers better value. If you want a larger student community and more options, Turkey might be better. Both countries provide quality education. — AzStudy Advisory Team",
+      tr: "Azerbaycan ve Turkiye'de egitim karsilastirmasi.",
+      az: "Azerbaycan ve Turkiyede teshil mukayisesi.",
+      ru: "Sravnenie obucheniya v Azerbaydzhane i Turtsii."
+    },
+    author: "AzStudy Comparison Team",
+    publishedAt: "2025-07-10",
+    coverImage: "/images/blog/baku-universities.webp",
+    category: { en: "Comparison", tr: "Karsilastirma", az: "Mukayise", ru: "Sravnenie" },
+    readingMinutes: 12,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "Should I study in Azerbaijan or Turkey?", a: "Azerbaijan offers lower tuition ($600-2,000 vs $2,000-10,000 in Turkey), lower living costs, and a growing international education sector. Turkey has more universities and global recognition." },
+      { q: "Which country has better scholarship opportunities?", a: "Both countries offer government scholarships. Azerbaijan Turkiye Burslari is generous; Azerbaijan Government Scholarship covers full costs. Application competition varies by year." },
+      { q: "Are degrees from Azerbaijan or Turkey more recognized?", a: "Turkish universities generally have higher global rankings and more international recognition. However, Azerbaijani degrees from accredited institutions are accepted in most countries." },
+    ],
+  },
+  {
+    id: "b-15",
+    slug: "student-visa-azerbaijan-complete-guide",
+    title: {
+      en: "Student Visa for Azerbaijan: Complete Guide 2025",
+      tr: "Azerbaycan Ogrenci Vizesi: Tam Rehber 2025",
+      az: "Azerbaycan Telebe Vizasi: Tam Rehber 2025",
+      ru: "Studencheskaya viza v Azerbaydzhana: polnoe rukovodstvo 2025"
+    },
+    excerpt: {
+      en: "Everything you need to know about getting a student visa for Azerbaijan — requirements, process, timeline, and tips.",
+      tr: "Azerbaycan ogrenci vizesi hakkinda bilmeniz gereken her sey.",
+      az: "Azerbaycan telebe vizasi haqqinda bilmeli oldugunuz her sey.",
+      ru: "Vse chto nuzhno znat o studencheskoj vize v Azerbaydzhane."
+    },
+    content: {
+      en: "Getting a student visa for Azerbaijan is straightforward. This guide covers the complete process from application to arrival.\n\n## Visa Types\n\n### Student Visa (Type D)\n- **Purpose**: Long-term study\n- **Duration**: Up to 1 year\n- **Renewable**: Yes, annually\n- **Work allowed**: Yes, with permit\n\n## Requirements\n\n### Documents Needed\n\n1. **Passport**\n   - Valid for 6+ months\n   - 2 blank pages minimum\n   - Clear photo page\n\n2. **Acceptance Letter**\n   - From accredited Azerbaijani university\n   - Original or certified copy\n   - Include program details\n\n3. **Financial Proof**\n   - Bank statement (last 3 months)\n   - Minimum $500/month balance\n   - Sponsor letter if applicable\n\n4. **Health Insurance**\n   - Valid in Azerbaijan\n   - Minimum coverage $10,000\n   - Duration: 1 year\n\n5. **Accommodation Proof**\n   - University dormitory confirmation\n   - Or rental agreement\n   - Or hotel booking\n\n6. **Photos**\n   - 2 passport-sized photos\n   - White background\n   - Recent (within 6 months)\n\n## Application Process\n\n### Step 1: Get Acceptance Letter\n- Apply to university\n- Submit required documents\n- Wait for acceptance (2-4 weeks)\n\n### Step 2: Prepare Documents\n- Gather all required documents\n- Get translations (if needed)\n- Apostille documents (if required)\n\n### Step 3: Apply for Visa\n- Online: evisa.gov.az\n- Or at Azerbaijani embassy/consulate\n- Pay visa fee ($20-50)\n\n### Step 4: Wait for Processing\n- Processing time: 3-15 business days\n- Track status online\n- Receive visa by email\n\n### Step 5: Travel to Azerbaijan\n- Enter within 90 days of visa issuance\n- Register within 30 days\n- Apply for residence permit\n\n## Timeline\n\n| Phase | Duration |\n|-------|----------|\n| University application | 2-4 weeks |\n| Acceptance letter | 1-2 weeks |\n| Document preparation | 1-2 weeks |\n| Visa processing | 3-15 days |\n| Travel to Azerbaijan | As planned |\n| Registration | 30 days |\n\n## Cost Breakdown\n\n| Item | Cost |\n|------|------|\n| Visa application | $20-50 |\n| Health insurance | $100-200 |\n| Document translation | $20-50 |\n| Apostille | $10-30 |\n| **Total** | **$150-330** |\n\n## Common Mistakes\n\n1. **Expired passport** — Ensure 6+ months validity\n2. **Missing documents** — Double-check requirements\n3. **Late application** — Apply at least 2 months early\n4. **Wrong photos** — Follow specifications exactly\n5. **Insufficient funds** — Show adequate balance\n\n## Tips for Success\n\n- Apply early (2-3 months before semester)\n- Keep copies of all documents\n- Use trackable mail service\n- Follow up if no response in 2 weeks\n- Have backup accommodation plan\n\n## After Arrival\n\n### Registration Process\n1. Register with local authorities (30 days)\n2. Get residence permit (30-60 days)\n3. Open bank account\n4. Get SIM card\n5. Register with university\n\n## Frequently Asked Questions\n\n**Q: Can I work while studying?**\nA: Yes, with a work permit (20 hours/week).\n\n**Q: Can I travel outside Azerbaijan?**\nA: Yes, but ensure your visa/re-entry permit is valid.\n\n**Q: What if my visa is rejected?**\nA: Appeal within 30 days or reapply with additional documents.\n\n**Q: How long does the whole process take?**\nA: 2-3 months from start to arrival.",
+      tr: "Azerbaycan ogrenci vizesi hakkinda bilmeniz gereken her sey.",
+      az: "Azerbaycan telebe vizasi haqqinda bilmeli oldugunuz her sey.",
+      ru: "Vse chto nuzhno znat o studencheskoj vize v Azerbaydzhane."
+    },
+    author: "AzStudy Visa Team",
+    publishedAt: "2025-07-15",
+    coverImage: "/images/blog/apply-azerbaijan.webp",
+    category: { en: "Visa Guide", tr: "Vize Rehberi", az: "Viza Rehberi", ru: "Vizovoe rukovodstvo" },
+    readingMinutes: 10,
+    updatedAt: "2025-08-25",
+    faqs: [
+      { q: "How do I get a student visa for Azerbaijan?", a: "After receiving your acceptance letter, apply at the nearest Azerbaijani consulate with: passport, acceptance letter, financial proof, photos, and medical certificate. Processing takes 2-4 weeks." },
+      { q: "How long is a student visa valid in Azerbaijan?", a: "Initial student visas are valid for the duration of your first academic year. You then convert to a residence permit, renewable annually for the duration of your studies." },
+      { q: "Do I need to register after arriving in Azerbaijan?", a: "Yes. You must register with the State Migration Service within 30 days of arrival. Your university international office typically assists with this process." },
+      { q: "Can I work on a student visa in Azerbaijan?", a: "Yes. Student visa holders can apply for a work permit for part-time employment (up to 20 hours/week) after registering with migration services." },
+    ],
+  },
+  {
+    id: "b-16",
+    slug: "top-engineering-programs-azerbaijan",
+    title: {
+      en: "Top Engineering Programs in Azerbaijan for International Students",
+      tr: "Azerbaycan'da Uluslararasi Ogrenciler Icin En Iyi Muhendislik Programlari",
+      az: "Beynelxalq Telebeler Uchun Azerbaycanda En Yaxshi Muhendislik Proqramlari",
+      ru: "Luchshie inzhenernye programmy v Azerbaydzhane dlya mezhdunarodnykh studentov"
+    },
+    excerpt: {
+      en: "Discover the best engineering programs in Azerbaijan — from petroleum engineering to computer science, with tuition fees and career prospects.",
+      tr: "Azerbaycan'daki en iyi muhendislik programlarini kesfedin.",
+      az: "Azerbaycandaki en yaxshi muhendislik proqramlarini kesfedin.",
+      ru: "Otkroyte luchshie inzhenernye programmy v Azerbaydzhane."
+    },
+    content: {
+      en: "Azerbaijan's engineering programs are gaining international recognition, especially in petroleum engineering and computer science. According to the Ministry of Education, engineering graduates have a 92% employment rate within one year.\n\n## Why Study Engineering in Azerbaijan?\n\n### Key Benefits\n- **Industry connections**: Oil/gas sector partnerships\n- **Practical training**: Hands-on lab experience\n- **Affordable tuition**: $1,000-5,000/year\n- **English programs**: Available at major universities\n\n## Top Engineering Universities\n\n### 1. Baku State University (BSU)\n\n**Engineering Faculty**\n- **Founded**: 1919\n- **Programs**: Civil, Mechanical, Electrical\n- **Tuition**: $1,500-3,000/year\n- **Language**: AZ, EN, RU\n\n### 2. Azerbaijan University of Architecture and Construction\n\n**Specialized Institution**\n- **Founded**: 1975\n- **Programs**: Architecture, Civil Engineering\n- **Tuition**: $1,500-2,500/year\n- **Language**: AZ, EN\n\n### 3. Baku Engineering University\n\n**Private Institution**\n- **Founded**: 2012\n- **Programs**: Computer, Civil, Electrical\n- **Tuition**: $3,000-4,000/year\n- **Language**: EN\n\n### 4. Ganja State University\n\n**Regional Option**\n- **Founded**: 1939\n- **Programs**: Mechanical, Electrical\n- **Tuition**: $800-1,500/year\n- **Language**: AZ, RU\n\n## Program Comparison\n\n| University | Program | Duration | Tuition | Language |\n|------------|---------|----------|---------|----------|\n| BSU | Civil Engineering | 4 years | $1,500 | AZ/EN/RU |\n| BSU | Mechanical Engineering | 4 years | $1,500 | AZ/EN/RU |\n| BSU | Electrical Engineering | 4 years | $1,500 | AZ/EN/RU |\n| Baku Engineering | Computer Science | 4 years | $3,500 | EN |\n| Baku Engineering | IT | 4 years | $3,000 | EN |\n| Architecture Univ | Architecture | 5 years | $2,000 | AZ/EN |\n\n## Specializations in Demand\n\n### 1. Petroleum Engineering\n- **Why**: Azerbaijan's oil/gas industry\n- **Salary**: $1,500-4,000/month\n- **Employers**: SOCAR, BP, Shell\n\n### 2. Computer Science\n- **Why**: Growing tech sector\n- **Salary**: $800-2,500/month\n- **Employers**: Tech startups, outsourcing companies\n\n### 3. Civil Engineering\n- **Why**: Infrastructure development\n- **Salary**: $700-2,000/month\n- **Employers**: Construction companies, government\n\n### 4. Electrical Engineering\n- **Why**: Energy sector growth\n- **Salary**: $800-2,000/month\n- **Employers**: Energy companies, utilities\n\n## Admission Requirements\n\n### For International Students\n1. High school diploma with Math, Physics\n2. Entrance exam (Math, Physics)\n3. IELTS 5.0+ or TOEFL 60+ for English programs\n4. Valid passport\n5. Portfolio (for architecture)\n\n## Career Prospects\n\n### Salary Ranges\n| Position | Monthly Salary (USD) |\n|----------|---------------------|\n| Junior Engineer | $500-1,000 |\n| Project Engineer | $1,000-2,000 |\n| Senior Engineer | $2,000-3,500 |\n| Engineering Manager | $3,000-5,000 |\n\n### Top Employers\n- SOCAR (State Oil Company)\n- BP Azerbaijan\n- Construction companies\n- Tech startups\n- Government agencies\n\n## Student Experience\n\n> The petroleum engineering program at BSU gave me hands-on experience with real industry equipment. I got a job at SOCAR before graduation. — Elvin, Petroleum Engineering Student\n\n## Living Costs for Engineering Students\n\n| Expense | Monthly Cost |\n|---------|-------------|\n| Accommodation | $100-200 |\n| Food | $150-200 |\n| Books/Supplies | $30-50 |\n| Transportation | $20-40 |\n| **Total** | **$300-490** |",
+      tr: "Azerbaycan'daki en iyi muhendislik programlarini kesfedin.",
+      az: "Azerbaycandaki en yaxshi muhendislik proqramlarini kesfedin.",
+      ru: "Otkroyte luchshie inzhenernye programmy v Azerbaydzhane."
+    },
+    author: "AzStudy Engineering Guide",
+    publishedAt: "2025-07-20",
+    coverImage: "/images/blog/azerbaijani-language.webp",
+    category: { en: "Engineering", tr: "Muhendislik", az: "Muhendislik", ru: "Inzhenernoe delo" },
+    readingMinutes: 11,
+    updatedAt: "2025-08-25",
+    metaTitle: {
+      en: "Top Engineering Programs in Azerbaijan 2026 — Fees & Careers",
+    },
+    metaDescription: {
+      en: "Best engineering programs in Azerbaijan: petroleum, CS, civil engineering. Tuition fees, admission requirements and career prospects for international students.",
+    },
+    faqs: [
+      { q: "What are the best engineering programs in Azerbaijan?", a: "Top engineering fields: petroleum engineering (ASOIU), civil engineering (AzMIU), computer science (BSU), electrical engineering (ADNSU), and telecommunications (ADNSU)." },
+      { q: "How much do engineering programs cost in Azerbaijan?", a: "State university engineering programs cost $800-2,500/year. Private institutions like Khazar charge $5,000-10,000/year. Scholarships reduce costs significantly." },
+    ],
+  }
+];

@@ -1,0 +1,46 @@
+name: Nightly DB backup
+
+# BE-4 / QA-3: belt-and-suspenders logical backup. Supabase itself provides
+# PITR (Pro+) / daily logical (Free); this is an EXTRA off-platform copy that
+# survives even a Supabase-side incident and can be restored to any Postgres.
+#
+# Gated on the repository variable ENABLE_NIGHTLY_BACKUP == 'true' so it never
+# runs on a repo that hasn't configured BACKUP_DATABASE_URL.
+on:
+  schedule:
+    - cron: '0 2 * * *' # 02:00 UTC daily
+  workflow_dispatch: {} # manual "back up now"
+
+jobs:
+  backup:
+    if: vars.ENABLE_NIGHTLY_BACKUP == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install postgres client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client-16
+
+      - name: pg_dump (custom format, compressed)
+        env:
+          BACKUP_DATABASE_URL: ${{ secrets.BACKUP_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          mkdir -p backup
+          STAMP="$(date -u +%Y%m%d-%H%M%S)"
+          # --no-owner/--no-privileges so the dump restores cleanly onto a
+          # different role/cloud (Supabase, local Docker, Render, …).
+          pg_dump "$BACKUP_DATABASE_URL" \
+            --no-owner --no-privileges --format=custom \
+            --file="backup/azstudy-${STAMP}.dump"
+          ls -lh backup/
+
+      - name: Upload dump as artifact (30-day retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: azstudy-db-${{ github.run_id }}
+          path: backup/*.dump
+          retention-days: 30
+          if-no-files-found: error
+
+      # Optional: push to longer-term object storage. Uncomment + set secrets.
+      # - name: Push to S3 (optional)
+      #   run: aws s3 cp backup/*.dump "s3://${{ secrets.BACKUP_BUCKET }}/studyhub/"

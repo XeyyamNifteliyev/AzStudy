@@ -1,0 +1,65 @@
+name: CD — Deploy
+
+# QA-2/DO-1: migrate-first, then deploy, then smoke. CI must be green first —
+# Vercel git auto-deploy is disabled for main; this job is the single deploy path.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: cd-deploy
+  cancel-in-progress: false # never cancel a deploy mid-flight
+
+jobs:
+  deploy:
+    name: Migrate → Deploy → Smoke
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 25
+    env:
+      # Used by the migrator (general migrations 0020+; SKIP_LOCAL files are
+      # applied manually via SQL Editor per docs/ops/deploy.md).
+      DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci --omit=dev
+
+      # 1. Migrate-first hard gate — fail the deploy on any migration error so
+      #    code never ships ahead of an unapplied schema change.
+      - name: Apply prod migrations
+        run: npm run db:migrate
+        env:
+          DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+
+      # 2. Deploy via Vercel CLI (uses the project linked to this repo; VERCEL
+      #    token comes from the production environment's secrets).
+      - name: Deploy to Vercel
+        run: npx vercel deploy --prod --yes --token="$VERCEL_TOKEN"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      # 3. Post-deploy smoke: health endpoint + a static page + a canonical page.
+      - name: Smoke test
+        run: |
+          set -euo pipefail
+          BASE="${{ vars.PROD_SITE_URL }}"
+          for url in \
+            "$BASE/api/health" \
+            "$BASE/en" \
+            "$BASE/en/universities" \
+            "$BASE/en/apply"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$url")
+            echo "$url → $code"
+            [ "$code" = "200" ] || [ "$code" = "307" ] || { echo "SMOKE FAIL: $url"; exit 1; }
+          done
+          curl -fsS "$BASE/api/health" | grep -q '"ok":true' || { echo "HEALTH PAYLOAD FAIL"; exit 1; }

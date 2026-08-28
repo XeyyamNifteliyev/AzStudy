@@ -1,0 +1,2 @@
+$proc = Start-Process -FilePath 'npm.cmd' -ArgumentList 'run','dev' -WorkingDirectory 'C:\Users\Asus\OneDrive\Desktop\AzStudy' -RedirectStandardOutput 'C:\Users\Asus\OneDrive\Desktop\AzStudy\.freebuff\preview-497339a6-96ad-42bb-bfe7-2abb93504697.log' -RedirectStandardError 'C:\Users\Asus\OneDrive\Desktop\AzStudy\.freebuff\preview-497339a6-96ad-42bb-bfe7-2abb93504697.log.err' -WindowStyle Hidden -PassThru
+Write-Output "PID: $($proc.Id)"
