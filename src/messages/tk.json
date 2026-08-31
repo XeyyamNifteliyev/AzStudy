@@ -400,6 +400,8 @@
     "ctaButton": "Hozir arza ediň",
     "lastUpdated": "Last updated",
     "faqTitle": "Sorag-jogaplar",
+    "categoryDescription": "Halkara talyplar üçin {category} barada gollanmalar, maslahatlar we makalalar.",
+    "noPosts": "Bu kategoriýada entek makala ýok.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

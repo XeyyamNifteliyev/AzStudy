@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { Star, BadgeCheck } from 'lucide-react';
 import { data } from '@/lib/data';
-import type { Review } from '@/types';
 import type { AppLocale } from '@/i18n/routing';
+import { lx } from '@/lib/i18n/lx';
 import { FadeIn } from '@/components/motion/fade-in';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,14 +13,14 @@ interface SuccessStoriesProps {
 
 export async function SuccessStories({ locale }: SuccessStoriesProps) {
   const t = await getTranslations('HomePage.stories');
-  const universities = await data.universities.list();
-  const stories = await Promise.all(
-    universities.slice(0, 6).map(async (u) => {
-      const reviews = await data.reviews.byUniversity(u.id);
-      return reviews[0];
-    }),
-  );
-  const reviews = stories.filter((s): s is Review => Boolean(s)).slice(0, 3);
+  // Single query (reviews.list) + in-memory dedupe by university — avoids the
+  // old N+1 (one byUniversity query per university) and guarantees 6 stories
+  // regardless of which universities happen to sit at the top of the list.
+  const all = await data.reviews.list();
+  const seen = new Set<string>();
+  const reviews = all
+    .filter((r) => (seen.has(r.universityId) ? false : seen.add(r.universityId)))
+    .slice(0, 6);
 
   if (!reviews.length) return null;
 
@@ -36,9 +36,9 @@ export async function SuccessStories({ locale }: SuccessStoriesProps) {
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (
-            <Card key={review.id}>
+            <Card key={review.id} className="transition-shadow duration-300 ease-fluid hover:shadow-flat-hover">
               <CardContent className="space-y-4 p-6">
                 <div className="flex items-center gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -53,7 +53,7 @@ export async function SuccessStories({ locale }: SuccessStoriesProps) {
                   ))}
                 </div>
                 <p className="text-sm leading-relaxed text-foreground">
-                  “{review.text[locale]}”
+                  “{lx(review.text, locale)}”
                 </p>
                 <div className="flex items-center gap-3 border-t border-border pt-4">
                   <Avatar>
@@ -67,7 +67,7 @@ export async function SuccessStories({ locale }: SuccessStoriesProps) {
                       )}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {review.authorCountry} · {review.programStudied[locale]}
+                      {review.authorCountry} · {lx(review.programStudied, locale)}
                     </p>
                   </div>
                 </div>

@@ -400,6 +400,8 @@
     "ctaButton": "Postuler maintenant",
     "lastUpdated": "Last updated",
     "faqTitle": "Questions fréquentes",
+    "categoryDescription": "Guides, conseils et articles sur {category} pour les étudiants internationaux.",
+    "noPosts": "Pas encore d'articles dans cette catégorie.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

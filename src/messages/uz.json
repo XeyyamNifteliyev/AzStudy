@@ -400,6 +400,8 @@
     "ctaButton": "Hozir ariza berish",
     "lastUpdated": "Last updated",
     "faqTitle": "Ko'p so'raladigan savollar",
+    "categoryDescription": "Xalqaro talabalar uchun {category} bo'yicha qo'llanmalar, maslahatlar va maqolalar.",
+    "noPosts": "Bu kategoriyada hozircha maqala yo'q.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

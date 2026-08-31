@@ -400,6 +400,8 @@
     "ctaButton": "Omba sasa",
     "lastUpdated": "Last updated",
     "faqTitle": "Maswali Yanayoulwa Mara Kwa Mara",
+    "categoryDescription": "Miongozo, vidokezo na makala kuhusu {category} kwa wanafunzi wa kimataifa.",
+    "noPosts": "Hakuna makala katika kategoria hii bado.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

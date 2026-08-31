@@ -400,6 +400,8 @@
     "ctaButton": "立即申请",
     "lastUpdated": "Last updated",
     "faqTitle": "常见问题",
+    "categoryDescription": "关于{category}的国际学生指南、提示与文章。",
+    "noPosts": "此分类暂无文章。",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

@@ -400,6 +400,8 @@
     "ctaButton": "Кандидатствай сега",
     "lastUpdated": "Last updated",
     "faqTitle": "Често задавани въпроси",
+    "categoryDescription": "Наръчници, съвети и статии за {category} за чуждестранни студенти.",
+    "noPosts": "Все още няма публикации в тази категория.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

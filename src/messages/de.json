@@ -400,6 +400,8 @@
     "ctaButton": "Jetzt bewerben",
     "lastUpdated": "Last updated",
     "faqTitle": "Häufig gestellte Fragen",
+    "categoryDescription": "Ratgeber, Tipps und Artikel über {category} für internationale Studierende.",
+    "noPosts": "Noch keine Beiträge in dieser Kategorie.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

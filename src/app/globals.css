@@ -60,6 +60,27 @@
   .btn-glow:hover::after {
     transform: translateX(100%);
   }
+
+  /* ---- Premium primitives (high-end-visual-design skill) ---- */
+
+  /* Eyebrow: microscopic pill that precedes major headings (§4C) */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-card/80 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary ring-1 ring-foreground/[0.06] shadow-flat-plus;
+  }
+
+  /* Double-Bezel (§4A): outer machined shell + inner core with concentric radii */
+  .bezel {
+    @apply rounded-[2rem] bg-card/70 p-1.5 shadow-ambient ring-1 ring-foreground/[0.07];
+  }
+  .bezel-inner {
+    @apply relative overflow-hidden rounded-[calc(2rem_-_0.375rem)] bg-surface-low shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)];
+  }
+  .bezel-sm {
+    @apply rounded-2xl bg-card/80 p-1.5 shadow-ambient ring-1 ring-foreground/[0.06];
+  }
+  .bezel-sm .bezel-inner {
+    @apply rounded-[calc(1rem_-_0.375rem)];
+  }
 }
 
 @layer utilities {
@@ -69,6 +90,17 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Film-grain overlay — fixed + pointer-events-none only (§6 guardrail) */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
 }
 

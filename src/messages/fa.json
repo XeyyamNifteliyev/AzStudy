@@ -400,6 +400,8 @@
     "ctaButton": "اکنون درخواست دهید",
     "lastUpdated": "Last updated",
     "faqTitle": "سوالات متداول",
+    "categoryDescription": "راهنماها، نکات و مقالات درباره {category} برای دانشجویان بین‌المللی.",
+    "noPosts": "هنوز مقاله‌ای در این دسته وجود ندارد.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

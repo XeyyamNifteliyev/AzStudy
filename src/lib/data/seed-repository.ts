@@ -556,6 +556,9 @@ class SeedProgramRepository implements ProgramRepository {
 }
 
 class SeedReviewRepository implements ReviewRepository {
+  async list(): Promise<Review[]> {
+    return delay(seedReviews);
+  }
   async byUniversity(universityId: string): Promise<Review[]> {
     return delay(seedReviews.filter((r) => r.universityId === universityId));
   }

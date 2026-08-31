@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { data } from "@/lib/data";
 import { lx } from "@/lib/i18n/lx";
+import { isSvgUrl } from "@/lib/images/is-svg";
 import type { AppLocale } from "@/i18n/routing";
 
 interface UniversityLogoMarqueeProps {
@@ -58,7 +59,15 @@ export async function UniversityLogoMarquee({
                   alt={`${lx(u.nameI18n, locale)} logo`}
                   width={160}
                   height={80}
-                  unoptimized
+                  // PERF/BUG: marquee items move via a GPU-composited transform —
+                  // the lazy-loader's IntersectionObserver never fires during the
+                  // animation, leaving logos blank until a mouse move/scroll
+                  // forces an IO pass. Eager + low fetch priority loads them
+                  // immediately without competing with the LCP.
+                  loading="eager"
+                  fetchPriority="low"
+                  decoding="async"
+                  unoptimized={isSvgUrl(u.logoImage)}
                   className="h-10 w-auto max-w-full object-contain md:h-12"
                 />
               </li>

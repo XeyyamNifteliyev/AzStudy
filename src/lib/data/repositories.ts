@@ -134,6 +134,7 @@ export interface ProgramRepository {
 }
 
 export interface ReviewRepository {
+  list(): Promise<Review[]>;
   byUniversity(universityId: string): Promise<Review[]>;
 }
 

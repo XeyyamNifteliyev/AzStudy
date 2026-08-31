@@ -22,6 +22,8 @@ export default async function MarketingLayout({
 
   return (
     <>
+      {/* Film-grain overlay — fixed, pointer-events-none (skill §6) */}
+      <div className="noise-overlay" aria-hidden />
       <Header />
       <main id="main" tabIndex={-1}>
         {children}

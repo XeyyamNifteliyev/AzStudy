@@ -22,30 +22,35 @@ export async function StatsSection({ locale }: StatsSectionProps) {
   );
 
   const stats = [
-    { value: universities.length, suffix: '+', label: t('universities'), icon: Building2, gradient: 'from-primary/10 to-primary/5' },
-    { value: programs.length, suffix: '+', label: t('programs'), icon: BookOpen, gradient: 'from-cta/10 to-cta/5' },
-    { value: countries.length, suffix: '+', label: t('countries'), icon: Globe, gradient: 'from-emerald-500/10 to-emerald-500/5' },
-    { value: studentsPlaced, suffix: '', label: t('students'), icon: Users, gradient: 'from-violet-500/10 to-violet-500/5' },
+    { value: universities.length, suffix: '+', label: t('universities'), icon: Building2 },
+    { value: programs.length, suffix: '+', label: t('programs'), icon: BookOpen },
+    { value: countries.length, suffix: '+', label: t('countries'), icon: Globe },
+    { value: studentsPlaced, suffix: '', label: t('students'), icon: Users },
   ];
 
   return (
-    <section className="border-b border-border bg-card">
-      <FadeIn className="container-page grid grid-cols-2 gap-4 py-12 md:grid-cols-4 md:gap-6">
-        {stats.map((s) => {
+    <section className="border-y border-border/60 bg-card">
+      <FadeIn className="container-page grid grid-cols-2 gap-x-6 gap-y-10 py-16 md:grid-cols-4 md:py-20">
+        {stats.map((s, i) => {
           const Icon = s.icon;
           return (
-            <div key={s.label} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-flat-hover">
-              <div className={`absolute inset-0 bg-gradient-to-br ${s.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
-              <div className="relative">
-                <div className={`mx-auto mb-3 inline-flex rounded-xl bg-gradient-to-br ${s.gradient} p-3`}>
-                  <Icon className="h-6 w-6 text-primary" />
-                </div>
-                <p className="font-display text-3xl font-bold text-foreground sm:text-4xl tabular-nums">
-                  {formatNumber(s.value, locale)}
-                  {s.suffix}
-                </p>
-                <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
-              </div>
+            <div
+              key={s.label}
+              className={
+                'group flex flex-col items-center text-center md:border-s md:border-border/60 md:ps-6 ' +
+                (i === 0 ? 'md:border-s-0 md:ps-0' : '')
+              }
+            >
+              <span className="mb-3 inline-flex rounded-full bg-accent p-2.5 text-primary transition-transform duration-300 ease-fluid group-hover:scale-105">
+                <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+              </span>
+              <p className="font-display text-4xl font-bold tabular-nums tracking-tight text-foreground sm:text-[2.75rem]">
+                {formatNumber(s.value, locale)}
+                {s.suffix}
+              </p>
+              <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                {s.label}
+              </p>
             </div>
           );
         })}

@@ -400,6 +400,8 @@
     "ctaButton": "İndi müraciət et",
     "lastUpdated": "Son yenilənmə",
     "faqTitle": "Tez-tez verilən suallar",
+    "categoryDescription": "Beynəlxalq tələbələr üçün {category} haqqında bələdçilər, məsləhətlər və məqalələr.",
+    "noPosts": "Bu kateqoriyada hələ məqalə yoxdur.",
     "authorBio": "Azərbaycan universitetləri və beynəlxalq tələbə qəbulu üzrə təhsil məsləhətçisi.",
     "relatedPosts": "Əlaqəli Məqalələr",
     "sharePost": "Məqaləni paylaş"

@@ -400,6 +400,8 @@
     "ctaButton": "Қазір өтініш беру",
     "lastUpdated": "Last updated",
     "faqTitle": "Жиі қойылатын сұрақтар",
+    "categoryDescription": "{category} туралы халықаралық студенттерге арналған нұсқаулықтар, кеңестер мен мақалалар.",
+    "noPosts": "Бұл санатта әлі мақала жоқ.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

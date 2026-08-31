@@ -820,6 +820,12 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
   };
 
   const reviews: ReviewRepository = {
+    async list(): Promise<Review[]> {
+      const res = await getPool().query(
+        `select * from public.reviews order by year desc, id`,
+      );
+      return res.rows.map(rowReview);
+    },
     async byUniversity(universityId: string): Promise<Review[]> {
       const res = await getPool().query(
         `select * from public.reviews where university_id = $1 order by year desc`,

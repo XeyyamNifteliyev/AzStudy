@@ -400,6 +400,8 @@
     "ctaButton": "Apply now",
     "lastUpdated": "Last updated",
     "faqTitle": "Frequently Asked Questions",
+    "categoryDescription": "Guides, tips and articles about {category} for international students in Azerbaijan.",
+    "noPosts": "No posts in this category yet.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

@@ -400,6 +400,8 @@
     "ctaButton": "Азыр арыз берүү",
     "lastUpdated": "Last updated",
     "faqTitle": "Көп берилүүчү суроолор",
+    "categoryDescription": "{category} боюнча эл аралык студенттер үчүн нускамалар, кеңештер жана макалалар.",
+    "noPosts": "Бул категорияда азырынча макала жок.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

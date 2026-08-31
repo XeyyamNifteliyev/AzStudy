@@ -400,6 +400,8 @@
     "ctaButton": "قدّم الآن",
     "lastUpdated": "Last updated",
     "faqTitle": "الأسئلة الشائعة",
+    "categoryDescription": "أدلة ونصائح ومقالات حول {category} للطلاب الدوليين.",
+    "noPosts": "لا توجد مقالات في هذه الفئة بعد.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

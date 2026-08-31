@@ -400,6 +400,8 @@
     "ctaButton": "Hemen başvur",
     "lastUpdated": "Son güncelleme",
     "faqTitle": "Sık Sorulan Sorular",
+    "categoryDescription": "{category} hakkında uluslararası öğrenciler için rehberler, ipuçları ve yazılar.",
+    "noPosts": "Bu kategoride henüz yazı yok.",
     "authorBio": "Azerbaycan üniversiteleri ve uluslararası öğrenci kabulü üzerine eğitim danışmanı.",
     "relatedPosts": "İlgili Makaleler",
     "sharePost": "Makaleyi paylaş"

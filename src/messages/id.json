@@ -400,6 +400,8 @@
     "ctaButton": "Lamar sekarang",
     "lastUpdated": "Last updated",
     "faqTitle": "Pertanyaan Umum",
+    "categoryDescription": "Panduan, tips, dan artikel tentang {category} untuk mahasiswa internasional.",
+    "noPosts": "Belum ada artikel dalam kategori ini.",
     "authorBio": "Education consultant specializing in Azerbaijani universities and international student admissions.",
     "relatedPosts": "Related Articles",
     "sharePost": "Share this article"

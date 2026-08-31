@@ -123,6 +123,15 @@ const config: Config = {
         full: "9999px",
       },
       fontSize: {
+        // Editorial display scale — clamp-based, massive on desktop
+        "display-xl": [
+          "clamp(2.75rem, 5.5vw, 4.5rem)",
+          { lineHeight: "1.04", letterSpacing: "-0.03em", fontWeight: "700" },
+        ],
+        "display-lg": [
+          "clamp(2.25rem, 4vw, 3.25rem)",
+          { lineHeight: "1.08", letterSpacing: "-0.02em", fontWeight: "700" },
+        ],
         "headline-xl": [
           "3rem",
           { lineHeight: "3.5rem", letterSpacing: "-0.02em", fontWeight: "700" },
@@ -147,6 +156,7 @@ const config: Config = {
       spacing: {
         "section-lg": "80px",
         "section-md": "48px",
+        "section-xl": "120px",
       },
       boxShadow: {
         // Flat-Plus elevation (DESIGN.md): tonal layers + low-contrast outlines
@@ -155,14 +165,24 @@ const config: Config = {
         "flat-hover":
           "0 8px 24px -8px rgba(21, 28, 39, 0.08), 0 0 0 1px rgba(21, 28, 39, 0.06)",
         overlay: "0 24px 48px -12px rgba(21, 28, 39, 0.18)",
+        // Premium ambient: highly diffused, soft — the "$50k" shadow
+        ambient:
+          "0 32px 64px -24px rgba(21, 28, 39, 0.14), 0 12px 24px -12px rgba(21, 28, 39, 0.07)",
       },
       transitionTimingFunction: {
         "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+        // Fluid mass physics (high-end-visual-design skill §5)
+        fluid: "cubic-bezier(0.32, 0.72, 0, 1)",
       },
       keyframes: {
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        // Heavy cinematic entry: deep translate + blur resolve (skill §5C)
+        "fade-in-blur": {
+          "0%": { opacity: "0", transform: "translateY(28px)", filter: "blur(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)", filter: "blur(0)" },
         },
         // Logo marquee: translate the duplicated track by half its width so the
         // seam between the two copies is never visible.
@@ -181,6 +201,7 @@ const config: Config = {
       },
       animation: {
         "fade-in-up": "fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
+        "fade-in-blur": "fade-in-blur 0.9s cubic-bezier(0.32, 0.72, 0, 1) both",
         marquee: "marquee var(--marquee-duration, 40s) linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
