@@ -147,7 +147,13 @@ export interface BlogPost {
   /** SEO-optimized meta description (≤155 chars). Falls back to excerpt if absent. */
   metaDescription?: LocalizedString;
   /** FAQ pairs for FAQPage JSON-LD + on-page FAQ section. */
-  faqs?: Array<{ q: string; a: string }>;
+  faqs?: Array<{
+    q: string;
+    a: string;
+    /** Locale overrides — when present, rendered instead of q/a. */
+    qI18n?: LocalizedString;
+    aI18n?: LocalizedString;
+  }>;
 }
 
 export interface UniversityFilters {

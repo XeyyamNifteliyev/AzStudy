@@ -178,6 +178,7 @@ export const seedFaqs: Faq[] = [
       sw: "Ndiyo. Serikali ya Azerbaijan inatoa ufadhili kupitia Wizara ya Elimu.",
       so: "Haa. Dawladda Azerbaijan waxay bixisaa deeqo iyada oo marin u ah Wasaaradda Waxbarashada.",
       id: "Ya. Pemerintah Azerbaijan menawarkan beasiswa melalui Kementerian Pendidikan.",
+      ur: "جی ہاں۔ آذربائیجان حکومت وزارت تعلیم کے ذریعے اسکالرشپ فراہم کرتی ہے۔ بہت سی یونیورسٹیاں بین الاقوامی طلبہ کے لیے 25-100% میرٹ رعایتیں بھی دیتی ہیں۔",
     },
   },
 ];

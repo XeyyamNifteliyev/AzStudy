@@ -9,7 +9,12 @@ import { routing } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo/alternates";
-import { articleJsonLd, breadcrumbJsonLd, faqPageJsonLd, collectionPageJsonLd } from "@/lib/seo/json-ld";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+  collectionPageJsonLd,
+} from "@/lib/seo/json-ld";
 import { JsonLd } from "@/components/seo/json-ld";
 import { lx } from "@/lib/i18n/lx";
 import { Badge } from "@/components/ui/badge";
@@ -17,21 +22,79 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 // Blog category slug mapping — matches CATEGORY_MAP in the deleted [category]/page.tsx
-const BLOG_CATEGORIES: Record<string, { en: string; tr: string; az: string; ru: string }> = {
-  admissions: { en: "Admissions", tr: "Başvuru", az: "Müraciət", ru: "Поступление" },
+const BLOG_CATEGORIES: Record<
+  string,
+  { en: string; tr: string; az: string; ru: string }
+> = {
+  admissions: {
+    en: "Admissions",
+    tr: "Başvuru",
+    az: "Müraciət",
+    ru: "Поступление",
+  },
   education: { en: "Education", tr: "Eğitim", az: "Təhsil", ru: "Образование" },
-  "cost-of-living": { en: "Cost of Living", tr: "Yaşam Maliyeti", az: "Ömür xərcləri", ru: "Расходы на жизнь" },
-  "student-life": { en: "Student Life", tr: "Öğrenci Hayatı", az: "Tələbə Həyatı", ru: "Студенческая жизнь" },
-  scholarships: { en: "Scholarships", tr: "Burslar", az: "Təqaüdlər", ru: "Стипендии" },
-  "why-azerbaijan": { en: "Why Azerbaijan", tr: "Neden Azerbaycan", az: "Niyə Azərbaycan", ru: "Почему Азербайджан" },
-  "travel-guide": { en: "Travel Guide", tr: "Gezi Rehberi", az: "Səyahət Bələdçisi", ru: "Путеводитель" },
+  "cost-of-living": {
+    en: "Cost of Living",
+    tr: "Yaşam Maliyeti",
+    az: "Ömür xərcləri",
+    ru: "Расходы на жизнь",
+  },
+  "student-life": {
+    en: "Student Life",
+    tr: "Öğrenci Hayatı",
+    az: "Tələbə Həyatı",
+    ru: "Студенческая жизнь",
+  },
+  scholarships: {
+    en: "Scholarships",
+    tr: "Burslar",
+    az: "Təqaüdlər",
+    ru: "Стипендии",
+  },
+  "why-azerbaijan": {
+    en: "Why Azerbaijan",
+    tr: "Neden Azerbaycan",
+    az: "Niyə Azərbaycan",
+    ru: "Почему Азербайджан",
+  },
+  "travel-guide": {
+    en: "Travel Guide",
+    tr: "Gezi Rehberi",
+    az: "Səyahət Bələdçisi",
+    ru: "Путеводитель",
+  },
   medicine: { en: "Medicine", tr: "Tıp", az: "Tibb", ru: "Медицина" },
-  "study-abroad": { en: "Study Abroad", tr: "Yurtdışı Eğitim", az: "Xaricdə Təhsil", ru: "Обучение за рубежом" },
+  "study-abroad": {
+    en: "Study Abroad",
+    tr: "Yurtdışı Eğitim",
+    az: "Xaricdə Təhsil",
+    ru: "Обучение за рубежом",
+  },
   culture: { en: "Culture", tr: "Kültür", az: "Mədəniyyət", ru: "Культура" },
-  comparison: { en: "Comparison", tr: "Karşılaştırma", az: "Müqayisə", ru: "Сравнение" },
-  "visa-guide": { en: "Visa Guide", tr: "Vize Rehberi", az: "Viza Bələdçisi", ru: "Визовое руководство" },
-  engineering: { en: "Engineering", tr: "Mühendislik", az: "Mühəndislik", ru: "Инженерное дело" },
-  universities: { en: "Universities", tr: "Üniversiteler", az: "Universitetlər", ru: "Университеты" },
+  comparison: {
+    en: "Comparison",
+    tr: "Karşılaştırma",
+    az: "Müqayisə",
+    ru: "Сравнение",
+  },
+  "visa-guide": {
+    en: "Visa Guide",
+    tr: "Vize Rehberi",
+    az: "Viza Bələdçisi",
+    ru: "Визовое руководство",
+  },
+  engineering: {
+    en: "Engineering",
+    tr: "Mühendislik",
+    az: "Mühəndislik",
+    ru: "Инженерное дело",
+  },
+  universities: {
+    en: "Universities",
+    tr: "Üniversiteler",
+    az: "Universitetlər",
+    ru: "Университеты",
+  },
 };
 
 // ISR — blog posts rarely change after publishing; rebuild hourly.
@@ -102,7 +165,10 @@ export default async function BlogPostPage({
     const catName = catInfo.en ?? slug;
     const allPosts = await data.blog.list();
     const posts = allPosts.filter((p) => {
-      const postCatSlug = p.category.en?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const postCatSlug = p.category.en
+        ?.toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9-]/g, "");
       return postCatSlug === slug;
     });
     const isThin = posts.length < 2;
@@ -148,13 +214,25 @@ export default async function BlogPostPage({
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="group block">
+                <Link
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  className="group block"
+                >
                   <Card className="h-full overflow-hidden transition-shadow hover:shadow-flat-hover">
                     <div className="relative aspect-[16/9] overflow-hidden bg-surface-low">
-                      <Image src={post.coverImage} alt={lx(post.title, appLocale)} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <Image
+                        src={post.coverImage}
+                        alt={lx(post.title, appLocale)}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
                     </div>
                     <CardContent className="space-y-3 p-5">
-                      <Badge variant="tertiary">{lx(post.category, appLocale)}</Badge>
+                      <Badge variant="tertiary">
+                        {lx(post.category, appLocale)}
+                      </Badge>
                       <h2 className="font-display text-lg font-semibold leading-snug text-foreground">
                         {lx(post.title, appLocale)}
                       </h2>
@@ -203,172 +281,180 @@ export default async function BlogPostPage({
       {isThinLocale && (
         <head>
           <meta name="robots" content="noindex, follow" />
-          <link rel="canonical" href={`${siteConfig.url}/en/blog/${post.slug}`} />
+          <link
+            rel="canonical"
+            href={`${siteConfig.url}/en/blog/${post.slug}`}
+          />
         </head>
       )}
-    <article>
-      <JsonLd
-        data={[
-          articleJsonLd(post, appLocale),
-          breadcrumbJsonLd([
-            { name: t("home"), url: `${siteConfig.url}/${locale}` },
-            { name: t("blog"), url: `${siteConfig.url}/${locale}/blog` },
-            {
-              name: lx(post.title, appLocale),
-              url: `${siteConfig.url}/${locale}${path}`,
-            },
-          ]),
-          ...(post.faqs?.length ? [
-            faqPageJsonLd(
-              post.faqs.map((f, i) => ({
-                id: `${post.slug}-faq-${i}`,
-                entityType: "general" as const,
-                entityId: post.id,
-                question: { en: f.q },
-                answer: { en: f.a },
-              })),
-              appLocale,
-              `${siteConfig.url}/${locale}${path}`,
-            )
-          ] : []),
-        ]}
-      />
+      <article>
+        <JsonLd
+          data={[
+            articleJsonLd(post, appLocale),
+            breadcrumbJsonLd([
+              { name: t("home"), url: `${siteConfig.url}/${locale}` },
+              { name: t("blog"), url: `${siteConfig.url}/${locale}/blog` },
+              {
+                name: lx(post.title, appLocale),
+                url: `${siteConfig.url}/${locale}${path}`,
+              },
+            ]),
+            ...(post.faqs?.length
+              ? [
+                  faqPageJsonLd(
+                    post.faqs.map((f, i) => ({
+                      id: `${post.slug}-faq-${i}`,
+                      entityType: "general" as const,
+                      entityId: post.id,
+                      question: f.qI18n ?? { en: f.q },
+                      answer: f.aI18n ?? { en: f.a },
+                    })),
+                    appLocale,
+                    `${siteConfig.url}/${locale}${path}`,
+                  ),
+                ]
+              : []),
+          ]}
+        />
 
-      <div className="container-page max-w-3xl py-section-md">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          {t("back")}
-        </Link>
+        <div className="container-page max-w-3xl py-section-md">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {t("back")}
+          </Link>
 
-        <div className="mt-6">
-          <Badge variant="tertiary">{lx(post.category, appLocale)}</Badge>
-          <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-foreground sm:text-4xl">
-            {lx(post.title, appLocale)}
-          </h1>
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span>{post.author}</span>
-            <span className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
-              {new Date(post.publishedAt).toLocaleDateString(locale, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </span>
-            {/* Freshness signal (AEO): surface when the post was revised after
+          <div className="mt-6">
+            <Badge variant="tertiary">{lx(post.category, appLocale)}</Badge>
+            <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+              {lx(post.title, appLocale)}
+            </h1>
+            <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <span>{post.author}</span>
+              <span className="flex items-center gap-1">
+                <Calendar className="h-4 w-4" />
+                {new Date(post.publishedAt).toLocaleDateString(locale, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
+              {/* Freshness signal (AEO): surface when the post was revised after
                 publishing — AI systems and Google both weight recency. */}
-            {post.updatedAt &&
-              new Date(post.updatedAt).getTime() !==
-                new Date(post.publishedAt).getTime() && (
-                <span className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  {t("lastUpdated")}:{" "}
-                  {new Date(post.updatedAt).toLocaleDateString(locale, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </span>
-              )}
-            <span className="flex items-center gap-1">
-              <Clock className="h-4 w-4" />
-              {t("minRead", { min: post.readingMinutes })}
-            </span>
-          </div>
-        </div>
-
-        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-lg border border-border">
-          <Image
-            src={post.coverImage}
-            alt={lx(post.title, appLocale)}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-          />
-        </div>
-
-        <div className="prose prose-lg mt-8 max-w-none prose-headings:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
-          <RichContent content={content} />
-        </div>
-
-        {/* Author Bio - AEO trust signal */}
-        <div className="mt-8 rounded-lg border border-border bg-card p-6">
-          <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
-              {post.author.charAt(0)}
-            </div>
-            <div>
-              <p className="font-semibold text-foreground">{post.author}</p>
-              <p className="text-sm text-muted-foreground">
-                {t("authorBio")}
-              </p>
+              {post.updatedAt &&
+                new Date(post.updatedAt).getTime() !==
+                  new Date(post.publishedAt).getTime() && (
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    {t("lastUpdated")}:{" "}
+                    {new Date(post.updatedAt).toLocaleDateString(locale, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                )}
+              <span className="flex items-center gap-1">
+                <Clock className="h-4 w-4" />
+                {t("minRead", { min: post.readingMinutes })}
+              </span>
             </div>
           </div>
-        </div>
 
-        {/* Related Posts - Internal linking for SEO */}
-        {relatedPosts.length > 0 && (
-          <div className="mt-12">
-            <h2 className="font-display text-xl font-semibold text-foreground mb-4">
-              {t("relatedPosts")}
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedPosts.map((related) => (
-                <Link
-                  key={related.id}
-                  href={`/blog/${related.slug}`}
-                  className="group block rounded-lg border border-border p-4 hover:shadow-flat-hover transition-shadow"
-                >
-                  <Badge variant="tertiary" className="mb-2">
-                    {lx(related.category, appLocale)}
-                  </Badge>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {lx(related.title, appLocale)}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                    {lx(related.excerpt, appLocale)}
-                  </p>
-                </Link>
-              ))}
+          <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-lg border border-border">
+            <Image
+              src={post.coverImage}
+              alt={lx(post.title, appLocale)}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="prose prose-lg mt-8 max-w-none prose-headings:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
+            <RichContent content={content} />
+          </div>
+
+          {/* Author Bio - AEO trust signal */}
+          <div className="mt-8 rounded-lg border border-border bg-card p-6">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
+                {post.author.charAt(0)}
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">{post.author}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t("authorBio")}
+                </p>
+              </div>
             </div>
           </div>
-        )}
 
-        {/* FAQ Section — AEO: visible FAQ blocks increase AI citation rate */}
-        {post.faqs && post.faqs.length > 0 && (
-          <div className="mt-12">
-            <h2 className="font-display text-xl font-semibold text-foreground mb-6">
-              {t("faqTitle")}
-            </h2>
-            <div className="space-y-4">
-              {post.faqs.map((faq, i) => (
-                <details key={i} className="group rounded-lg border border-border p-4">
-                  <summary className="cursor-pointer font-semibold text-foreground">
-                    {faq.q}
-                  </summary>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">
-                    {faq.a}
-                  </p>
-                </details>
-              ))}
+          {/* Related Posts - Internal linking for SEO */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-12">
+              <h2 className="font-display text-xl font-semibold text-foreground mb-4">
+                {t("relatedPosts")}
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedPosts.map((related) => (
+                  <Link
+                    key={related.id}
+                    href={`/blog/${related.slug}`}
+                    className="group block rounded-lg border border-border p-4 hover:shadow-flat-hover transition-shadow"
+                  >
+                    <Badge variant="tertiary" className="mb-2">
+                      {lx(related.category, appLocale)}
+                    </Badge>
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {lx(related.title, appLocale)}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                      {lx(related.excerpt, appLocale)}
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <div className="mt-12 rounded-lg border border-primary-container bg-surface-low p-6 text-center">
-          <p className="font-display text-lg font-semibold text-foreground">
-            {t("ctaTitle")}
-          </p>
-          <Button asChild variant="cta" className="mt-4">
-            <Link href="/apply">{t("ctaButton")}</Link>
-          </Button>
+          {/* FAQ Section — AEO: visible FAQ blocks increase AI citation rate */}
+          {post.faqs && post.faqs.length > 0 && (
+            <div className="mt-12">
+              <h2 className="font-display text-xl font-semibold text-foreground mb-6">
+                {t("faqTitle")}
+              </h2>
+              <div className="space-y-4">
+                {post.faqs.map((faq, i) => (
+                  <details
+                    key={i}
+                    className="group rounded-lg border border-border p-4"
+                  >
+                    <summary className="cursor-pointer font-semibold text-foreground">
+                      {faq.qI18n ? lx(faq.qI18n, appLocale) : faq.q}
+                    </summary>
+                    <p className="mt-3 text-muted-foreground leading-relaxed">
+                      {faq.aI18n ? lx(faq.aI18n, appLocale) : faq.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-12 rounded-lg border border-primary-container bg-surface-low p-6 text-center">
+            <p className="font-display text-lg font-semibold text-foreground">
+              {t("ctaTitle")}
+            </p>
+            <Button asChild variant="cta" className="mt-4">
+              <Link href="/apply">{t("ctaButton")}</Link>
+            </Button>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
     </>
   );
 }

@@ -1,16 +1,19 @@
-import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
-import { ShieldCheck } from 'lucide-react';
-import { HeroSearchForm } from './hero-search-form';
-import type { AppLocale } from '@/i18n/routing';
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import { ShieldCheck } from "lucide-react";
+import { HeroSearchForm } from "./hero-search-form";
+import type { AppLocale } from "@/i18n/routing";
 
 interface HeroSectionProps {
   universityCount: number;
   locale: AppLocale;
 }
 
-export async function HeroSection({ universityCount, locale }: HeroSectionProps) {
-  const t = await getTranslations({ locale, namespace: 'HomePage.hero' });
+export async function HeroSection({
+  universityCount,
+  locale,
+}: HeroSectionProps) {
+  const t = await getTranslations({ locale, namespace: "HomePage.hero" });
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-surface-low via-background to-background">
@@ -19,46 +22,59 @@ export async function HeroSection({ universityCount, locale }: HeroSectionProps)
         className="pointer-events-none absolute inset-0 bg-dot-grid bg-[length:28px_28px] opacity-40"
         aria-hidden
       />
-      <div className="pointer-events-none absolute -top-32 start-[-10%] h-96 w-96 rounded-full bg-primary/10 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute bottom-0 end-[-5%] h-80 w-80 rounded-full bg-cta/10 blur-3xl" aria-hidden />
+      <div
+        className="pointer-events-none absolute -top-32 start-[-10%] h-96 w-96 rounded-full bg-primary/10 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 end-[-5%] h-80 w-80 rounded-full bg-cta/10 blur-3xl"
+        aria-hidden
+      />
 
       <div className="container-page relative grid items-center gap-14 py-24 sm:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:py-32">
         {/* Editorial left column — staggered entry (skill §5A/§5C) */}
         <div>
           <span
             className="eyebrow animate-fade-in-up"
-            style={{ animationDelay: '0ms' }}
+            style={{ animationDelay: "0ms" }}
           >
-            <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
-            {t('badge')}
+            <ShieldCheck
+              className="h-3.5 w-3.5"
+              strokeWidth={1.75}
+              aria-hidden
+            />
+            {t("badge")}
           </span>
 
           <h1
             className="mt-6 animate-fade-in-up font-display text-display-xl text-foreground text-balance"
-            style={{ animationDelay: '90ms' }}
+            style={{ animationDelay: "90ms" }}
           >
-            {t('title')}
+            {t("title")}
           </h1>
 
           <p
             className="mt-5 max-w-xl animate-fade-in-up text-body-lg text-on-surface-variant"
-            style={{ animationDelay: '180ms' }}
+            style={{ animationDelay: "180ms" }}
           >
-            {t('subtitle')}
+            {t("subtitle")}
           </p>
 
           {/* Client island — only the search form is hydrated */}
-          <div className="mt-8 animate-fade-in-up" style={{ animationDelay: '270ms' }}>
+          <div
+            className="mt-8 animate-fade-in-up"
+            style={{ animationDelay: "270ms" }}
+          >
             <HeroSearchForm />
           </div>
 
           <div
             className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground animate-fade-in-up"
-            style={{ animationDelay: '360ms' }}
+            style={{ animationDelay: "360ms" }}
           >
-            <Trust>{t('trust1')}</Trust>
-            <Trust>{t('trust2')}</Trust>
-            <Trust>{t('trust3')}</Trust>
+            <Trust>{t("trust1")}</Trust>
+            <Trust>{t("trust2")}</Trust>
+            <Trust>{t("trust3")}</Trust>
           </div>
         </div>
 
@@ -66,13 +82,13 @@ export async function HeroSection({ universityCount, locale }: HeroSectionProps)
         <div className="relative hidden lg:block">
           <div
             className="animate-fade-in-blur"
-            style={{ animationDelay: '160ms' }}
+            style={{ animationDelay: "160ms" }}
           >
             <div className="bezel rotate-[1.2deg] transition-transform duration-700 ease-fluid hover:rotate-0">
               <div className="bezel-inner aspect-[4/5]">
                 <Image
                   src="/images/hero-graduation.webp"
-                  alt={t('imageAlt')}
+                  alt={t("imageAlt")}
                   fill
                   priority
                   placeholder="blur"
@@ -88,7 +104,9 @@ export async function HeroSection({ universityCount, locale }: HeroSectionProps)
               <p className="font-display text-3xl font-bold tabular-nums text-primary">
                 {universityCount}+
               </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">{t('universities')}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                {t("universities")}
+              </p>
             </div>
           </div>
         </div>

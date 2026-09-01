@@ -48,8 +48,8 @@ const delay = <T>(value: T): Promise<T> => Promise.resolve(value);
 class SeedUniversityRepository implements UniversityRepository {
   // Universitetlər bu slug-lar ilə silinib — hər yerdən filterlənir.
   private static readonly DELETED_SLUGS = new Set([
-    'azerbaijan-aviation-university',
-    'baku-engineering-university-xirdalan',
+    "azerbaijan-aviation-university",
+    "baku-engineering-university-xirdalan",
   ]);
 
   async list(filters: UniversityFilters = {}): Promise<University[]> {
@@ -70,7 +70,11 @@ class SeedUniversityRepository implements UniversityRepository {
           const inI18n = Object.values(u.nameI18n ?? {}).some((n) =>
             n.toLowerCase().includes(q),
           );
-          if (!u.name.toLowerCase().includes(q) && !u.slug.includes(q) && !inI18n)
+          if (
+            !u.name.toLowerCase().includes(q) &&
+            !u.slug.includes(q) &&
+            !inI18n
+          )
             return false;
         }
         if (filters.degreeLevel) {
@@ -589,19 +593,25 @@ class SeedBlogRepository implements BlogRepository {
   async list(): Promise<BlogPost[]> {
     // AEO: merge hand-written posts with dynamically generated university articles
     // (Klaster 5: 46 articles from seed data for topical authority)
-    const { generateUniversityArticles } = await import("@/lib/seo/university-articles");
+    const { generateUniversityArticles } =
+      await import("@/lib/seo/university-articles");
     const uniArticles = generateUniversityArticles();
     return delay(
-      [...seedBlog, ...uniArticles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)),
+      [...seedBlog, ...uniArticles].sort((a, b) =>
+        b.publishedAt.localeCompare(a.publishedAt),
+      ),
     );
   }
   async getBySlug(slug: string): Promise<BlogPost | null> {
     // Check hand-written posts first, then dynamic university articles
     const match = seedBlog.find((b) => b.slug === slug);
     if (match) return delay(match);
-    const { generateUniversityArticles, isUniversityArticle } = await import("@/lib/seo/university-articles");
+    const { generateUniversityArticles, isUniversityArticle } =
+      await import("@/lib/seo/university-articles");
     if (isUniversityArticle(slug)) {
-      return delay(generateUniversityArticles().find((a) => a.slug === slug) ?? null);
+      return delay(
+        generateUniversityArticles().find((a) => a.slug === slug) ?? null,
+      );
     }
     return delay(null);
   }
@@ -626,7 +636,11 @@ export function createSeedDataLayer(): DataLayer {
           const inI18n = Object.values(u.nameI18n ?? {}).some((n) =>
             n.toLowerCase().includes(q),
           );
-          if (u.name.toLowerCase().includes(q) || u.slug.includes(q) || inI18n) {
+          if (
+            u.name.toLowerCase().includes(q) ||
+            u.slug.includes(q) ||
+            inI18n
+          ) {
             out.push({
               type: "university",
               id: u.id,

@@ -177,13 +177,18 @@ function mapProgramItem(r: Record<string, unknown>) {
  * callers apply it via their own tuition expression.
  */
 /** Universitetlər bu slug-lar ilə silinib — database-dən filterlənir. */
-const DELETED_UNIVERSITY_SLUGS = ['azerbaijan-aviation-university', 'baku-engineering-university-xirdalan'];
+const DELETED_UNIVERSITY_SLUGS = [
+  "azerbaijan-aviation-university",
+  "baku-engineering-university-xirdalan",
+];
 
 function buildUniversityWhere(filters: UniversityFilters) {
   const where: string[] = [];
   const params: unknown[] = [];
   // Silinmiş universitetləri həmişə filterlə
-  where.push(`u.slug not in (${DELETED_UNIVERSITY_SLUGS.map((_, i) => `$${i + 1}`).join(',')})`);
+  where.push(
+    `u.slug not in (${DELETED_UNIVERSITY_SLUGS.map((_, i) => `$${i + 1}`).join(",")})`,
+  );
   params.push(...DELETED_UNIVERSITY_SLUGS);
   let pi = params.length + 1;
   if (filters.citySlug) {
@@ -868,10 +873,11 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
       );
       const dbPosts = res.rows.map(rowBlogPost);
       // AEO: merge DB posts with dynamically generated university articles
-      const { generateUniversityArticles } = await import("@/lib/seo/university-articles");
+      const { generateUniversityArticles } =
+        await import("@/lib/seo/university-articles");
       const uniArticles = generateUniversityArticles();
-      return [...dbPosts, ...uniArticles].sort(
-        (a, b) => b.publishedAt.localeCompare(a.publishedAt),
+      return [...dbPosts, ...uniArticles].sort((a, b) =>
+        b.publishedAt.localeCompare(a.publishedAt),
       );
     },
     async getBySlug(slug: string): Promise<BlogPost | null> {
@@ -881,9 +887,12 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
       );
       if (res.rows[0]) return rowBlogPost(res.rows[0]);
       // Check dynamic university articles
-      const { generateUniversityArticles, isUniversityArticle } = await import("@/lib/seo/university-articles");
+      const { generateUniversityArticles, isUniversityArticle } =
+        await import("@/lib/seo/university-articles");
       if (isUniversityArticle(slug)) {
-        return generateUniversityArticles().find((a) => a.slug === slug) ?? null;
+        return (
+          generateUniversityArticles().find((a) => a.slug === slug) ?? null
+        );
       }
       return null;
     },

@@ -1,48 +1,34 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/config/site";
-
-// AI-bot policy (ai-seo skill): every AI answer engine must be able to crawl
-// and cite the site — blocking GPTBot/PerplexityBot/ClaudeBot/Google-Extended
-// would remove the platform from AI-generated answers entirely. All are
-// explicitly allowed with the same admin/api exclusions as the wildcard rule.
-// CCBot (Common Crawl, training-only) is intentionally left unblocked too;
-// block it separately if you want to opt out of training crawls.
-const AI_BOTS = [
-  "GPTBot",
-  "ChatGPT-User",
-  "PerplexityBot",
-  "ClaudeBot",
-  "anthropic-ai",
-  "Google-Extended",
-  "Bingbot",
-];
-
-const PUBLIC_DISALLOW = [
-  "/api/",
-  "/dashboard/",
-  "/admin/",
-  "/*/dashboard/",
-  "/auth/",
-];
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = "https://azstudy.edu.az";
+
   return {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/pricing.md"],
-        disallow: PUBLIC_DISALLOW,
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
       },
-      // Explicit per-bot allow so the citation path can never be accidentally
-      // blocked by a future wildcard change. llms.txt / llms-full.txt are
-      // announced so AI crawlers find the LLM-readable site overview (see
-      // src/lib/seo/llms.ts).
-      ...AI_BOTS.map((bot) => ({
-        userAgent: bot,
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/pricing.md"],
-        disallow: PUBLIC_DISALLOW,
-      })),
+      // Allow ALL AI search bots (critical for AI SEO)
+      {
+        userAgent: [
+          "GPTBot",
+          "ChatGPT-User",
+          "PerplexityBot",
+          "ClaudeBot",
+          "anthropic-ai",
+          "Google-Extended",
+          "Bytespider",
+        ],
+        allow: "/",
+      },
+      // Block only training-only crawlers
+      {
+        userAgent: ["CCBot", "omgili"],
+        disallow: "/",
+      },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

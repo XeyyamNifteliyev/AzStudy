@@ -181,8 +181,16 @@ const config: Config = {
         },
         // Heavy cinematic entry: deep translate + blur resolve (skill §5C)
         "fade-in-blur": {
-          "0%": { opacity: "0", transform: "translateY(28px)", filter: "blur(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)", filter: "blur(0)" },
+          "0%": {
+            opacity: "0",
+            transform: "translateY(28px)",
+            filter: "blur(10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+            filter: "blur(0)",
+          },
         },
         // Logo marquee: translate the duplicated track by half its width so the
         // seam between the two copies is never visible.

@@ -1,16 +1,16 @@
-import { getTranslations } from 'next-intl/server';
-import { data } from '@/lib/data';
-import { formatNumber } from '@/lib/utils';
-import type { AppLocale } from '@/i18n/routing';
-import { FadeIn } from '@/components/motion/fade-in';
-import { Building2, BookOpen, Globe, Users } from 'lucide-react';
+import { getTranslations } from "next-intl/server";
+import { data } from "@/lib/data";
+import { formatNumber } from "@/lib/utils";
+import type { AppLocale } from "@/i18n/routing";
+import { FadeIn } from "@/components/motion/fade-in";
+import { Building2, BookOpen, Globe, Users } from "lucide-react";
 
 interface StatsSectionProps {
   locale: AppLocale;
 }
 
 export async function StatsSection({ locale }: StatsSectionProps) {
-  const t = await getTranslations('HomePage.stats');
+  const t = await getTranslations("HomePage.stats");
   const [universities, programs, countries] = await Promise.all([
     data.universities.list(),
     data.programs.list(),
@@ -22,10 +22,25 @@ export async function StatsSection({ locale }: StatsSectionProps) {
   );
 
   const stats = [
-    { value: universities.length, suffix: '+', label: t('universities'), icon: Building2 },
-    { value: programs.length, suffix: '+', label: t('programs'), icon: BookOpen },
-    { value: countries.length, suffix: '+', label: t('countries'), icon: Globe },
-    { value: studentsPlaced, suffix: '', label: t('students'), icon: Users },
+    {
+      value: universities.length,
+      suffix: "+",
+      label: t("universities"),
+      icon: Building2,
+    },
+    {
+      value: programs.length,
+      suffix: "+",
+      label: t("programs"),
+      icon: BookOpen,
+    },
+    {
+      value: countries.length,
+      suffix: "+",
+      label: t("countries"),
+      icon: Globe,
+    },
+    { value: studentsPlaced, suffix: "", label: t("students"), icon: Users },
   ];
 
   return (
@@ -37,8 +52,8 @@ export async function StatsSection({ locale }: StatsSectionProps) {
             <div
               key={s.label}
               className={
-                'group flex flex-col items-center text-center md:border-s md:border-border/60 md:ps-6 ' +
-                (i === 0 ? 'md:border-s-0 md:ps-0' : '')
+                "group flex flex-col items-center text-center md:border-s md:border-border/60 md:ps-6 " +
+                (i === 0 ? "md:border-s-0 md:ps-0" : "")
               }
             >
               <span className="mb-3 inline-flex rounded-full bg-accent p-2.5 text-primary transition-transform duration-300 ease-fluid group-hover:scale-105">

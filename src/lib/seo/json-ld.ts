@@ -108,8 +108,11 @@ export function faqPageJsonLd(
     ...(pageUrl ? { "@id": `${pageUrl}#faq` } : {}),
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      name: f.question[locale],
-      acceptedAnswer: { "@type": "Answer", text: f.answer[locale] },
+      name: f.question[locale] ?? f.question.en,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer[locale] ?? f.answer.en,
+      },
     })),
   };
 }
@@ -251,11 +254,11 @@ export function comparisonJsonLd(
           url: item.url,
           ...(item.city
             ? {
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: item.city,
-                addressCountry: "AZ",
-              },
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: item.city,
+                  addressCountry: "AZ",
+                },
               }
             : {}),
           // Real tuition from the listing metadata — the same number the page

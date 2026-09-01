@@ -4,138 +4,183 @@
  * 46 articles that each target long-tail keywords like
  * "ADA University tuition fees 2026" and "Baku State University admission".
  *
- * These articles are NOT stored in the blog seed file. They're generated on
+ * Articles are NOT stored in the blog seed file. They're generated on
  * demand and merged into the blog list, so adding/removing a university
  * automatically keeps the article count in sync.
+ *
+ * i18n: all copy comes from UNI_ARTICLE_TEMPLATES (18 locales), so every
+ * article renders fully translated long-form content in each locale —
+ * 46 articles × 18 languages of citable, structured content.
  */
 
 import { seedUniversities } from "@/lib/seed/universities";
 import { seedCities } from "@/lib/seed/cities";
+import { UNI_ARTICLE_TEMPLATES } from "@/lib/seo/university-article-i18n";
 import type { BlogPost, LocalizedString } from "@/types";
+import type { AppLocale } from "@/i18n/routing";
 
+const LOCALES: AppLocale[] = [
+  "en",
+  "tr",
+  "az",
+  "ru",
+  "de",
+  "fr",
+  "fa",
+  "ar",
+  "tk",
+  "kk",
+  "ky",
+  "zh",
+  "bg",
+  "ur",
+  "uz",
+  "sw",
+  "so",
+  "id",
+];
+
+/** Get the EN city name (used for the fee-context helpers below). */
+/** Get the EN city name (used for the fee-context helpers below). */
 function getCityName(cityId: string): string {
   const city = seedCities.find((c) => c.id === cityId);
   return city?.name.en ?? "Azerbaijan";
 }
 
-function generateTitle(name: string, _city: string): LocalizedString {
-  return {
-    en: `${name} — Admission, Fees & Programs 2026`,
-    tr: `${name} — Başvuru, Ücretler ve Programlar 2026`,
-    az: `${name} — Qəbul, Qiymətlər və Proqramlar 2026`,
-    ru: `${name} — Поступление, Стоимость и Программы 2026`,
-    de: `${name} — Zulassung, Gebühren & Programme 2026`,
-    fr: `${name} — Admission, Frais et Programmes 2026`,
-    zh: `${name} — 2026年入学、费用与课程`,
-    ar: `${name} — القبول والرسوم والبرامج 2026`,
-    fa: `${name} — پذیرش، شهریه و رشته‌ها 2026`,
-    tk: `${name} — Kyzylyşdyrmak, bahalar we programmmalar 2026`,
-    kk: `${name} — Қабылдау, ақы және бағдарламалар 2026`,
-    ky: `${name} — Кабыл алу, акы жана программалар 2026`,
-    bg: `${name} — Прием, такси и програми 2026`,
-    ur: `${name} — داخلہ، فیس اور پروگرام 2026`,
-    uz: `${name} — Qabul, to'lov va dasturlar 2026`,
-    sw: `${name} — Mapokeo, Ada na Mpango 2026`,
-    so: `${name} — Qaadashida, Khidmaha iyo Barnaamijyada 2026`,
-    id: `${name} — Penerimaan, Biaya & Program 2026`,
-  };
+/** Localized "<Name> — Admission, Fees & Programs 2026" title tails. */
+const TITLE_TAILS: Record<string, string> = {
+  en: "Admission, Fees & Programs",
+  tr: "Başvuru, Ücretler ve Programlar",
+  az: "Qəbul, Qiymətlər və Proqramlar",
+  ru: "Поступление, стоимость и программы",
+  de: "Zulassung, Gebühren & Programme",
+  fr: "Admission, frais et programmes",
+  zh: "入学、费用与课程",
+  ar: "القبول والرسوم والبرامج",
+  fa: "پذیرش، شهریه و برنامه‌ها",
+  ur: "داخلہ، فیس اور پروگرام",
+  uz: "Qabul, to'lovlar va dasturlar",
+  kk: "Қабылдау, ақы және бағдарламалар",
+  ky: "Кабыл алу, акы жана программалар",
+  tk: "Kabul, tölegler we programmalar",
+  bg: "Прием, такси и програми",
+  id: "Pendaftaran, Biaya & Program",
+  sw: "Kujiandikisha, Ada na Programu",
+  so: "Gelitaan, Kharash iyo Barnaamijyo",
+};
+
+function generateTitle(name: string, year: number): LocalizedString {
+  const out: Record<string, string> = {};
+  for (const locale of LOCALES) {
+    out[locale] = `${name} — ${TITLE_TAILS[locale] ?? TITLE_TAILS.en} ${year}`;
+  }
+  return out as LocalizedString;
 }
 
-function generateExcerpt(name: string, city: string): LocalizedString {
-  return {
-    en: `Complete guide to studying at ${name} in ${city}, Azerbaijan: admission requirements, tuition fees 2026, programs, scholarships and student life for international students.`,
-    tr: `${name} (${city}, Azerbaycan)'da okumak için tam rehber: başvuru gereksinimleri, 2026 ücretleri, programlar ve burslar.`,
-    az: `${name} (${city}, Azərbaycan)da təhsil almaq ucun tam beldeci: qebul telebləri, 2026-ci il qiymetleri, proqramlar ve teqaüdler.`,
-    ru: `Полное руководство по обучению в ${name} (${city}, Азербайджан): требования поступления, стоимость 2026, программы и стипендии.`,
-  };
+/** Simple {placeholder} interpolation. */
+function fmt(tpl: string, vars: Record<string, string>): string {
+  return tpl.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
 }
 
-function generateContent(name: string, city: string, foundedYear: number, studentCount: number, isState: boolean, languages: string[]): LocalizedString {
-  const cityLower = city.toLowerCase();
-  const typeLabel = isState ? "state" : "private";
+/** Resolve a string template field from every locale and interpolate vars. */
+function localized(
+  key: "excerpt" | "metaTitle" | "metaDescription" | "category",
+  vars: Record<string, string>,
+): LocalizedString {
+  const out: Record<string, string> = {};
+  for (const locale of LOCALES) {
+    const tpl = UNI_ARTICLE_TEMPLATES[locale];
+    const raw = tpl?.[key];
+    if (typeof raw === "string") out[locale] = fmt(raw, vars);
+  }
+  return out as LocalizedString;
+}
+
+function generateContent(
+  name: string,
+  city: string,
+  foundedYear: number,
+  studentCount: number,
+  isState: boolean,
+  languages: string[],
+): LocalizedString {
   const tuitionRange = isState ? "$600–2,500" : "$3,000–15,000";
   const langList = languages.join(", ").toUpperCase();
+  const bachelorFee = isState ? "600–1,500" : "3,000–8,000";
+  const masterFee = isState ? "1,000–2,500" : "5,000–12,000";
+  const phdFee = isState ? "1,500–3,000" : "8,000–15,000";
+  const isBaku = city.toLowerCase() === "baku";
 
-  return {
-    en: `${name} is a ${typeLabel} university located in ${city}, Azerbaijan, founded in ${foundedYear}. With approximately ${studentCount.toLocaleString()} students, it is one of the key institutions for higher education in the region.
+  const out: Record<string, string> = {};
+  for (const locale of LOCALES) {
+    const t = UNI_ARTICLE_TEMPLATES[locale];
+    if (!t) continue;
+    const typeLabel = isState ? t.typeState : t.typePrivate;
+    const vars: Record<string, string> = {
+      name,
+      city,
+      founded: String(foundedYear),
+      students: studentCount.toLocaleString("en-US"),
+      type: typeLabel,
+      tuitionRange,
+      langList,
+      appFee: isState ? "$50-100" : "$100-150",
+    };
+    const f = (s: string) => fmt(s, vars);
+    const scholarship = f(
+      isState ? t.scholarshipsState : t.scholarshipsPrivate,
+    );
+    const life = f(isBaku ? t.lifeBaku : t.lifeOther);
 
-## Why Study at ${name}?
-
-${name} offers internationally recognized degrees, affordable tuition fees (${tuitionRange}/year), and programs taught in ${langList}. The university has ${studentCount.toLocaleString()} students and a strong reputation in ${cityLower}'s academic community.
-
-## Admission Requirements
-
-### For International Students
-1. Valid passport (minimum 6 months validity)
-2. High school diploma or equivalent (apostilled)
-3. Transcript of records
-4. Language proficiency certificate (IELTS 5.0+ or equivalent)
-5. Motivation letter
-6. Passport-sized photographs
-
-### Application Timeline
-- **Application opens:** March 1
-- **Deadline:** July 15
-- **Results:** August 1-15
-- **Semester starts:** September 15
-
-## Tuition Fees 2026
-
-| Program Level | Annual Fee (USD) | Duration |
-|--------------|-----------------|----------|
-| Bachelor's | ${isState ? "600–1,500" : "3,000–8,000"} | 4 years |
-| Master's | ${isState ? "1,000–2,500" : "5,000–12,000"} | 2 years |
-| PhD | ${isState ? "1,500–3,000" : "8,000–15,000"} | 3-4 years |
-
-*Source: ${name} official fee schedule 2025-2026*
-
-## Programs Available
-
-The university offers programs in ${langList} across multiple faculties including engineering, business, medicine, humanities and social sciences.
-
-## Scholarships
-
-${isState
-    ? `As a state university, ${name} participates in the Azerbaijan Government Scholarship program offering full tuition waivers and monthly stipends for qualified international students.`
-    : `${name} offers merit-based scholarships of 25-100% for international students with strong academic records.`}
-
-## Student Life in ${city}
-
-${city} is one of Azerbaijan's ${cityLower === "baku" ? "most vibrant capitals with modern infrastructure, rich cultural heritage and affordable living costs ($400-600/month)" : "most welcoming cities with a growing student community and low cost of living ($200-350/month)"}.
-
-## How to Apply
-
-1. Visit the university's official website
-2. Choose your program and check language requirements
-3. Prepare and submit required documents
-4. Pay the application fee (${isState ? "$50-100" : "$100-150"})
-5. Attend the entrance exam (if required)
-6. Receive acceptance letter
-7. Apply for student visa
-8. Register upon arrival in Azerbaijan
-
-## Frequently Asked Questions
-
-### What language are programs taught in at ${name}?
-Programs at ${name} are taught in ${langList}. ${languages.includes("en") ? "English-taught programs are available for international students." : "Contact the admissions office for the latest English-taught program availability."}
-
-### How much does it cost to study at ${name}?
-Tuition at ${name} ranges from ${tuitionRange} per year depending on the program level and field of study. Living costs in ${city} are approximately $${cityLower === "baku" ? "400-600" : "200-350"}/month.
-
-### Are there scholarships at ${name}?
-${isState
-    ? `Yes. The Azerbaijan Government Scholarship covers full tuition and accommodation. ${name} also offers merit-based discounts.`
-    : `Yes. ${name} offers merit-based scholarships ranging from 25% to 100% of tuition fees for qualified international students.`}
-
-### Is ${name} accredited?
-Yes. ${name} is accredited by the Ministry of Education of Azerbaijan Republic. ${isState ? "As a state institution, its degrees are automatically recognized." : "Its programs are recognized internationally."}
-
-### Can I work while studying at ${name}?
-International students can work part-time (up to 20 hours/week) after obtaining a work permit from the State Migration Service.`,
-    tr: `${name}, ${city}, Azerbaycan'da ${foundedYear} yılında kurulan bir ${typeLabel} üniversitesidir. Yaklaşık ${studentCount.toLocaleString()} öğrencisi ile bölgenin önemli yükseköğretim kurumlarından biridir.`,
-    az: `${name} ${foundedYear}-ci ildə ${city}, Azərbaycanda təsis olunmuş ${typeLabel} universitetidir. Təxminən ${studentCount.toLocaleString()} tələbəsi ilə regionun əsas ali təhsil müəssisələrindən biridir.`,
-    ru: `${name} — это ${typeLabel} университет в ${city}, Азербайджан, основанный в ${foundedYear} году. С примерно ${studentCount.toLocaleString()} студентами это одно из ключевых учреждений высшего образования в регионе.`,
-  };
+    out[locale] = [
+      f(t.intro),
+      "",
+      `## ${f(t.whyTitle)}`,
+      "",
+      f(t.whyBody),
+      "",
+      `## ${f(t.admTitle)}`,
+      "",
+      `### ${f(t.admIntlTitle)}`,
+      "",
+      ...t.docs.map((d, i) => `${i + 1}. ${f(d)}`),
+      "",
+      `### ${f(t.tlTitle)}`,
+      "",
+      ...t.tl.map((x) => `- ${f(x)}`),
+      "",
+      `## ${f(t.feesTitle)}`,
+      "",
+      `| ${f(t.tbl[0])} | ${f(t.tbl[1])} | ${f(t.tbl[2])} |`,
+      "|---|---|---|",
+      `| ${t.tblRows[0]} | ${bachelorFee} | ${t.tblDurations[0]} |`,
+      `| ${t.tblRows[1]} | ${masterFee} | ${t.tblDurations[1]} |`,
+      `| ${t.tblRows[2]} | ${phdFee} | ${t.tblDurations[2]} |`,
+      "",
+      f(t.feesSource),
+      "",
+      `## ${f(t.programsTitle)}`,
+      "",
+      f(t.programsBody),
+      "",
+      `## ${f(t.scholarshipsTitle)}`,
+      "",
+      scholarship,
+      "",
+      `## ${f(t.lifeTitle)}`,
+      "",
+      life,
+      "",
+      `## ${f(t.howTitle)}`,
+      "",
+      ...t.steps.map((s, i) => `${i + 1}. ${f(s)}`),
+      "",
+      `## ${f(t.faqTitle)}`,
+      "",
+      ...t.faqs.flatMap(([q, a]) => [`### ${f(q)}`, "", f(a), ""]),
+    ].join("\n");
+  }
+  return out;
 }
 
 /**
@@ -143,17 +188,22 @@ International students can work part-time (up to 20 hours/week) after obtaining 
  * These are merged into the blog list by the repository layer.
  */
 export function generateUniversityArticles(): BlogPost[] {
+  const year = new Date().getFullYear();
   return seedUniversities.map((uni) => {
     const city = getCityName(uni.cityId);
     const slug = `study-at-${uni.slug}`;
-    const title = generateTitle(uni.name, city);
-    const excerpt = generateExcerpt(uni.name, city);
+    const baseVars: Record<string, string> = {
+      name: uni.name,
+      city,
+      founded: String(uni.foundedYear),
+      students: uni.studentCount.toLocaleString("en-US"),
+    };
 
     return {
       id: `uni-article-${uni.slug}`,
       slug,
-      title,
-      excerpt,
+      title: generateTitle(uni.name, year),
+      excerpt: localized("excerpt", baseVars),
       content: generateContent(
         uni.name,
         city,
@@ -165,41 +215,43 @@ export function generateUniversityArticles(): BlogPost[] {
       author: "AzStudy Team",
       publishedAt: "2025-08-25",
       coverImage: uni.heroImage,
-      category: {
-        en: "Universities",
-        tr: "Üniversiteler",
-        az: "Universitetlər",
-        ru: "Университеты",
-      },
+      category: localized("category", baseVars),
       readingMinutes: 12,
       updatedAt: "2025-08-25",
-      metaTitle: {
-        en: `${uni.name} 2026 — Fees, Programs & Admission Guide`,
-        tr: `${uni.name} 2026 — Ücretler, Programlar ve Başvuru Rehberi`,
-        az: `${uni.name} 2026 — Qiymətlər, Proqramlar və Qəbul Bələdçisi`,
-        ru: `${uni.name} 2026 — Стоимость, Программы и Руководство по поступлению`,
-      },
-      metaDescription: {
-        en: `Study at ${uni.name} in ${city}: tuition fees ${new Date().getFullYear()}, programs in ${uni.languages.join(" and ").toUpperCase()}, admission requirements and scholarships for international students.`,
-        tr: `${uni.name} (${city})'da okuma: ${new Date().getFullYear()} ücretleri, programlar, başvuru gereksinimleri ve burslar.`,
-        az: `${uni.name}-də (${city}) təhsil: ${new Date().getFullYear()} qiymətləri, proqramlar, qəbul tələbləri və təqaüdlər.`,
-      },
-      faqs: [
-        {
-          q: `What programs does ${uni.name} offer?`,
-          a: `${uni.name} offers bachelor's, master's and PhD programs in ${uni.languages.join(", ").toUpperCase()} across engineering, business, medicine, humanities and social sciences.`,
-        },
-        {
-          q: `How much does it cost to study at ${uni.name}?`,
-          a: `Tuition at ${uni.name} ranges from ${uni.isState ? "$600-2,500" : "$3,000-15,000"} per year depending on the program. Living costs in ${city} are approximately $${city.toLowerCase() === "baku" ? "400-600" : "200-350"}/month.`,
-        },
-        {
-          q: `Are scholarships available at ${uni.name}?`,
-          a: `${uni.isState ? "As a state university, " : ""}${uni.name} ${uni.isState ? "participates in government scholarship programs and" : "offers merit-based scholarships"} covering 25-100% of tuition for qualified international students.`,
-        },
-      ],
+      metaTitle: localized("metaTitle", baseVars),
+      metaDescription: localized("metaDescription", baseVars),
+      faqs: buildFaqs(uni.name, city, uni.isState),
     };
   });
+}
+
+/** Locale-aware FAQ pairs (qI18n/aI18n override the EN fallback). */
+function buildFaqs(name: string, city: string, isState: boolean) {
+  const tuitionRange = isState ? "$600-2,500" : "$3,000-15,000";
+  const vars = { name, city, tuitionRange, langList: "" };
+  // Build per-locale FAQ translations using the template faqs.
+  const qI18nList: LocalizedString[] = [];
+  const aI18nList: LocalizedString[] = [];
+  const enFaqs = UNI_ARTICLE_TEMPLATES.en.faqs;
+  for (let i = 0; i < enFaqs.length; i++) {
+    const qLs: Record<string, string> = {};
+    const aLs: Record<string, string> = {};
+    for (const locale of LOCALES) {
+      const t = UNI_ARTICLE_TEMPLATES[locale];
+      const faq = t?.faqs?.[i];
+      if (!faq) continue;
+      qLs[locale] = fmt(faq[0], vars);
+      aLs[locale] = fmt(faq[1], vars);
+    }
+    qI18nList.push(qLs as LocalizedString);
+    aI18nList.push(aLs as LocalizedString);
+  }
+  return enFaqs.map(([q, a], i) => ({
+    q,
+    a,
+    qI18n: qI18nList[i],
+    aI18n: aI18nList[i],
+  }));
 }
 
 /**
