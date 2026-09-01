@@ -3,7 +3,8 @@ import { writeFileSync } from "node:fs";
 import { seedReviews } from "../src/lib/seed/reviews";
 
 const esc = (s: string) => s.replace(/'/g, "''");
-const jsonb = (o: Record<string, string>) => `'${esc(JSON.stringify(o))}'::jsonb`;
+const jsonb = (o: Record<string, string>) =>
+  `'${esc(JSON.stringify(o))}'::jsonb`;
 
 const rows = seedReviews
   .map(
@@ -24,5 +25,15 @@ on conflict (id) do update set
   program_studied_i18n = excluded.program_studied_i18n,
   year = excluded.year;`;
 
-writeFileSync("C:/Users/Asus/AppData/Local/Temp/opencode/reviews-upsert.sql", sql, "utf8");
-console.log("SQL written,", seedReviews.length, "reviews,", sql.length, "chars");
+writeFileSync(
+  "C:/Users/Asus/AppData/Local/Temp/opencode/reviews-upsert.sql",
+  sql,
+  "utf8",
+);
+console.log(
+  "SQL written,",
+  seedReviews.length,
+  "reviews,",
+  sql.length,
+  "chars",
+);
