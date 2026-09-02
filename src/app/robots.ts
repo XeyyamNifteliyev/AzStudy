@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/admin/"],
       },
-      // Allow ALL AI search bots (critical for AI SEO)
+      // Allow AI search bots (critical for AI SEO — these cite content in answers)
       {
         userAgent: [
           "GPTBot",
@@ -19,13 +19,12 @@ export default function robots(): MetadataRoute.Robots {
           "ClaudeBot",
           "anthropic-ai",
           "Google-Extended",
-          "Bytespider",
         ],
         allow: "/",
       },
-      // Block only training-only crawlers
+      // Block training-only crawlers (they scrape data, never cite back)
       {
-        userAgent: ["CCBot", "omgili"],
+        userAgent: ["CCBot", "omgili", "Bytespider"],
         disallow: "/",
       },
     ],
