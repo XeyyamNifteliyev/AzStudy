@@ -93,7 +93,7 @@ export function useSearchSuggest({
 
   /**
    * The hit Enter should navigate to: the explicitly active one, else the
-   * first result (StudyLeo-style default). Null when there is nothing to pick.
+   * first result (default). Null when there is nothing to pick.
    */
   function enterHit(): SearchHit | null {
     if (activeIndex >= 0 && hits[activeIndex]) return hits[activeIndex];

@@ -135,7 +135,6 @@
       "verified": "معتمدة من الوزارة",
       "prev": "السابق",
       "next": "التالي",
-      "turkey": "أذربيجان",
       "students": "طلاب مسجلون",
       "azerbaijan": "أذربيجان"
     },
@@ -227,7 +226,6 @@
     "verified": "معتمدة من الوزارة",
     "english": "الإنجليزية",
     "turkish": "التركية",
-    "turkey": "أذربيجان",
     "from": "من",
     "tuition": "الرسوم",
     "rank": "التصنيف",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} جامعة {type} في {city}، أذربيجان، تأسست عام {year}. تقدم برامج باللغات {languages} ورسوماً تبدأ من {tuition} سنوياً. معتمدة من {accreditation}، وتضم أكثر من {students} طالب.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and الأذربيجانية with scholarships.",
+    "programShortAnswerNoCity": "ادرس تخصص {category} في أذربيجان. قارن الجامعات والرسوم الدراسية وتفاصيل البرامج في مكان واحد. برامج متاحة باللغتين الإنجليزية والأذربيجانية مع منح دراسية.",
     "countryShortAnswer": "يمكن لطلاب {country} الدراسة في أذربيجان بتأشيرة طالب ورسوم دراسية ميسورة تبدأ من 1500 دولار سنوياً وبرامج بالإنجليزية، مع دعم مجاني للتقديم وإرشاد للتأشيرة.",
     "pros1": "معتمدة من الوزارة — شهادة معترف بها عالمياً",
     "pros2": "برامج متاحة باللغة الإنجليزية",
@@ -684,7 +683,8 @@
     "visaStep5Name": "سجّل وابدأ الدراسة",
     "visaStep5Text": "أكمل التسجيل الجامعي، واحصل على هويتك الطلابية، وابدأ دراستك.",
     "whatIsUniversityTitle": "ما هي {name}؟",
-    "whatIsProgramTitle": "ما هو تخصص {category} في {city}؟"
+    "whatIsProgramTitle": "ما هو تخصص {category} في {city}؟",
+    "whatIsCategoryTitle": "ما هو تخصص {category}؟"
   },
   "Chatbot": {
     "title": "مساعد الدراسة",

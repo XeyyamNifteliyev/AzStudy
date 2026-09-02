@@ -74,8 +74,8 @@ export interface Program {
   durationYears: number;
 }
 
-// Instruction languages taught at Turkish universities. The StudyLeo catalog
-// contains Arabic- and Russian-taught programs, so the union covers all four.
+// Instruction languages offered by Azerbaijani universities (the catalog also
+// carries Arabic- and Russian-taught programs, so the union covers all five).
 export type InstructionLanguage = "tr" | "en" | "ar" | "ru" | "az";
 
 export interface UniversityProgram {

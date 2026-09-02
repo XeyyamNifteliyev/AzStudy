@@ -40,7 +40,7 @@ const BLOG_PAGE_BREAKPOINTS = [
 const TRACK_GAP = 16; // gap-4
 
 /**
- * StudyLeo-style directional infinite blog carousel: cards repeat 3x, arrows
+ * Directional infinite blog carousel: cards repeat 3x, arrows
  * never disable and always scroll in their direction; the edge snap-back to
  * the middle copy is invisible. Cards are fluid (exactly `perPage` fit the
  * viewport — no half card visible) and every click moves by one card.

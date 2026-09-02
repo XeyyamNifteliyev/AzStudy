@@ -135,7 +135,6 @@
       "verified": "Ministry",
       "prev": "Previous",
       "next": "Next",
-      "turkey": "Azerbaijan",
       "students": "Students enrolled",
       "azerbaijan": "Azerbaijan"
     },
@@ -227,7 +226,6 @@
     "verified": "Ministry",
     "english": "English",
     "turkish": "Turkish",
-    "turkey": "Azerbaijan",
     "from": "from",
     "tuition": "Tuition",
     "rank": "Rank",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} is a {type} university in {city}, Azerbaijan, founded in {year}. It offers programs in {languages} with tuition starting from {tuition}/year. Accredited by {accreditation}, it hosts over {students} students.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Azerbaijani with scholarships.",
+    "programShortAnswerNoCity": "Study {category} in Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Azerbaijani with scholarships.",
     "countryShortAnswer": "Students from {country} can study in Azerbaijan with a student visa, affordable tuition from $1,500/year, and programs in English. Free application support and visa guidance included.",
     "pros1": "Ministry-accredited — degree recognized worldwide",
     "pros2": "English-medium programs available",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Register and start studying",
     "visaStep5Text": "Complete university registration, get your student ID, and begin your studies.",
     "whatIsUniversityTitle": "What is {name}?",
-    "whatIsProgramTitle": "What is {category} in {city}?"
+    "whatIsProgramTitle": "What is {category} in {city}?",
+    "whatIsCategoryTitle": "What is {category}?"
   },
   "Chatbot": {
     "title": "Study Assistant",

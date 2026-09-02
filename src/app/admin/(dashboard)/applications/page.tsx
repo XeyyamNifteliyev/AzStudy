@@ -22,14 +22,16 @@ export default async function ApplicationsPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const sp = await searchParams;
-  // PERF: translations, leads and staff are independent — fetch concurrently.
-  const [{ t }, leads, staff] = await Promise.all([
+  // PERF: translations, leads, status counts and staff are independent — fetch
+  // concurrently. Status chips use countByStatus() (a SQL GROUP BY) so they
+  // stay correct at any lead volume instead of filtering the loaded page.
+  const [{ t }, leads, counts, staff] = await Promise.all([
     getAdminT(),
     crm.listLeads(sp.status ? { status: sp.status as never } : undefined),
+    crm.countByStatus(),
     crm.listStaff(),
   ]);
   const consultantMap = new Map(staff.map((s) => [s.id, s.fullName]));
-  const newCount = leads.filter((l) => l.status === "new").length;
   const labels = leadStatusLabels(t);
 
   const statusKeys = [
@@ -64,17 +66,14 @@ export default async function ApplicationsPage({
           {t("applications.title")}
         </h1>
         <p className="text-sm text-muted-foreground">
-          {t("applications.subtitle", { count: leads.length, new: newCount })}
+          {t("applications.subtitle", { count: leads.length, new: counts["new"] ?? 0 })}
         </p>
       </div>
 
       <div className="flex flex-wrap gap-2">
         {statusKeys.map((value) => {
           const active = sp.status === value;
-          const count =
-            value === "new"
-              ? newCount
-              : leads.filter((l) => l.status === value).length;
+          const count = counts[value] ?? 0;
           return (
             <Link
               key={value}

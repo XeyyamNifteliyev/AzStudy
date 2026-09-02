@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 /**
  * Header site search — a single icon that navigates to the dedicated
- * `/search` page (StudyLeo-style), where results are grouped by
+ * `/search` page, where results are grouped by
  * university/program/city. Kept as its own component so the header stays
  * server-rendered apart from this client button.
  */

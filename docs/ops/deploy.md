@@ -1,6 +1,6 @@
 # Deploy & Rollback Runbook
 
-> Owners: StudyHub ops · Last reviewed: 2026-08-12
+> Owners: AzStudy ops · Last reviewed: 2026-09-02
 > Stack: Next.js 15 (App Router) on Vercel · Postgres on Supabase.
 
 ## Environments
@@ -11,15 +11,14 @@
 | Preview    | PR branches (Vercel preview)    | staging Supabase (recommended) | `*.vercel.app`         |
 
 > Until a staging Supabase project exists, PR previews run against the **prod**
-> Supabase with `SUPABASE_ENABLED=false` (direct `pg`). Treat previews as
-> read-mostly; never run destructive actions from a preview.
+> Supabase via direct `pg`. Treat previews as read-mostly; never run destructive
+> actions from a preview.
 
 ## Required production env vars (Vercel → Settings → Environment Variables)
 
 ```
 NEXT_PUBLIC_SITE_URL       # real domain — canonical/hreflang/sitemap depend on it
-DATABASE_URL               # Supabase direct (non-pooler) connection
-SUPABASE_ENABLED=true      # once SupabaseCrmRepository is wired
+DATABASE_URL               # Supabase session-pooler connection (port 5432, NOT 6543)
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY  # server-only
@@ -28,6 +27,10 @@ NEXT_PUBLIC_GA_ID / NEXT_PUBLIC_CLARITY_ID   # analytics (optional)
 UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN  # rate limiting (recommended)
 TRUST_PROXY=1              # Vercel is a trusted proxy
 ```
+
+> Migrations always run over the **session pooler** (port 5432). Never migrate
+> through the transaction pooler (6543) — it does not support advisory locks,
+> which `scripts/migrate.ts` relies on for safe concurrent runs.
 
 ## Standard deploy sequence
 

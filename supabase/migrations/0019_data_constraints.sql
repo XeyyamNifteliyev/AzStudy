@@ -33,7 +33,8 @@ alter table public.programs
 alter table public.programs
   add constraint programs_degree_level_check check (degree_level in ('associate', 'bachelor', 'master', 'phd'));
 
--- Currency must be one of the supported currencies.
+-- Currency must be one of the supported currencies (see also
+-- 0035_azn_currency.sql which flips TRY → AZN on Supabase).
 alter table public.university_programs
   drop constraint if exists up_currency_check;
 alter table public.university_programs

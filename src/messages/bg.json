@@ -135,7 +135,6 @@
       "verified": "Министерство",
       "prev": "Назад",
       "next": "Напред",
-      "turkey": "Азербайджан",
       "students": "Записани студенти",
       "azerbaijan": "Азербайджан"
     },
@@ -227,7 +226,6 @@
     "verified": "Министерство",
     "english": "Английски",
     "turkish": "турски",
-    "turkey": "Азербайджан",
     "from": "от",
     "tuition": "Такса",
     "rank": "Класиране",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} е {type} университет в {city}, Азербайджан, основан през {year}. Предлага програми на {languages} с такси от {tuition}/година. Акредитиран от {accreditation}, в него учат над {students} студенти.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and азербайджански with scholarships.",
+    "programShortAnswerNoCity": "Учете {category} в Азербайджан. Сравнете университети, такси и детайли за програмите на едно място. Предлагат се програми на английски и азербайджански със стипендии.",
     "countryShortAnswer": "Студенти от {country} могат да учат в Азербайджан със студентска виза, достъпни такси от $1,500/година и програми на английски. Включени са безплатна подкрепа при кандидатстване и насоки за виза.",
     "pros1": "Акредитирани от Министерството — диплома, призната в целия свят",
     "pros2": "Налични са програми на английски",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Регистрирайте се и започнете да учите",
     "visaStep5Text": "Завършете университетската регистрация, вземете студентската си карта и започнете обучението.",
     "whatIsUniversityTitle": "Какво е {name}?",
-    "whatIsProgramTitle": "Какво е {category} в {city}?"
+    "whatIsProgramTitle": "Какво е {category} в {city}?",
+    "whatIsCategoryTitle": "Какво е {category}?"
   },
   "Chatbot": {
     "title": "Учебен асистент",

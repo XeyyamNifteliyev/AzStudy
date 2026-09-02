@@ -135,7 +135,6 @@
       "verified": "Vazirlik",
       "prev": "Oldingi",
       "next": "Keyingi",
-      "turkey": "Ozarbayjon",
       "students": "Talabalar",
       "azerbaijan": "Ozarbayjon"
     },
@@ -227,7 +226,6 @@
     "verified": "Vazirlik",
     "english": "Ingliz",
     "turkish": "Turk tili",
-    "turkey": "Ozarbayjon",
     "from": "dan",
     "tuition": "To'lov",
     "rank": "Reyting",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} — Ozarbayjonning {city} shahridagi {type} universitet bo'lib, {year} yilda tashkil etilgan. {languages} tillarida dasturlar taklif qiladi, to'lov {tuition}/yildan boshlanadi. {accreditation} tomonidan akkreditatsiyalangan, {students} dan ortiq talaba tahsil oladi.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Ozarbayjon with scholarships.",
+    "programShortAnswerNoCity": "Ozarbayjonda {category} bo'yicha o'qing. Universitetlar, o'qish to'lovlari va dastur tafsilotlarini bir joyda solishtiring. Ingliz va ozarbayjon tillarida stipendiyali dasturlar mavjud.",
     "countryShortAnswer": "{country} talabalari talaba vizasi bilan, yiliga $1,500 dan boshlanadigan to'lovlar va ingliz tilidagi dasturlar bilan Ozarbayjonda o'qishlari mumkin. Bepul ariza qo'llab-quvvatlashi va viza yo'l-yo'riqi bilan.",
     "pros1": "Vazirlik akkreditatsiyasi — diplom butun dunyoda tan olinadi",
     "pros2": "Ingliz tilidagi dasturlar mavjud",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Ro'yxatdan o'ting va o'qishni boshlang",
     "visaStep5Text": "Universitet ro'yxatidan o'ting, talaba guvohnomasini oling va o'qishni boshlang.",
     "whatIsUniversityTitle": "{name} nima?",
-    "whatIsProgramTitle": "{city} dagi {category} nima?"
+    "whatIsProgramTitle": "{city} dagi {category} nima?",
+    "whatIsCategoryTitle": "{category} nima?"
   },
   "Chatbot": {
     "title": "Ta'lim yordamchisi",

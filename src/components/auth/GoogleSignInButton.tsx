@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   getSupabaseBrowser,
@@ -24,37 +24,6 @@ export function GoogleSignInButton({ next }: { next: string }) {
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
-  // DEBUG: surface why the OAuth return landed on this page instead of
-  // completing. Google/Supabase append error details to the URL when the flow
-  // fails before our /auth/callback ever sees a code.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const p = new URLSearchParams(window.location.search);
-    const oauthError = p.get("error");
-    const oauthDesc = p.get("error_description");
-    const errorCode = p.get("code");
-    const reason = p.get("reason");
-    const verifier = p.get("verifier");
-    if (oauthError || oauthDesc) {
-      console.error(
-        "[OAuth return] login page reached with an OAuth error in the URL:",
-        { error: oauthError, error_description: oauthDesc, code: errorCode },
-      );
-    }
-    if (reason) {
-      console.error(
-        "[OAuth return] /auth/callback FAILED and redirected here. Exchange reason:",
-        { reason, verifierCookiePresent: verifier === "true" },
-      );
-    }
-    if (errorCode && !oauthError && !reason) {
-      console.warn(
-        "[OAuth return] reached login WITHOUT completing — a `code` was present but the page is not /auth/callback (redirect misroute). URL:",
-        window.location.href,
-      );
-    }
-  }, []);
-
   async function signIn() {
     setPending(true);
     setErr(null);
@@ -64,27 +33,13 @@ export function GoogleSignInButton({ next }: { next: string }) {
     clearStalePkceCookies();
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const redirectTo = `${origin}/auth/callback?next=${encodeURIComponent(next)}`;
-    console.log("[OAuth] starting Google sign-in:", {
-      origin,
-      redirectTo,
-      cookiesBefore: document.cookie
-        .split(";")
-        .map((c) => c.split("=")[0].trim())
-        .filter(Boolean),
-    });
     const supabase = getSupabaseBrowser();
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo },
     });
     if (error) {
-      console.error("[OAuth] signInWithOAuth returned an error:", error);
       setErr(error.message);
-    } else {
-      console.log(
-        "[OAuth] signInWithOAuth OK — browser should redirect to Google. data.url:",
-        data?.url,
-      );
     }
     setPending(false);
   }

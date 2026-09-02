@@ -32,7 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgresql://study:study@localhost:5432/study_crm
-      SUPABASE_ENABLED: 'false'
       NEXT_PUBLIC_SITE_URL: http://localhost:3000
     services:
       postgres:
@@ -68,7 +67,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgresql://study:study@localhost:5432/study_crm
-      SUPABASE_ENABLED: 'false'
       NEXT_PUBLIC_SITE_URL: http://localhost:3000
     services:
       postgres:

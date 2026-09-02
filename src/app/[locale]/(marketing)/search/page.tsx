@@ -45,7 +45,7 @@ export default async function SearchPage({
     <>
       <SearchClient initialQuery={(sp.q ?? "").trim()} />
 
-      {/* StudyLeo-style Why Choose Us right above the footer. */}
+      {/* Why Choose Us right above the footer. */}
       <Suspense fallback={<div className="section-padding h-96" aria-hidden />}>
         <WhyChooseUs locale={appLocale} />
       </Suspense>

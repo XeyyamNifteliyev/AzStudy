@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { sendStudentMessage } from '@/app/actions/student';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 
 export function MessageComposer({ leadId }: { leadId: string }) {
   const t = useTranslations('Student.messages');
+  const router = useRouter();
   const [sending, setSending] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -16,7 +18,12 @@ export function MessageComposer({ leadId }: { leadId: string }) {
     setSending(true);
     const res = await sendStudentMessage({ leadId, body });
     setSending(false);
-    if (res.ok) e.currentTarget.reset();
+    if (res.ok) {
+      e.currentTarget.reset();
+      // Refresh the server component tree so the new message appears in the
+      // thread immediately (no manual reload).
+      router.refresh();
+    }
   }
 
   return (

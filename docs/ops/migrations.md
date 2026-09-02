@@ -1,6 +1,6 @@
 # Migrations Runbook
 
-> Owners: StudyHub ops · Last reviewed: 2026-08-12
+> Owners: AzStudy ops · Last reviewed: 2026-09-02
 > Runner: `scripts/migrate.ts` (hand-rolled, ledger + advisory lock + SHA-256 checksum).
 
 ## Policy: forward-only

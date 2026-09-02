@@ -135,7 +135,6 @@
       "verified": "Ministerium",
       "prev": "Zurück",
       "next": "Weiter",
-      "turkey": "Aserbaidschan",
       "students": "Eingeschriebene Studierende",
       "azerbaijan": "Aserbaidschan"
     },
@@ -227,7 +226,6 @@
     "verified": "Ministerium",
     "english": "Englisch",
     "turkish": "Türkisch",
-    "turkey": "Aserbaidschan",
     "from": "ab",
     "tuition": "Gebühren",
     "rank": "Rang",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} ist eine {type} Universität in {city}, Aserbaidschan, gegründet {year}. Sie bietet Programme in {languages} mit Gebühren ab {tuition} pro Jahr. Akkreditiert von {accreditation}, beherbergt sie über {students} Studierende.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and aserbaidschanische with scholarships.",
+    "programShortAnswerNoCity": "{category} in Aserbaidschan studieren. Vergleichen Sie Universitäten, Studiengebühren und Programmdetails — alles an einem Ort. Programme auf Englisch und Aserbaidschanisch mit Stipendien verfügbar.",
     "countryShortAnswer": "Studierende aus {country} können mit einem Studentenvisum in Aserbaidschan studieren — erschwingliche Gebühren ab 1.500 USD/Jahr und englischsprachige Programme. Kostenlose Bewerbungshilfe und Visumbetreuung inklusive.",
     "pros1": "Ministerial akkreditiert — weltweit anerkannter Abschluss",
     "pros2": "Englischsprachige Programme verfügbar",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Immatrikulieren & studieren",
     "visaStep5Text": "Schließen Sie die Universitätsimmatrikulation ab, holen Sie Ihren Studierendenausweis und beginnen Sie Ihr Studium.",
     "whatIsUniversityTitle": "Was ist {name}?",
-    "whatIsProgramTitle": "Was ist {category} in {city}?"
+    "whatIsProgramTitle": "Was ist {category} in {city}?",
+    "whatIsCategoryTitle": "Was ist {category}?"
   },
   "Chatbot": {
     "title": "Studienassistent",

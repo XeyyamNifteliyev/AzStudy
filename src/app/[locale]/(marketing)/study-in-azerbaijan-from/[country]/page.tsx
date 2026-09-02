@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Plane, Banknote, MapPin } from "lucide-react";
 import { data } from "@/lib/data";
 import type { AppLocale } from "@/i18n/routing";
-import { siteConfig } from "@/config/site";
+import { siteConfig, fullyTranslatedLocales } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo/alternates";
 import { breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -11,8 +12,51 @@ import { UniversityCard } from "@/components/sections/university-card";
 import { CTASection } from "@/components/sections/cta-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { seedCountries } from "@/lib/seed/countries";
+import { lx } from "@/lib/i18n/lx";
 
 export const revalidate = 3600;
+
+const countryBySlug = new Map(
+  seedCountries.map((c) => [c.slug, c] as const),
+);
+
+// Every valid slug is pre-rendered once per locale so unknown slugs never
+// produce a soft-404 (they hit notFound() below instead).
+export function generateStaticParams() {
+  return fullyTranslatedLocales.flatMap((locale) =>
+    seedCountries.map((c) => ({ locale, country: c.slug })),
+  );
+}
+
+/**
+ * Deterministic per-country selection of universities.
+ *
+ * All 140+ country pages previously rendered the SAME first 6 universities,
+ * which is a doorway pattern (near-duplicate pages differing only by the
+ * country token). Instead we rotate a stable, ranking-first ordering by a
+ * hash of the country slug, so every page surfaces a different subset while
+ * each individual page keeps a sensible, deterministic set (featured schools
+ * always come first). Hand-curating 143 markets isn't maintainable; this
+ * removes the exact-duplicate risk with one small function.
+ */
+function universitySubset<T>(
+  universities: T[],
+  country: string,
+  count = 6,
+): T[] {
+  let hash = 0;
+  for (let i = 0; i < country.length; i++) {
+    hash = (hash * 31 + country.charCodeAt(i)) >>> 0;
+  }
+  if (universities.length <= count) return universities.slice(0, count);
+  const start = hash % universities.length;
+  const rotated = [
+    ...universities.slice(start),
+    ...universities.slice(0, start),
+  ];
+  return rotated.slice(0, count);
+}
 
 export async function generateMetadata({
   params,
@@ -20,14 +64,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string; country: string }>;
 }): Promise<Metadata> {
   const { locale, country } = await params;
+  const countryData = countryBySlug.get(country);
+  if (!countryData) return {};
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "CountryLanding" });
+  const countryName = lx(countryData.name, locale as AppLocale);
 
   return buildPageMetadata({
     locale,
     path: `/study-in-azerbaijan-from/${country}`,
-    title: t("metaTitle", { country: country.charAt(0).toUpperCase() + country.slice(1) }),
-    description: t("metaDescription", { country: country.charAt(0).toUpperCase() + country.slice(1) }),
+    title: t("metaTitle", { country: countryName }),
+    description: t("metaDescription", { country: countryName }),
   });
 }
 
@@ -37,13 +84,15 @@ export default async function StudyInAzerbaijanFromCountry({
   params: Promise<{ locale: string; country: string }>;
 }) {
   const { locale, country } = await params;
+  const countryData = countryBySlug.get(country);
+  if (!countryData) notFound();
   setRequestLocale(locale);
   const appLocale = locale as AppLocale;
   const t = await getTranslations({ locale, namespace: "CountryLanding" });
 
   const universities = await data.universities.list();
 
-  const countryName = country.charAt(0).toUpperCase() + country.slice(1);
+  const countryName = lx(countryData.name, appLocale);
 
   return (
     <div>
@@ -119,7 +168,7 @@ export default async function StudyInAzerbaijanFromCountry({
             {t("popularTitle")}
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {universities.slice(0, 6).map((uni) => (
+            {universitySubset(universities, country).map((uni) => (
               <UniversityCard key={uni.id} university={uni} locale={appLocale} />
             ))}
           </div>

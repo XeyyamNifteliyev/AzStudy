@@ -167,7 +167,7 @@ export function breadcrumbJsonLd(
 }
 
 export function courseListJsonLd(
-  items: Array<{ name: string; url: string; fee: number }>,
+  items: Array<{ name: string; url: string; fee: number; providerName?: string }>,
   pageUrl?: string,
 ): JsonLd {
   // S4: drop zero-price rows — a 0-fee Course in structured data is a
@@ -184,7 +184,12 @@ export function courseListJsonLd(
           "@type": "Course",
           name: item.name,
           url: item.url,
-          provider: { "@type": "Organization", name: siteConfig.name },
+          // The provider is the university that actually teaches the course —
+          // not the platform (AzStudy) listing it.
+          provider: {
+            "@type": "Organization",
+            name: item.providerName ?? siteConfig.name,
+          },
           offers: { "@type": "Offer", price: item.fee, priceCurrency: "USD" },
         },
       }),
@@ -313,14 +318,14 @@ export function howToJsonLd(
 export function reviewJsonLd(
   reviews: UniversityReview[],
   locale: AppLocale,
-  universitySlug: string,
+  universityName: string,
 ): JsonLd[] {
   return reviews.map((r) => ({
     "@context": "https://schema.org",
     "@type": "Review",
     itemReviewed: {
       "@type": "CollegeOrUniversity",
-      name: universitySlug,
+      name: universityName,
     },
     reviewRating: {
       "@type": "Rating",
@@ -330,7 +335,9 @@ export function reviewJsonLd(
     },
     author: { "@type": "Person", name: r.authorName },
     reviewBody: r.text[locale],
-    datePublished: String(r.year),
+    // datePublished must be a full ISO date (a bare year like "2024" is not a
+    // valid schema.org date). Seed reviews only carry a year — pin to Jan 1.
+    datePublished: `${r.year}-01-01`,
   }));
 }
 

@@ -135,7 +135,6 @@
       "verified": "Wasaaaradda",
       "prev": "Hore",
       "next": "Xiga",
-      "turkey": "Azerbaijan",
       "students": "Arday diiwaan gashan",
       "azerbaijan": "Azerbaijan"
     },
@@ -227,7 +226,6 @@
     "verified": "Wasaaaradda",
     "english": "Ingiriisi",
     "turkish": "Turkiga",
-    "turkey": "Azerbaijan",
     "from": "laga bilaabo",
     "tuition": "Kharash",
     "rank": "Boon",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} waa jaamacad {type} ku taal {city}, Azerbaijan, oo la aasaasay {year}. Waxay bixisaa barnaamijyo luqadaha {languages} kharash laga bilaabo {tuition}/sannad. Wasaaradda {accreditation} ayaa aqoonsan, waxayna ka kooban tahay in ka badan {students} arday.",
     "programShortAnswer": "Ku bar {category} {city}, Azerbaijan. Isbarbardhig jaamacado, kharash iyo faahfaahin barnaamij — dhammaan meel hal ah. Barnaamijyo waxaa jira Ingiriisi iyo Azerbaijani oo deeq leh.",
+    "programShortAnswerNoCity": "Baro {category} ee Azerbaijan. Isbarbardhig jaamacadaha, qiimaha waxbarashada, iyo faahfaahinta barnaamijka — dhamaantood hal meel. Barnaamijyada waxaa lagu heli karaa Ingiriis iyo Azerbaijani oo leh deeqo waxbarasho.",
     "countryShortAnswer": "Ardayda {country} ka timaada waxay bartaan Azerbaijan fiis arday leh, kharash lacag jaban oo laga bilaabo $1,500/sannad, iyo barnaamijyo Ingiriisi ah. Taageero codsi bilaash ah iyo hagis fiis ayaa lagu daray.",
     "pros1": "Wasaaaradda ayaa aqoonsan — darajo adduunka oo dhan laga yaqaan",
     "pros2": "Barnaamijyo Ingiriisi wa ee jira",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Is diyaari oo bilow barashada",
     "visaStep5Text": "Dhammaystir diiwaangelinta jaamacadda, hel kaarka ardayga, oo bilow waxbarashada.",
     "whatIsUniversityTitle": "Waa maxay {name}?",
-    "whatIsProgramTitle": "Waa maxay {category} {city}?"
+    "whatIsProgramTitle": "Waa maxay {category} {city}?",
+    "whatIsCategoryTitle": "Waa maxay {category}?"
   },
   "Chatbot": {
     "title": "Kaaliyaha Waxbarashada",

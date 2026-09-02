@@ -135,7 +135,6 @@
       "verified": "Kementerian",
       "prev": "Sebelumnya",
       "next": "Berikutnya",
-      "turkey": "Azerbaijan",
       "students": "Mahasiswa terdaftar",
       "azerbaijan": "Azerbaijan"
     },
@@ -227,7 +226,6 @@
     "verified": "Kementerian",
     "english": "Inggris",
     "turkish": "Bahasa Turki",
-    "turkey": "Azerbaijan",
     "from": "mulai",
     "tuition": "Biaya",
     "rank": "Peringkat",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} adalah universitas {type} di {city}, Azerbaijan, didirikan tahun {year}. Menawarkan program dalam bahasa {languages} dengan biaya mulai {tuition}/tahun. Terakreditasi oleh {accreditation}, memiliki lebih dari {students} mahasiswa.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Azerbaijan with scholarships.",
+    "programShortAnswerNoCity": "Belajar {category} di Azerbaijan. Bandingkan universitas, biaya kuliah, dan detail program — semua di satu tempat. Program tersedia dalam bahasa Inggris dan Azerbaijan dengan beasiswa.",
     "countryShortAnswer": "Mahasiswa dari {country} dapat belajar di Azerbaijan dengan visa pelajar, biaya kuliah terjangkau mulai $1.500/tahun, dan program berbahasa Inggris. Termasuk dukungan pendaftaran gratis dan panduan visa.",
     "pros1": "Terakreditasi Kementerian — gelar diakui di seluruh dunia",
     "pros2": "Tersedia program berbahasa Inggris",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Daftar ulang dan mulai belajar",
     "visaStep5Text": "Selesaikan pendaftaran universitas, dapatkan kartu mahasiswa Anda, dan mulai belajar.",
     "whatIsUniversityTitle": "Apa itu {name}?",
-    "whatIsProgramTitle": "Apa itu {category} di {city}?"
+    "whatIsProgramTitle": "Apa itu {category} di {city}?",
+    "whatIsCategoryTitle": "Apa itu {category}?"
   },
   "Chatbot": {
     "title": "Asisten Studi",

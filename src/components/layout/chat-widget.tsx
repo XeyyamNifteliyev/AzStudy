@@ -88,11 +88,11 @@ export function ChatWidget() {
   // UI-1: let the WhatsApp/Telegram stack move out of the chat panel's way.
   useEffect(() => {
     window.dispatchEvent(
-      new CustomEvent("studyhub:chat-open-change", { detail: { open } }),
+      new CustomEvent("azstudy:chat-open-change", { detail: { open } }),
     );
     return () => {
       window.dispatchEvent(
-        new CustomEvent("studyhub:chat-open-change", {
+        new CustomEvent("azstudy:chat-open-change", {
           detail: { open: false },
         }),
       );

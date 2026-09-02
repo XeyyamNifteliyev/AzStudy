@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Programs listing (StudyLeo catalog)", () => {
+test.describe("Programs listing", () => {
   test("renders paginated table with university logos", async ({ page }) => {
     await page.goto("/en/programs");
 
@@ -70,7 +70,7 @@ test.describe("Programs listing (StudyLeo catalog)", () => {
     page,
   }) => {
     await page.goto("/en/programs");
-    // StudyLeo catalog rows carry originalFee — find one with a strikethrough.
+    // Program rows carry originalFee — find one with a strikethrough.
     const strike = page.locator("main .line-through").first();
     await expect(strike).toBeVisible();
   });

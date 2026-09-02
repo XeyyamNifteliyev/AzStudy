@@ -40,6 +40,7 @@ const SKIP_LOCAL = [
   "0029_messages_rls.sql",
   "0030_security_advisor_fixes.sql",
   "0031_performance_rls_hardening.sql",
+  "0035_azn_currency.sql",
 ];
 
 // A destructive reset is only safe against a local/dev database. Refuse if

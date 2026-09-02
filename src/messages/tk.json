@@ -135,7 +135,6 @@
       "verified": "Ministrligiň",
       "prev": "Öňki",
       "next": "Indiki",
-      "turkey": "Azerbaýjan",
       "students": "Talyplar",
       "azerbaijan": "Azerbaýjan"
     },
@@ -227,7 +226,6 @@
     "verified": "Ministrligiň",
     "english": "Iňlis",
     "turkish": "Türk dili",
-    "turkey": "Azerbaýjan",
     "from": "-den",
     "tuition": "Töleg",
     "rank": "Reýting",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} — Azerbaýjanyň {city} şäherindäki {type} uniwersitet, {year} ýylda esaslandyrylan. {languages} dillerinde programmalar hödürleýär, tölegi {tuition}/ýyldan başlaýar. {accreditation} tarapyndan akkreditasiýalan, {students} talyp okapýar.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Azerbaýdjan with scholarships.",
+    "programShortAnswerNoCity": "Azerbaýjanda {category} okaň. Uniwersitetleri, okuw töleglerini we programma jikme-jikliklerini bir ýerde deňeşdiriň. Iňlis we azerbaýjan dillerinde stipendiýaly programmalar bar.",
     "countryShortAnswer": "{country} talyplary talyplar wizasy bilen, ýylda $1,500-den başlan töleg we iňlis dilindäki programmalar bilen Azerbaýjanda okap biler. Mugt arz goldawy we wiza ýol görkezişi bilen.",
     "pros1": "Ministrligiň akkreditasiýasy — diploma bütin dünýäde ykrar edilýär",
     "pros2": "Iňlis dilindäki programmalar bar",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Ýazyl we okuwy başla",
     "visaStep5Text": "Uniwersitet ýazylmagyny tamamla, talyplar şahadatnamasyny al we okuwyňy başla.",
     "whatIsUniversityTitle": "{name} näme?",
-    "whatIsProgramTitle": "{city} şäherindäki {category} näme?"
+    "whatIsProgramTitle": "{city} şäherindäki {category} näme?",
+    "whatIsCategoryTitle": "{category} näme?"
   },
   "Chatbot": {
     "title": "Bilim kömekçisi",

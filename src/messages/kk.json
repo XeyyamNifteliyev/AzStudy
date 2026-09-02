@@ -135,7 +135,6 @@
       "verified": "Министрлік",
       "prev": "Алдыңғы",
       "next": "Келесі",
-      "turkey": "Әзірбайжан",
       "students": "Студенттер",
       "azerbaijan": "Әзірбайжан"
     },
@@ -227,7 +226,6 @@
     "verified": "Министрлік",
     "english": "Ағылшын",
     "turkish": "түрікше",
-    "turkey": "Әзірбайжан",
     "from": "бастап",
     "tuition": "Ақы",
     "rank": "Рейтинг",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} — Әзірбайжанның {city} қаласындағы {type} университет, {year} жылы құрылған. {languages} тілдерінде бағдарламалар ұсынады, ақысы {tuition}/жылдан басталады. {accreditation} аккредиттеген, {students}-ден астам студент білім алады.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Әзірбайжандық with scholarships.",
+    "programShortAnswerNoCity": "Әзірбайжанда {category} оқыңыз. Университеттерді, оқу ақысын және бағдарлама мәліметтерін бір жерде салыстырыңыз. Ағылшын және әзірбайжан тілдерінде стипендиялы бағдарламалар бар.",
     "countryShortAnswer": "{country} студенттері студенттік визамен, жылына $1,500-дан басталатын ақымен және ағылшын тіліндегі бағдарламалармен Әзірбайжанда оқи алады. Тегін өтінім қолдауы және виза бағыт-бағдары қоса.",
     "pros1": "Министрлік аккредитациясы — диплом бүкіл әлемде мойындалады",
     "pros2": "Ағылшын тіліндегі бағдарламалар бар",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Тіркеліп, оқуды бастаңыз",
     "visaStep5Text": "Университетке тіркелуді аяқтап, студенттік куәлік алып, оқуды бастаңыз.",
     "whatIsUniversityTitle": "{name} дегеніміз не?",
-    "whatIsProgramTitle": "{city} қаласындағы {category} дегеніміз не?"
+    "whatIsProgramTitle": "{city} қаласындағы {category} дегеніміз не?",
+    "whatIsCategoryTitle": "{category} дегеніміз не?"
   },
   "Chatbot": {
     "title": "Білім көмекшісі",

@@ -135,7 +135,6 @@
       "verified": "Wizara",
       "prev": "Iliyopita",
       "next": "Ifuatayo",
-      "turkey": "Azerbaijan",
       "students": "Wanafunzi waliosajiliwa",
       "azerbaijan": "Azerbaijan"
     },
@@ -227,7 +226,6 @@
     "verified": "Wizara",
     "english": "Kiingereza",
     "turkish": "Kituruki",
-    "turkey": "Azerbaijan",
     "from": "kuanzia",
     "tuition": "Ada",
     "rank": "Cheo",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} ni chuo {type} kilichoko {city}, Azerbaijan, kilianzishwa mwaka {year}. Kinatoa programu kwa lugha za {languages} na ada kuanzia {tuition} kwa mwaka. KimeThibitishwa na {accreditation}, kina wanafunzi zaidi ya {students}.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and Ya Azerbaijan with scholarships.",
+    "programShortAnswerNoCity": "Soma {category} nchini Azerbaijan. Linganisha vyuo vikuu, ada za masomo, na maelezo ya programu — vyote mahali pamoja. Programu zinapatikana kwa Kiingereza na Kiazerbaijani na ufadhili.",
     "countryShortAnswer": "Wanafunzi kutoka {country} wanaweza kusoma Azerbaijan kwa visa ya mwanafunzi, ada nafuu kuanzia $1,500 kwa mwaka, na programu kwa Kiingereza. Msaada wa bure wa maombi na maelekezo ya visa vimojumo.",
     "pros1": "Imethibitishwa na Wizara — shahada inatambulwa duniani kote",
     "pros2": "Programu kwa Kiingereza zipo",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Jiandikishe na uanze kusoma",
     "visaStep5Text": "Kamilisha usajili wa chuo, pata kadi yako ya mwanafunzi, na uanze masomo.",
     "whatIsUniversityTitle": "Ni nini {name}?",
-    "whatIsProgramTitle": "Ni nini {category} katika {city}?"
+    "whatIsProgramTitle": "Ni nini {category} katika {city}?",
+    "whatIsCategoryTitle": "{category} ni nini?"
   },
   "Chatbot": {
     "title": "Msaidizi wa Masomo",

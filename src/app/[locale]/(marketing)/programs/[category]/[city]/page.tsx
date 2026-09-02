@@ -138,9 +138,10 @@ export default async function ProgramCombinationPage({
           ]),
           courseListJsonLd(
             programs.map((p) => ({
-              name: `${p.name[appLocale]} — ${lx(p.university.nameI18n, appLocale)}`,
+              name: `${p.name[appLocale]} â€” ${lx(p.university.nameI18n, appLocale)}`,
               url: `${siteConfig.url}/${locale}/universities/${p.university.slug}`,
               fee: p.tuitionFee,
+              providerName: lx(p.university.nameI18n, appLocale),
             })),
             `${siteConfig.url}/${locale}${path}`,
           ),

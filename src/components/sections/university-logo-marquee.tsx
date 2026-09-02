@@ -11,7 +11,7 @@ interface UniversityLogoMarqueeProps {
 }
 
 /**
- * StudyHub-style logo strip: all university logos with an image scroll
+ * Logo strip: all university logos with an image scroll
  * infinitely (LTR). The track is rendered twice and translated by -50% so the
  * loop is seamless. `prefers-reduced-motion` is respected via globals.css.
  */

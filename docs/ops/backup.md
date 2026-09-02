@@ -1,6 +1,6 @@
 # Backup & Disaster Recovery
 
-> Owners: StudyHub ops · Last reviewed: 2026-08-12
+> Owners: AzStudy ops · Last reviewed: 2026-09-02
 > Scope: transactional CRM data (leads, applications, messages, documents, audit logs).
 
 ## RTO / RPO targets
@@ -21,8 +21,8 @@
    `secrets.BACKUP_DATABASE_URL` and uploads a custom-format dump as a 30-day
    GitHub Actions artifact. It only runs when repo variable
    `ENABLE_NIGHTLY_BACKUP == 'true'`. This survives a Supabase-side incident.
-3. **Seed source (reference content).** `scripts/data/studyleo-catalog.json` is
-   committed and re-seeds universities/programs/cities — reference content is
+3. **Seed source (reference content).** `src/lib/seed/` is committed and
+   re-seeds universities/programs/cities — reference content is
    always reconstructable. Transactional data is NOT — that's what layers 1–2 protect.
 
 ## Provisioning checklist

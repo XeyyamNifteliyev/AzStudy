@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 const SEARCH_LIMIT = 12;
 
 /**
- * Live search page (StudyLeo-style): as the user types, an autocomplete
+ * Live search page: as the user types, an autocomplete
  * dropdown mirrors the hero search (keyboard-navigable suggestions under the
  * input), and full results appear below grouped into Universities (hero-image
  * cards), Programs (list) and Cities (chips), each with a "View All" link.

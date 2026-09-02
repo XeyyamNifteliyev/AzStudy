@@ -58,7 +58,7 @@ const PAGE_BREAKPOINTS = [
 const TRACK_GAP = 16; // gap-4
 
 /**
- * StudyLeo-style "Popular Universities" carousel. Each card is a full-width
+ * "Popular Universities" carousel. Each card is a full-width
  * image with name/location/rating overlaid and an "Apply Now" button below.
  * Cards are fluid (exactly `perPage` fit the viewport — no half card visible)
  * and every click on the arrows moves the track by exactly one card.
@@ -78,7 +78,7 @@ export function FeaturedUniversitiesCarousel({
   const trackCards = [...cards, ...cards, ...cards];
   // Virtual card index into a track that repeats the cards 3x. We always start
   // in the middle copy so prev/next can scroll in either direction endlessly
-  // (StudyLeo-style) — at the edges we snap back to the middle copy without a
+  // — at the edges we snap back to the middle copy without a
   // visible jump, because both positions show the same cards.
   const [vp, setVp] = useState(() => total);
 

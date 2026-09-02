@@ -1751,7 +1751,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-state-university/hero.jpg",
+    coverImage: "/images/universities/baku-state-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -1853,7 +1853,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-diplomatic-academy/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-diplomatic-academy/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -1956,7 +1956,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/sumqayit-state-university/hero.jpg",
+    coverImage: "/images/universities/sumqayit-state-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2060,7 +2060,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/gance-state-university/hero.jpg",
+    coverImage: "/images/universities/gance-state-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2162,7 +2162,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/gance-state-technological-university/hero.jpg",
+      "/images/universities/gance-state-technological-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2263,7 +2263,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/naxcivan-medical-university/hero.jpg",
+    coverImage: "/images/universities/naxcivan-medical-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2365,7 +2365,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-medical-university/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-medical-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2467,7 +2467,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-state-university-economics/hero.jpg",
+      "/images/universities/azerbaijan-state-university-economics/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2569,7 +2569,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/western-university/hero.jpg",
+    coverImage: "/images/universities/western-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2671,7 +2671,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/khazar-university/hero.jpg",
+    coverImage: "/images/universities/khazar-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2773,7 +2773,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-engineering-university/hero.jpg",
+    coverImage: "/images/universities/baku-engineering-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2874,7 +2874,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-state-pedagogical-university/hero.jpg",
+      "/images/universities/azerbaijan-state-pedagogical-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -2978,7 +2978,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/lankaran-state-university/hero.jpg",
+    coverImage: "/images/universities/lankaran-state-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3080,7 +3080,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/mingachevir-state-university/hero.jpg",
+    coverImage: "/images/universities/mingachevir-state-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3182,7 +3182,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-university-architecture-construction/hero.jpg",
+      "/images/universities/azerbaijan-university-architecture-construction/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3283,7 +3283,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-state-oil-industry-university/hero.jpg",
+      "/images/universities/azerbaijan-state-oil-industry-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3385,7 +3385,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-technical-university/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-technical-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3487,7 +3487,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-slavyan-university/hero.jpg",
+    coverImage: "/images/universities/baku-slavyan-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3591,7 +3591,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-university-languages/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-university-languages/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3693,7 +3693,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-music-academy/hero.jpg",
+    coverImage: "/images/universities/baku-music-academy/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3794,7 +3794,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-state-culture-arts-university/hero.jpg",
+      "/images/universities/azerbaijan-state-culture-arts-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3896,7 +3896,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-state-academy-arts/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-state-academy-arts/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -3998,7 +3998,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-national-conservatory/hero.jpg",
+      "/images/universities/azerbaijan-national-conservatory/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4099,7 +4099,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/turkey-azerbaijan-university/hero.jpg",
+    coverImage: "/images/universities/turkey-azerbaijan-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4200,7 +4200,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-state-sports-academy/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-state-sports-academy/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4302,7 +4302,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/presidential-academy-state-governance/hero.jpg",
+      "/images/universities/presidential-academy-state-governance/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4404,7 +4404,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-state-maritime-academy/hero.jpg",
+      "/images/universities/azerbaijan-state-maritime-academy/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4505,7 +4505,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/national-aviation-academy/hero.jpg",
+    coverImage: "/images/universities/national-aviation-academy/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4606,7 +4606,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-higher-oil-school/hero.jpg",
+    coverImage: "/images/universities/baku-higher-oil-school/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4708,7 +4708,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-tourism-management-university/hero.jpg",
+      "/images/universities/azerbaijan-tourism-management-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4811,7 +4811,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/lomonosov-moscow-state-university-baku/hero.jpg",
+      "/images/universities/lomonosov-moscow-state-university-baku/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -4911,7 +4911,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/sechenov-first-moscow-medical-baku/hero.jpg",
+      "/images/universities/sechenov-first-moscow-medical-baku/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5012,7 +5012,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-choreography-academy/hero.jpg",
+    coverImage: "/images/universities/baku-choreography-academy/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5113,7 +5113,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-institute-theology/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-institute-theology/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5214,7 +5214,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/western-caspian-university/hero.jpg",
+    coverImage: "/images/universities/western-caspian-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5316,7 +5316,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/azerbaijan-university/hero.jpg",
+    coverImage: "/images/universities/azerbaijan-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5418,7 +5418,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/odlar-yurdu-university/hero.jpg",
+    coverImage: "/images/universities/odlar-yurdu-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5519,7 +5519,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-eurasian-university/hero.jpg",
+    coverImage: "/images/universities/baku-eurasian-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5621,7 +5621,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-girls-university/hero.jpg",
+    coverImage: "/images/universities/baku-girls-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5723,7 +5723,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-cooperative-university/hero.jpg",
+      "/images/universities/azerbaijan-cooperative-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5825,7 +5825,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/baku-business-university/hero.jpg",
+    coverImage: "/images/universities/baku-business-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -5927,7 +5927,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-academy-labor-social-relations/hero.jpg",
+      "/images/universities/azerbaijan-academy-labor-social-relations/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -6030,7 +6030,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
     coverImage:
-      "/images/universities/azerbaijan-state-agricultural-university/hero.jpg",
+      "/images/universities/azerbaijan-state-agricultural-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -6132,7 +6132,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/naxchivan-state-university/hero.jpg",
+    coverImage: "/images/universities/naxchivan-state-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -6233,7 +6233,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/naxchivan-mteachers-institute/hero.jpg",
+    coverImage: "/images/universities/naxchivan-mteachers-institute/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",
@@ -6334,7 +6334,7 @@ Apply online through the university website or at the nearest Azerbaijani embass
     },
     author: "AzStudy Team",
     publishedAt: "2025-09-01",
-    coverImage: "/images/universities/qarabagh-university/hero.jpg",
+    coverImage: "/images/universities/qarabagh-university/hero.webp",
     category: {
       en: "Universities",
       tr: "Üniversiteler",

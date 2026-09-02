@@ -135,7 +135,6 @@
       "verified": "وزارت",
       "prev": "قبلی",
       "next": "بعدی",
-      "turkey": "آذربایجان",
       "students": "دانشجویان ثبت‌نام‌شده",
       "azerbaijan": "آذربایجان"
     },
@@ -227,7 +226,6 @@
     "verified": "وزارت",
     "english": "انگلیسی",
     "turkish": "ترکی",
-    "turkey": "آذربایجان",
     "from": "از",
     "tuition": "شهریه",
     "rank": "رتبه",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} یک دانشگاه {type} در {city}، آذربایجان است که در سال {year} تأسیس شد. این دانشگاه رشته‌هایی به زبان‌های {languages} با شهریه از {tuition} در سال ارائه می‌دهد. مورد تأیید {accreditation} و دارای بیش از {students} دانشجو است.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and آذربایجانی with scholarships.",
+    "programShortAnswerNoCity": "رشته {category} را در جمهوری آذربایجان بخوانید. دانشگاه‌ها، شهریه و جزئیات برنامه‌ها را در یک‌جا مقایسه کنید. برنامه‌ها به زبان انگلیسی و آذربایجانی با بورسیه در دسترس هستند.",
     "countryShortAnswer": "دانشجویان {country} می‌توانند با ویزای تحصیلی، شهریه مناسب از ۱۵۰۰ دلار در سال و رشته‌های انگلیسی‌زبان در آذربایجان تحصیل کنند. پشتیبانی رایگان ثبت‌نام و راهنمایی ویزا همراه است.",
     "pros1": "مورد تأیید وزارت — مدرک با اعتبار جهانی",
     "pros2": "رشته‌های انگلیسی‌زبان موجود است",
@@ -684,7 +683,8 @@
     "visaStep5Name": "ثبت‌نام کنید و تحصیل را آغاز کنید",
     "visaStep5Text": "ثبت‌نام دانشگاه را کامل کنید، کارت دانشجویی بگیرید و تحصیل را شروع کنید.",
     "whatIsUniversityTitle": "{name} چیست؟",
-    "whatIsProgramTitle": "رشته {category} در {city} چیست؟"
+    "whatIsProgramTitle": "رشته {category} در {city} چیست؟",
+    "whatIsCategoryTitle": "رشته {category} چیست؟"
   },
   "Chatbot": {
     "title": "دستیار تحصیل",

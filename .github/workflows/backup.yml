@@ -43,4 +43,4 @@ jobs:
 
       # Optional: push to longer-term object storage. Uncomment + set secrets.
       # - name: Push to S3 (optional)
-      #   run: aws s3 cp backup/*.dump "s3://${{ secrets.BACKUP_BUCKET }}/studyhub/"
+      #   run: aws s3 cp backup/*.dump "s3://${{ secrets.BACKUP_BUCKET }}/azstudy/"

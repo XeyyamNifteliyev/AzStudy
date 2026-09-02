@@ -119,7 +119,6 @@
       "verified": "Bakanlık",
       "prev": "Önceki",
       "next": "Sonraki",
-      "turkey": "Türkiye",
       "students": "Kayıtlı öğrenciler",
       "azerbaijan": "Azerbaycan"
     },
@@ -227,7 +226,6 @@
     "verified": "Bakanlık",
     "english": "İngilizce",
     "turkish": "Türkçe",
-    "turkey": "Türkiye",
     "from": "-den başlayan",
     "tuition": "Öğrenim ücreti",
     "rank": "Sıralama",
@@ -605,6 +603,7 @@
   "Geo": {
     "universityShortAnswer": "{name}, {city}, Azerbaycan'da {year} yılında kurulan bir {type} üniversitesidir. {languages} dilinde programlar sunar ve ücretler {tuition}/yıl'dan başlar. {accreditation} akreditasyonlu olup {students} öğrenciye ev sahipliği yapmaktadır.",
     "programShortAnswer": "{city}, Azerbaycan'da {category} okuyun. Üniversiteleri, ücretleri ve program detaylarını tek yerde karşılaştırın. İngilizce ve Azerice programlar burs imkanı ile mevcuttur.",
+    "programShortAnswerNoCity": "Azerbaycan'da {category} okuyun. Üniversiteleri, ücretleri ve program detaylarını tek yerde karşılaştırın. İngilizce ve Azerice programlar burs imkanı ile mevcuttur.",
     "countryShortAnswer": "{country} öğrencileri uygun ücretlerle (yıllık $1.500'den başlayan), İngilizce programlarla Azerbaycan'da okuyabilir. Ücretsiz başvuru desteği ve vize rehberliği dahildir.",
     "pros1": "Bakanlık onaylı — diploma dünya çapında tanınır",
     "pros2": "İngilizce dilinde programlar mevcut",
@@ -641,7 +640,8 @@
     "visaStep5Name": "Kaydol ve çalışmalara başla",
     "visaStep5Text": "Üniversite kaydını tamamla, öğrenci kimliğini al ve çalışmalarına başla.",
     "whatIsUniversityTitle": "{name} nedir?",
-    "whatIsProgramTitle": "{city}'da {category} nedir?"
+    "whatIsProgramTitle": "{city}'da {category} nedir?",
+    "whatIsCategoryTitle": "{category} nedir?"
   },
   "Chatbot": {
     "title": "Eğitim Asistanı",

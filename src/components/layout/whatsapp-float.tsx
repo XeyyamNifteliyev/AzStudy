@@ -14,9 +14,9 @@ export function FloatingChatButtons() {
       const detail = (event as CustomEvent<{ open?: boolean }>).detail;
       setChatOpen(Boolean(detail?.open));
     };
-    window.addEventListener("studyhub:chat-open-change", onChatOpenChange);
+    window.addEventListener("azstudy:chat-open-change", onChatOpenChange);
     return () => {
-      window.removeEventListener("studyhub:chat-open-change", onChatOpenChange);
+      window.removeEventListener("azstudy:chat-open-change", onChatOpenChange);
     };
   }, []);
 

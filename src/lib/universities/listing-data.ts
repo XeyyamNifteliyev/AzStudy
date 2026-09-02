@@ -1,12 +1,15 @@
+import { unstable_cache } from "next/cache";
 import { data } from "@/lib/data";
 import type { UniversityFilters } from "@/types";
 
-export async function getCachedUniversityListing(
-  filters: UniversityFilters,
-) {
-  return data.universities.listWithMetadata(filters);
-}
+export const getCachedUniversityListing = unstable_cache(
+  (filters: UniversityFilters) => data.universities.listWithMetadata(filters),
+  ["uni-listing"],
+  { revalidate: 900, tags: ["universities"] },
+);
 
-export async function getCachedCities() {
-  return data.cities.list();
-}
+export const getCachedCities = unstable_cache(
+  () => data.cities.list(),
+  ["cities"],
+  { revalidate: 86400, tags: ["cities"] },
+);

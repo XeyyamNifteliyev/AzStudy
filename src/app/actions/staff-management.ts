@@ -4,6 +4,7 @@
 import { revalidatePath } from "next/cache";
 import { crm } from "@/lib/crm";
 import { requireStaff } from "@/lib/crm/session";
+import { rateLimit } from "@/lib/rate-limit";
 import {
   updateRoleSchema,
   changePasswordSchema,
@@ -11,6 +12,10 @@ import {
 } from "@/lib/validations/crm";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
+
+// SEC: 5 password attempts per hour per staff account — slows credential
+// stuffing on a session that already passed the allowlist gate.
+const passwordLimiter = rateLimit({ windowMs: 60 * 60_000, max: 5 });
 
 export async function updateRoleAction(input: unknown): Promise<ActionResult> {
   const session = await requireStaff();
@@ -37,6 +42,11 @@ export async function changePasswordAction(
   input: unknown,
 ): Promise<ActionResult> {
   const session = await requireStaff();
+  if (!(await passwordLimiter.check(`pwd:${session.userId}`)))
+    return {
+      ok: false,
+      error: "Too many attempts. Please try again in an hour.",
+    };
   const parsed = changePasswordSchema.safeParse(input);
   if (!parsed.success) {
     const firstError = parsed.error.errors[0];

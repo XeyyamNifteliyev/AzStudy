@@ -17,7 +17,6 @@ import {
   seedFaqs,
   seedBlog,
 } from "../src/lib/seed";
-// StudyLeo catalog removed — all data now comes from src/lib/seed/
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");

@@ -119,7 +119,6 @@
       "verified": "Nazirlik",
       "prev": "Əvvəlki",
       "next": "Növbəti",
-      "turkey": "Azərbaycan",
       "students": "Qeydiyyatlı tələbələr",
       "azerbaijan": "Azərbaycan"
     },
@@ -227,7 +226,6 @@
     "verified": "Nazirlik",
     "english": "İngilis dili",
     "turkish": "Türkcə",
-    "turkey": "Azərbaycan",
     "from": "-dan",
     "tuition": "Təhsil haqqı",
     "rank": "Reytinq",
@@ -605,6 +603,7 @@
   "Geo": {
     "universityShortAnswer": "{name} — {city}, Azərbaycanda {year}-ci ildə təsis edilmiş {type} universitetidir. {languages} dillərində proqramlar təklif edir, təhsil haqqı {tuition}/ildən başlayır. {accreditation} akkreditasiyalı, {students} tələbəyə ev sahibliyi edir.",
     "programShortAnswer": "{city}, Azərbaycanda {category} təhsili alın. Universitetləri, təhsil haqqını və proqram detallarını bir yerdə müqayisə edin. İngilis və türk dillərində təqaüdlü proqramlar mövcuddur.",
+    "programShortAnswerNoCity": "Azərbaycanda {category} təhsili alın. Universitetləri, təhsil haqqını və proqram detallarını bir yerdə müqayisə edin. İngilis və Azərbaycan dillərində təqaüdlü proqramlar mövcuddur.",
     "countryShortAnswer": "{country} tələbələri əlverişli haqqlarla (ildə $1.500-dan), ingilis dilli proqramlarla Azərbaycanda oxuya bilər. Pulsuz müraciət dəstəyi və viza rəhbərliyi daxildir.",
     "pros1": "Nazirlik akkreditəli — diploma bütün dünyada tanınır",
     "pros2": "İngilis dilli proqramlar mövcuddur",
@@ -641,7 +640,8 @@
     "visaStep5Name": "Qeydiyyatdan keçin və təhsilə başlayın",
     "visaStep5Text": "Universitet qeydiyyatını tamamlayın, tələbə kimliyinizi alın və təhsilə başlayın.",
     "whatIsUniversityTitle": "{name} nədir?",
-    "whatIsProgramTitle": "{city} şəhərində {category} nədir?"
+    "whatIsProgramTitle": "{city} şəhərində {category} nədir?",
+    "whatIsCategoryTitle": "{category} nədir?"
   },
   "Chatbot": {
     "title": "Təhsil Köməkçisi",

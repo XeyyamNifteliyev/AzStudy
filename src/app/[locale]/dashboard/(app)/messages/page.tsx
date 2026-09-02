@@ -1,9 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import { crm } from '@/lib/crm';
 import { requireStudentAny } from '@/lib/crm/student-session';
-import { markThreadReadAction } from '@/app/actions/student';
 import type { AppLocale } from '@/i18n/routing';
 import { MessageComposer } from '@/components/student/MessageComposer';
+import { MarkThreadRead } from '@/components/student/MarkThreadRead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
@@ -30,7 +30,6 @@ export default async function MessagesPage({
   }
 
   const messages = await crm.listMessages(lead.id);
-  await markThreadReadAction(lead.id).catch(() => {});
 
   return (
     <div className="space-y-6">
@@ -56,6 +55,10 @@ export default async function MessagesPage({
           <MessageComposer leadId={lead.id} />
         </CardContent>
       </Card>
+      {/* Read receipt moves to a client effect so we never write to the DB
+          during server rendering (render-time writes can double-fire in
+          streaming and violate React's purity rules). */}
+      <MarkThreadRead leadId={lead.id} />
     </div>
   );
 }

@@ -99,15 +99,13 @@ export default async function ProgramCategoryPage({
   }
 
   const whatIsQuestion = tg
-    ? tg("whatIsProgramTitle", {
+    ? tg("whatIsCategoryTitle", {
         category: cat.name[appLocale] ?? "",
-        city: "",
       })
     : "";
   const programShortAnswer = tg
-    ? tg("programShortAnswer", {
+    ? tg("programShortAnswerNoCity", {
         category: cat.name[appLocale] ?? "",
-        city: "",
       })
     : "";
   const definitionFaq = tg
@@ -143,9 +141,10 @@ export default async function ProgramCategoryPage({
           ]),
           courseListJsonLd(
             programs.slice(0, 30).map((p) => ({
-              name: `${p.name[appLocale]} — ${lx(p.university.nameI18n, appLocale)}`,
+              name: `${p.name[appLocale]} â€” ${lx(p.university.nameI18n, appLocale)}`,
               url: `${siteConfig.url}/${locale}/universities/${p.university.slug}`,
               fee: p.tuitionFee,
+              providerName: lx(p.university.nameI18n, appLocale),
             })),
             `${siteConfig.url}/${locale}${path}`,
           ),
@@ -208,9 +207,8 @@ export default async function ProgramCategoryPage({
         {showGeo && tg && (
           <GeoBlock
             locale={appLocale}
-            shortAnswer={tg("programShortAnswer", {
+            shortAnswer={tg("programShortAnswerNoCity", {
               category: cat.name[appLocale] ?? "",
-              city: "",
             })}
             summary={[
               { label: t("categoryLabel"), value: cat.name[appLocale] ?? "" },

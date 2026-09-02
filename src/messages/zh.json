@@ -135,7 +135,6 @@
       "verified": "教育部认证",
       "prev": "上一个",
       "next": "下一个",
-      "turkey": "阿塞拜疆",
       "students": "在校学生",
       "azerbaijan": "阿塞拜疆"
     },
@@ -227,7 +226,6 @@
     "verified": "教育部认证",
     "english": "英语",
     "turkish": "土耳其语",
-    "turkey": "阿塞拜疆",
     "from": "起",
     "tuition": "学费",
     "rank": "排名",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name}是位于阿塞拜疆{city}的一所{type}大学，成立于{year}年。它提供{languages}授课的课程，学费每年{tuition}起。经{accreditation}认证，拥有{students}名学生。",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and 阿塞拜疆 with scholarships.",
+    "programShortAnswerNoCity": "在阿塞拜疆学习{category}。在一个地方比较大学、学费和课程详情。提供英语和阿塞拜疆语课程，并设有奖学金。",
     "countryShortAnswer": "来自{country}的学生可以凭学生签证赴阿塞拜疆留学，学费每年1500美元起，有英文授课课程。包括免费申请支持和签证指导。",
     "pros1": "教育部认证 — 学位全球认可",
     "pros2": "提供英文授课课程",
@@ -684,7 +683,8 @@
     "visaStep5Name": "注册并开始学习",
     "visaStep5Text": "完成大学注册，领取学生证，开始您的学业。",
     "whatIsUniversityTitle": "{name}是什么？",
-    "whatIsProgramTitle": "什么是{city}的{category}？"
+    "whatIsProgramTitle": "什么是{city}的{category}？",
+    "whatIsCategoryTitle": "什么是{category}？"
   },
   "Chatbot": {
     "title": "留学助手",

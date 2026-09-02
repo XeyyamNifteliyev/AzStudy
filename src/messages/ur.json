@@ -135,7 +135,6 @@
       "verified": "وزارتی",
       "prev": "پچھلا",
       "next": "اگلا",
-      "turkey": "آذربائیجان",
       "students": "داخل ہونے والے طلبہ",
       "azerbaijan": "آذربائیجان"
     },
@@ -227,7 +226,6 @@
     "verified": "وزارتی",
     "english": "انگریزی",
     "turkish": "ترکی",
-    "turkey": "آذربائیجان",
     "from": "سے",
     "tuition": "فیس",
     "rank": "درجہ",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} آذربائیجان کے {city} میں ایک {type} یونیورسٹی ہے، جس کی بنیاد {year} میں رکھی گئی۔ یہ {languages} میں پروگرام پیش کرتی ہے، فیس {tuition}/سال سے شروع۔ {accreditation} سے معتبر، اس میں {students} سے زائد طلبہ زیرِ تعلیم ہیں۔",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and آذربائیجانی with scholarships.",
+    "programShortAnswerNoCity": "آذربائیجان میں {category} کی تعلیم حاصل کریں۔ یونیورسٹیوں، فیسوں اور پروگرام کی تفصیلات کا ایک جگہ موازنہ کریں۔ انگریزی اور آذربائیجانی زبانوں میں اسکالرشپ کے ساتھ پروگرام دستیاب ہیں۔",
     "countryShortAnswer": "{country} کے طلبہ اسٹوڈنٹ ویزے کے ساتھ آذربائیجان میں پڑھ سکتے ہیں، فیس $1,500/سال سے شروع اور انگریزی میں پروگرام دستیاب ہیں۔ مفت درخواست سپورٹ اور ویزا رہنمائی شامل۔",
     "pros1": "وزارت سے معتبر — ڈگری عالمی سطح پر تسلیم شدہ",
     "pros2": "انگریزی زبان میں پروگرام دستیاب",
@@ -684,7 +683,8 @@
     "visaStep5Name": "رجسٹر کریں اور تعلیم شروع کریں",
     "visaStep5Text": "یونیورسٹی رجسٹریشن مکمل کریں، اسٹوڈنٹ ID لیں اور تعلیم شروع کریں۔",
     "whatIsUniversityTitle": "{name} کیا ہے؟",
-    "whatIsProgramTitle": "{city} میں {category} کیا ہے؟"
+    "whatIsProgramTitle": "{city} میں {category} کیا ہے؟",
+    "whatIsCategoryTitle": "{category} کیا ہے؟"
   },
   "Chatbot": {
     "title": "تعلیم اسسٹنٹ",

@@ -224,7 +224,7 @@ export function HeaderInteractive() {
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
 
-      {/* Mobile menu — right-side drawer with dark overlay (StudyLeo-style).
+      {/* Mobile menu — right-side drawer with dark overlay.
           Rendered via portal so it sits above every other element (the sticky
           header otherwise traps it in a stacking context behind the hero). */}
       {open &&

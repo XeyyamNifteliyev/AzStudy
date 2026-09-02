@@ -135,7 +135,6 @@
       "verified": "Ministère",
       "prev": "Précédent",
       "next": "Suivant",
-      "turkey": "Azerbaïdjan",
       "students": "Étudiants inscrits",
       "azerbaijan": "Azerbaïdjan"
     },
@@ -227,7 +226,6 @@
     "verified": "Ministère",
     "english": "Anglais",
     "turkish": "turc",
-    "turkey": "Azerbaïdjan",
     "from": "à partir de",
     "tuition": "Frais",
     "rank": "Rang",
@@ -648,6 +646,7 @@
   "Geo": {
     "universityShortAnswer": "{name} est une université {type} située à {city}, en Azerbaïdjan, fondée en {year}. Elle propose des programmes en {languages} avec des frais à partir de {tuition} par an. Accréditée par {accreditation}, elle accueille plus de {students} étudiants.",
     "programShortAnswer": "Study {category} in {city}, Azerbaijan. Compare universities, tuition fees, and program details — all in one place. Programs available in English and azerbaïdjanais with scholarships.",
+    "programShortAnswerNoCity": "Étudiez {category} en Azerbaïdjan. Comparez les universités, les frais de scolarité et les détails des programmes — tout au même endroit. Programmes disponibles en anglais et en azerbaïdjanais avec bourses.",
     "countryShortAnswer": "Les étudiants de {country} peuvent étudier en Azerbaïdjan avec un visa étudiant, des frais abordables à partir de 1 500 $/an et des programmes en anglais. Aide gratuite à la candidature et accompagnement visa inclus.",
     "pros1": "Accrédité par le Ministère — diplôme reconnu dans le monde entier",
     "pros2": "Programmes en anglais disponibles",
@@ -684,7 +683,8 @@
     "visaStep5Name": "Inscrivez-vous et commencez à étudier",
     "visaStep5Text": "Finalisez votre inscription universitaire, obtenez votre carte étudiante et commencez vos études.",
     "whatIsUniversityTitle": "Qu'est-ce que {name} ?",
-    "whatIsProgramTitle": "Qu'est-ce que {category} à {city} ?"
+    "whatIsProgramTitle": "Qu'est-ce que {category} à {city} ?",
+    "whatIsCategoryTitle": "Qu'est-ce que {category} ?"
   },
   "Chatbot": {
     "title": "Assistant d'études",
