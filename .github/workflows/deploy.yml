@@ -23,7 +23,7 @@ jobs:
       # applied manually via SQL Editor per docs/ops/deploy.md).
       DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
