@@ -30,6 +30,7 @@ import {
 } from "@/lib/seed";
 import type {
   BlogRepository,
+  BlogPostSummary,
   CityRepository,
   CountryRepository,
   DataLayer,
@@ -596,6 +597,20 @@ class SeedBlogRepository implements BlogRepository {
     const { generateUniversityArticles } =
       await import("@/lib/seo/university-articles");
     const uniArticles = generateUniversityArticles();
+    return delay(
+      [...seedBlog, ...uniArticles].sort((a, b) =>
+        b.publishedAt.localeCompare(a.publishedAt),
+      ),
+    );
+  }
+  async listSummaries(): Promise<BlogPostSummary[]> {
+    // PERF §6.2: strip the body — index cards never render `content`.
+    const { generateUniversityArticles } =
+      await import("@/lib/seo/university-articles");
+    const uniArticles = generateUniversityArticles().map((a) => {
+      const { content: _content, ...summary } = a;
+      return summary;
+    });
     return delay(
       [...seedBlog, ...uniArticles].sort((a, b) =>
         b.publishedAt.localeCompare(a.publishedAt),

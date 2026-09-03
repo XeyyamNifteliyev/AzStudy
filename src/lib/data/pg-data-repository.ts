@@ -20,6 +20,7 @@ import type {
 } from "@/types";
 import type {
   BlogRepository,
+  BlogPostSummary,
   CityRepository,
   CountryRepository,
   DataLayer,
@@ -309,6 +310,22 @@ function rowBlogPost(r: Record<string, unknown>): BlogPost {
     publishedAt: r.published_at as string,
     coverImage: r.cover_image as string,
     category: i18n(r.category_i18n),
+    readingMinutes: Number(r.reading_minutes),
+    updatedAt: r.updated_at ? (r.updated_at as Date).toISOString() : undefined,
+  };
+}
+
+/** Summary projection — everything except the body columns. */
+function rowBlogPostSummary(r: Record<string, unknown>): BlogPostSummary {
+  return {
+    id: r.id as string,
+    slug: r.slug as string,
+    title: i18n(r.title_i18n),
+    excerpt: i18n(r.excerpt_i18n),
+    category: i18n(r.category_i18n),
+    author: r.author as string,
+    publishedAt: r.published_at as string,
+    coverImage: r.cover_image as string,
     readingMinutes: Number(r.reading_minutes),
     updatedAt: r.updated_at ? (r.updated_at as Date).toISOString() : undefined,
   };
@@ -876,6 +893,26 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
       const { generateUniversityArticles } =
         await import("@/lib/seo/university-articles");
       const uniArticles = generateUniversityArticles();
+      return [...dbPosts, ...uniArticles].sort((a, b) =>
+        b.publishedAt.localeCompare(a.publishedAt),
+      );
+    },
+    async listSummaries(): Promise<BlogPostSummary[]> {
+      // PERF §6.2: the body (content_i18n) stays in the DB — the index only
+      // renders card fields.
+      const res = await getPool().query(
+        `select id, slug, title_i18n, excerpt_i18n, category_i18n, author,
+                published_at, cover_image, reading_minutes, updated_at
+         from public.blog_posts
+         order by published_at desc`,
+      );
+      const dbPosts = res.rows.map(rowBlogPostSummary);
+      const { generateUniversityArticles } =
+        await import("@/lib/seo/university-articles");
+      const uniArticles = generateUniversityArticles().map((a) => {
+        const { content: _content, ...summary } = a;
+        return summary;
+      });
       return [...dbPosts, ...uniArticles].sort((a, b) =>
         b.publishedAt.localeCompare(a.publishedAt),
       );

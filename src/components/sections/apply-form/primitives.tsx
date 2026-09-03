@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useTranslations } from "next-intl";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -47,14 +48,39 @@ export function Field({
   hint?: string;
   children: React.ReactNode;
 }) {
+  // A11y (WCAG 2.1 AA): the rendered input must be programmatically linked to
+  // its hint and validation message via aria-describedby. The child is cloned
+  // centrally so every call site gets the wiring without repeating ids.
+  const hintId = id && hint ? `${id}-hint` : undefined;
+  const errorId = id && error ? `${id}-error` : undefined;
+  const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
+
+  const child =
+    React.isValidElement(children) && describedBy
+      ? React.cloneElement(
+          children as React.ReactElement<{ "aria-describedby"?: string }>,
+          {
+            "aria-describedby": describedBy,
+          },
+        )
+      : children;
+
   return (
     <div className="space-y-1.5">
       <div className="flex items-baseline justify-between">
         <Label htmlFor={id}>{label}</Label>
-        {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
+        {hint && (
+          <span id={hintId} className="text-xs text-muted-foreground">
+            {hint}
+          </span>
+        )}
       </div>
-      {children}
-      {error && <p className="text-xs text-destructive">{error}</p>}
+      {child}
+      {error && (
+        <p id={errorId} className="text-xs text-destructive">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

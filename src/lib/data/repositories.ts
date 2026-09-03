@@ -149,7 +149,26 @@ export interface ScholarshipRepository {
 
 export interface BlogRepository {
   list(): Promise<BlogPost[]>;
+  /**
+   * PERF §6.2: index/listing views only need card fields — the full
+   * `content` body never leaves the data layer.
+   */
+  listSummaries(): Promise<BlogPostSummary[]>;
   getBySlug(slug: string): Promise<BlogPost | null>;
+}
+
+/** Card-shaped blog post (no body) — see BlogRepository.listSummaries. */
+export interface BlogPostSummary {
+  id: string;
+  slug: string;
+  title: BlogPost["title"];
+  excerpt: BlogPost["excerpt"];
+  category: BlogPost["category"];
+  author: string;
+  publishedAt: string;
+  coverImage: string;
+  readingMinutes: number;
+  updatedAt?: string;
 }
 
 export interface SearchRepository {

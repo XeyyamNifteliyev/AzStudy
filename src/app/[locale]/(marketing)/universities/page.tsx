@@ -5,12 +5,15 @@ import type { AppLocale } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
 import { buildPageMetadata } from "@/lib/seo/alternates";
 import { collectionPageJsonLd } from "@/lib/seo/json-ld";
-import { lx } from "@/lib/i18n/lx";
 import { JsonLd } from "@/components/seo/json-ld";
 import {
   getCachedCities,
   getCachedUniversityListing,
 } from "@/lib/universities/listing-data";
+import {
+  toUniversityCardVM,
+  toCityOptions,
+} from "@/lib/universities/view-model";
 import {
   UniversitiesExplorer,
   UniversityCardGrid,
@@ -49,11 +52,16 @@ export default async function UniversitiesPage({
   const t = await getTranslations({ locale, namespace: "UniversitiesPage" });
 
   // Full listing in one round trip (listWithMetadata) — every filter/sort
-  // combination is derived client-side from this payload.
+  // combination is derived client-side. PERF §6.1: the payload is projected
+  // into per-locale card VMs here on the server so the RSC flight data only
+  // carries the fields the cards/filters/sorts actually consume (nameI18n,
+  // description, gallery… never cross to the client).
   const [items, cities] = await Promise.all([
     getCachedUniversityListing({}),
     getCachedCities(),
   ]);
+  const cardVMs = items.map((item) => toUniversityCardVM(item, appLocale));
+  const cityOptions = toCityOptions(cities, appLocale);
 
   const cardLabels: UniversityCardLabels = {
     verified: t("verified"),
@@ -75,9 +83,9 @@ export default async function UniversitiesPage({
         data={collectionPageJsonLd(
           t("title"),
           `${siteConfig.url}/${locale}/universities`,
-          items.map(({ university }) => ({
-            name: lx(university.nameI18n, appLocale),
-            url: `${siteConfig.url}/${locale}/universities/${university.slug}`,
+          cardVMs.map((vm) => ({
+            name: vm.localName || vm.name,
+            url: `${siteConfig.url}/${locale}/universities/${vm.slug}`,
           })),
         )}
       />
@@ -98,10 +106,10 @@ export default async function UniversitiesPage({
             <div className="hidden h-[28rem] animate-pulse rounded-lg border border-border bg-card p-5 lg:block" />
             <main>
               <div className="text-sm text-muted-foreground">
-                <span>{t("results", { count: items.length })}</span>
+                <span>{t("results", { count: cardVMs.length })}</span>
               </div>
               <UniversityCardGrid
-                items={items}
+                items={cardVMs}
                 locale={appLocale}
                 labels={cardLabels}
                 className="mt-4"
@@ -112,8 +120,8 @@ export default async function UniversitiesPage({
       >
         <UniversitiesExplorer
           locale={appLocale}
-          items={items}
-          cities={cities}
+          items={cardVMs}
+          cities={cityOptions}
         />
       </Suspense>
     </div>

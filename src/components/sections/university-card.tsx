@@ -1,14 +1,14 @@
-import type { University } from "@/types";
 import type { AppLocale } from "@/i18n/routing";
 import type { UniversityListingMetadata } from "@/lib/data/repositories";
 import { data } from "@/lib/data";
+import { toUniversityCardVMFromParts } from "@/lib/universities/view-model";
 import {
   UniversityCardView,
   type UniversityCardLabels,
 } from "@/components/sections/university-card-view";
 
 interface UniversityCardProps {
-  university: University;
+  university: import("@/types").University;
   locale: AppLocale;
   priority?: boolean;
   minTuition?: number;
@@ -22,8 +22,8 @@ interface UniversityCardProps {
 /**
  * Server wrapper for the university card. Resolves card metadata from the
  * batched `listingMetadata` map when provided, otherwise falls back to a
- * per-card lookup (C7). Client components that already hold resolved metadata
- * should render `UniversityCardView` directly instead (Phase 2).
+ * per-card lookup (C7). Projects the full university + metadata into the
+ * per-locale card view-model before rendering (PERF §6.1).
  */
 export async function UniversityCard({
   university,
@@ -56,16 +56,27 @@ export async function UniversityCard({
         ] as const;
       });
 
+  const vm = toUniversityCardVMFromParts(
+    university,
+    city
+      ? {
+          city,
+          minTuitionUSD: minTuition,
+          originalFeeUSD: originalFee,
+          rating,
+          count,
+          degreeLevels: listingMetadata?.degreeLevels ?? [],
+        }
+      : null,
+    { minTuitionUSD: minTuition, originalFeeUSD: originalFee },
+    locale,
+  );
+
   return (
     <UniversityCardView
-      university={university}
+      vm={vm}
       locale={locale}
       priority={priority}
-      city={city}
-      minTuition={minTuition}
-      originalFee={originalFee}
-      rating={rating}
-      count={count}
       labels={labels}
       footer={footer}
     />

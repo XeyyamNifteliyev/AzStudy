@@ -24,7 +24,10 @@ const GoogleSignInButton = dynamic(
   },
 );
 const StudentProfileDrawer = dynamic(
-  () => import("@/components/student/StudentProfileDrawer").then((m) => m.StudentProfileDrawer),
+  () =>
+    import("@/components/student/StudentProfileDrawer").then(
+      (m) => m.StudentProfileDrawer,
+    ),
   { ssr: false },
 );
 import type { Profile } from "@/types/crm";
@@ -176,6 +179,36 @@ export function HeaderInteractive() {
       menuToggleRef.current?.focus();
     }
     wasOpen.current = open;
+  }, [open]);
+
+  // A11y: focus trap — while the drawer is open, keep Tab cycling inside it
+  // (same pattern as chat-widget.tsx) so keyboard users can't tab into the
+  // occluded page behind the overlay.
+  useEffect(() => {
+    if (!open) return;
+    const drawer = drawerRef.current;
+    if (!drawer) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const focusables = Array.from(
+        drawer.querySelectorAll<HTMLElement>(
+          'button, input, [href], [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute("disabled"));
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || active === drawer)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    drawer.addEventListener("keydown", onKeyDown);
+    return () => drawer.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   function AuthControl() {

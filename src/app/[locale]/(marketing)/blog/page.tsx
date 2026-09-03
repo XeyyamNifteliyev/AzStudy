@@ -44,7 +44,7 @@ export default async function BlogPage({
   const appLocale = locale as AppLocale;
   const t = await getTranslations({ locale, namespace: "Blog" });
 
-  const posts = await data.blog.list();
+  const posts = await data.blog.listSummaries();
 
   return (
     <div className="container-page py-section-md">

@@ -4,17 +4,18 @@ import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { SearchX } from "lucide-react";
-import type { City } from "@/types";
-import type { UniversityListingItem } from "@/lib/data/repositories";
 import type { AppLocale } from "@/i18n/routing";
+import type {
+  UniversityCardVM,
+  CityOptionVM,
+} from "@/lib/universities/view-model";
 import { siteConfig } from "@/config/site";
 import { itemListJsonLd } from "@/lib/seo/json-ld";
-import { lx } from "@/lib/i18n/lx";
 import { JsonLd } from "@/components/seo/json-ld";
 import {
-  filterUniversityItems,
+  filterUniversityVMs,
   parseListingParams,
-  sortUniversities,
+  sortUniversityVMs,
 } from "@/lib/universities/listing-query";
 import { UniversityFilters } from "@/components/sections/university-filters";
 import { UniversitySortSelect } from "@/components/sections/university-sort-select";
@@ -25,17 +26,18 @@ import {
 
 interface UniversitiesExplorerProps {
   locale: AppLocale;
-  /** Full listing payload (all universities + card metadata) — filtered client-side. */
-  items: UniversityListingItem[];
-  cities: City[];
+  /** Projected per-locale card VMs (PERF §6.1) — filtered client-side. */
+  items: UniversityCardVM[];
+  /** Slim city options for the filter UI (id/slug/localized name). */
+  cities: CityOptionVM[];
 }
 
 /**
- * Phase 2: the universities listing is a static page shell that ships the full
- * dataset once; this client component reads the URL (useSearchParams) and does
- * all filtering/sorting with useMemo — filter changes never hit the server.
- * Must stay inside a <Suspense> boundary (see page) so the page can be
- * statically rendered.
+ * The universities listing is a static page shell that ships the projected
+ * view-models once; this client component reads the URL (useSearchParams) and
+ * does all filtering/sorting with useMemo — filter changes never hit the
+ * server. Must stay inside a <Suspense> boundary (see page) so the page can
+ * be statically rendered.
  */
 export function UniversitiesExplorer({
   locale,
@@ -55,34 +57,14 @@ export function UniversitiesExplorer({
     [cities],
   );
 
-  const tuitionByUniversity = useMemo(
+  const listedItems = useMemo(
     () =>
-      new Map(
-        items
-          .filter((item) => item.metadata.minTuitionUSD !== undefined)
-          .map(
-            (item) =>
-              [item.university.id, item.metadata.minTuitionUSD!] as const,
-          ),
+      sortUniversityVMs(
+        filterUniversityVMs(items, filters, cityIdBySlug),
+        sort,
       ),
-    [items],
+    [items, filters, sort, cityIdBySlug],
   );
-
-  const listedItems = useMemo(() => {
-    const filtered = filterUniversityItems(items, filters, cityIdBySlug, locale);
-    const order = sortUniversities(
-      filtered.map((item) => item.university),
-      sort,
-      tuitionByUniversity,
-      locale,
-    );
-    const byId = new Map(
-      filtered.map((item) => [item.university.id, item] as const),
-    );
-    return order
-      .map((university) => byId.get(university.id))
-      .filter((item): item is UniversityListingItem => item !== undefined);
-  }, [items, filters, sort, cityIdBySlug, tuitionByUniversity, locale]);
 
   const filterLabels = {
     filtersTitle: t("filters"),
@@ -137,9 +119,9 @@ export function UniversitiesExplorer({
           filtered URLs carry accurate structured data after hydration. */}
       <JsonLd
         data={itemListJsonLd(
-          listedItems.map(({ university }) => ({
-            name: lx(university.nameI18n, locale),
-            url: `${siteConfig.url}/${locale}/universities/${university.slug}`,
+          listedItems.map((vm) => ({
+            name: vm.localName || vm.name,
+            url: `${siteConfig.url}/${locale}/universities/${vm.slug}`,
           })),
           listUrl,
         )}
@@ -188,7 +170,7 @@ export function UniversitiesExplorer({
 /**
  * Static university card grid — rendered as the Suspense fallback during
  * prerender so the cached HTML contains the full list (no-JS/SEO safe) and
- * reused by the explorer after hydration.
+ * reused by the explorer after hydration. Renders from projected VMs (§6.1).
  */
 export function UniversityCardGrid({
   items,
@@ -196,23 +178,18 @@ export function UniversityCardGrid({
   labels,
   className,
 }: {
-  items: UniversityListingItem[];
+  items: UniversityCardVM[];
   locale: AppLocale;
   labels: UniversityCardLabels;
   className?: string;
 }) {
   return (
     <div className={`grid gap-6 sm:grid-cols-2 ${className ?? ""}`}>
-      {items.map((item) => (
+      {items.map((vm) => (
         <UniversityCardView
-          key={item.university.id}
-          university={item.university}
+          key={vm.id}
+          vm={vm}
           locale={locale}
-          city={item.metadata.city}
-          minTuition={item.metadata.minTuitionUSD}
-          originalFee={item.metadata.originalFeeUSD}
-          rating={item.metadata.rating}
-          count={item.metadata.count}
           labels={labels}
         />
       ))}

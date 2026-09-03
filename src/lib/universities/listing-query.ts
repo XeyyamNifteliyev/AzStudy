@@ -159,14 +159,14 @@ export function sortUniversities(
       let comparison = 0;
       if (sort === "name") {
         const aName = locale
-          ? (a.university.nameI18n as Record<string, string> | undefined)?.[
+          ? ((a.university.nameI18n as Record<string, string> | undefined)?.[
               locale
-            ] ?? a.university.name
+            ] ?? a.university.name)
           : a.university.name;
         const bName = locale
-          ? (b.university.nameI18n as Record<string, string> | undefined)?.[
+          ? ((b.university.nameI18n as Record<string, string> | undefined)?.[
               locale
-            ] ?? b.university.name
+            ] ?? b.university.name)
           : b.university.name;
         comparison = aName.localeCompare(bName);
       }
@@ -182,4 +182,78 @@ export function sortUniversities(
       return comparison || a.index - b.index;
     })
     .map(({ university }) => university);
+}
+
+/* ── View-model variants (PERF §6.1) ──────────────────────────────────
+ * The client explorer now receives projected UniversityCardVM objects
+ * instead of full University rows. Same semantics as the functions
+ * above, but operating on the slim per-locale shape (no nameI18n map
+ * lookups at filter/sort time — the locale resolution already happened
+ * on the server). */
+
+export function filterUniversityVMs(
+  items: readonly import("@/lib/universities/view-model").UniversityCardVM[],
+  filters: UniversityFilters,
+  cityIdBySlug?: Readonly<Record<string, string>>,
+): import("@/lib/universities/view-model").UniversityCardVM[] {
+  const cityId = filters.citySlug
+    ? cityIdBySlug?.[filters.citySlug]
+    : undefined;
+  return items.filter((vm) => {
+    if (filters.citySlug) {
+      // Same semantics as filterUniversityItems: the URL carries a city slug,
+      // resolved to the server-side city id via cityIdBySlug.
+      if (cityId === undefined || vm.cityId !== cityId) return false;
+    }
+    if (
+      typeof filters.isState === "boolean" &&
+      vm.isState !== filters.isState
+    ) {
+      return false;
+    }
+    if (filters.degreeLevel && !vm.degreeLevels.includes(filters.degreeLevel)) {
+      return false;
+    }
+    if (filters.language && !vm.languages.includes(filters.language)) {
+      return false;
+    }
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      if (
+        !vm.name.toLowerCase().includes(q) &&
+        !vm.localName.toLowerCase().includes(q) &&
+        !vm.slug.includes(q)
+      ) {
+        return false;
+      }
+    }
+    if (filters.maxTuitionUSD !== undefined) {
+      const min = vm.minTuitionUSD;
+      if (min === undefined || min > filters.maxTuitionUSD) return false;
+    }
+    return true;
+  });
+}
+
+export function sortUniversityVMs(
+  items: readonly import("@/lib/universities/view-model").UniversityCardVM[],
+  sort: UniversitySort,
+): import("@/lib/universities/view-model").UniversityCardVM[] {
+  return items
+    .map((vm, index) => ({ vm, index }))
+    .sort((a, b) => {
+      let comparison = 0;
+      if (sort === "name")
+        comparison = a.vm.localName.localeCompare(b.vm.localName);
+      if (sort === "ranking") comparison = a.vm.ranking - b.vm.ranking;
+      if (sort === "tuition") {
+        const aTuition = a.vm.minTuitionUSD;
+        const bTuition = b.vm.minTuitionUSD;
+        if (aTuition === undefined && bTuition !== undefined) return 1;
+        if (aTuition !== undefined && bTuition === undefined) return -1;
+        comparison = (aTuition ?? 0) - (bTuition ?? 0);
+      }
+      return comparison || a.index - b.index;
+    })
+    .map(({ vm }) => vm);
 }

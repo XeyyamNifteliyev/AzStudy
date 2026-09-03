@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -17,9 +18,29 @@ import {
   type ProgramOption,
 } from "./education-section";
 import { PersonalSection } from "./personal-section";
-import { DocumentsSection } from "./documents-section";
-import { PreferencesSection } from "./preferences-section";
 import { MAX_FILE_BYTES, type DocField, type UploadStatus } from "./primitives";
+
+// PERF §6.3: everything below the first screen is code-split out of the apply
+// page's First Load JS (195 kB → target <130 kB). The sections mount
+// client-side after hydration; their shells render as skeletons meanwhile.
+const DocumentsSection = dynamic(
+  () => import("./documents-section").then((m) => m.DocumentsSection),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-64 animate-pulse rounded-lg border border-border bg-card" />
+    ),
+  },
+);
+const PreferencesSection = dynamic(
+  () => import("./preferences-section").then((m) => m.PreferencesSection),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-80 animate-pulse rounded-lg border border-border bg-card" />
+    ),
+  },
+);
 
 interface ApplyFormProps {
   locale: AppLocale;
@@ -101,6 +122,15 @@ export function ApplyForm({
     setValue("programId", "");
   }
 
+  // A11y/conversion: on a failed validation, move keyboard/AT focus to the
+  // first invalid field so the user finds the error instantly. RHF re-renders
+  // the error attributes, so wait a frame before querying the DOM.
+  function handleInvalid() {
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+    });
+  }
+
   async function onSubmit(values: LeadInput) {
     setFormError(null);
     const res = await submitLead(values);
@@ -161,7 +191,11 @@ export function ApplyForm({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+    <form
+      onSubmit={handleSubmit(onSubmit, handleInvalid)}
+      className="space-y-6"
+      noValidate
+    >
       {/* Honeypot — must stay empty. */}
       <input
         type="text"

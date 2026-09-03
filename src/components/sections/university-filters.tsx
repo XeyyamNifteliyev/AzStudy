@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, X } from "lucide-react";
-import type { City, DegreeLevel } from "@/types";
+import type { DegreeLevel } from "@/types";
 import type { AppLocale } from "@/i18n/routing";
+import type { CityOptionVM } from "@/lib/universities/view-model";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -25,7 +26,7 @@ import {
 
 interface UniversityFiltersProps {
   locale: AppLocale;
-  cities: City[];
+  cities: CityOptionVM[];
   labels: {
     filtersTitle: string;
     search: string;
@@ -276,7 +277,6 @@ function FilterHeading({
 function FilterControls({
   cities,
   labels,
-  locale,
   searchParams,
   searchValue,
   setSearchValue,
@@ -285,9 +285,8 @@ function FilterControls({
   update,
   clearFilters,
 }: {
-  cities: City[];
+  cities: CityOptionVM[];
   labels: UniversityFiltersProps["labels"];
-  locale: AppLocale;
   searchParams: ReturnType<typeof useSearchParams>;
   searchValue: string;
   setSearchValue: (value: string) => void;
@@ -320,7 +319,7 @@ function FilterControls({
         <SelectItem value="all">{labels.allCities}</SelectItem>
         {cities.map((city) => (
           <SelectItem key={city.id} value={city.slug}>
-            {city.name[locale]}
+            {city.name}
           </SelectItem>
         ))}
       </SelectField>
@@ -345,7 +344,9 @@ function FilterControls({
       >
         <SelectItem value="all">{labels.allLanguages}</SelectItem>
         <SelectItem value="en">{labels.english ?? "English"}</SelectItem>
-        <SelectItem value="az">{labels.azerbaijani ?? "Azerbaijani"}</SelectItem>
+        <SelectItem value="az">
+          {labels.azerbaijani ?? "Azerbaijani"}
+        </SelectItem>
         <SelectItem value="ru">{labels.russian ?? "Russian"}</SelectItem>
         <SelectItem value="tr">{labels.turkish ?? "Turkish"}</SelectItem>
       </SelectField>

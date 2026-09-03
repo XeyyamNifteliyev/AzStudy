@@ -48,6 +48,50 @@ function assertEnv() {
         "Copy .env.example to .env.local and fill in the values.",
     );
   }
+
+  // SEC-2: format-validate the site URL. A placeholder or trailing-slash value
+  // silently emits wrong canonicals/hreflang/sitemap URLs across every page.
+  // On Vercel (real production) a bare https origin is mandatory. Local
+  // production-mode builds may still point at http://localhost:<port> while
+  // the domain is not registered yet.
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  const validHttpsOrigin = /^https:\/\/[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(
+    siteUrl,
+  );
+  const localOrigin = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(
+    siteUrl,
+  );
+  const onVercel = !!process.env.VERCEL;
+  if (onVercel && !validHttpsOrigin) {
+    throw new Error(
+      "NEXT_PUBLIC_SITE_URL must be a bare https origin like https://azstudy.az (no path, no trailing slash).",
+    );
+  }
+  if (!onVercel && !validHttpsOrigin && !localOrigin) {
+    throw new Error(
+      "NEXT_PUBLIC_SITE_URL must be a bare https origin (e.g. https://azstudy.az) or, until the domain is registered, a local origin like http://localhost:3000.",
+    );
+  }
+
+  // SEC-3: the dev-auth cookie is a demo affordance — if it ships to production
+  // the coarse middleware gate accepts any cookie matching the signed format.
+  // Fail the build instead of relying on a launch-checklist item.
+  if (process.env.DEV_AUTH_ENABLED === "1") {
+    throw new Error(
+      "DEV_AUTH_ENABLED=1 is not allowed in production builds. Remove it before deploying.",
+    );
+  }
+
+  // SEC-4: rate-limit keys come from client IP — without a trusted proxy every
+  // visitor shares the "unknown" bucket and one user can rate-limit the whole
+  // site (self-DoS). On Vercel the platform overwrites the forwarded headers,
+  // so VERCEL=1 is implicitly trusted; elsewhere TRUST_PROXY=1 is required.
+  if (!process.env.TRUST_PROXY && !process.env.VERCEL) {
+    console.warn(
+      "[config] TRUST_PROXY is not set in production. Rate limiting will key all " +
+        "visitors to one bucket. Set TRUST_PROXY=1 (or deploy on Vercel).",
+    );
+  }
 }
 assertEnv();
 

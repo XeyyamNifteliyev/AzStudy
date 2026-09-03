@@ -72,7 +72,14 @@ export function rateLimit(opts: { windowMs: number; max: number }): Limiter {
 export function getIpFromHeaders(
   headerLookup: (name: string) => string | null,
 ): string {
-  const trustProxy = process.env.TRUST_PROXY === "1";
+  // On Vercel the platform overwrites `x-forwarded-for` / `x-real-ip`, so the
+  // headers are implicitly trustworthy. Elsewhere they are client-spoofable
+  // unless the operator explicitly opted in with TRUST_PROXY=1. Falling back
+  // to a fixed key ("unknown") when neither holds still gives the limiter a
+  // key — but every anonymous visitor then shares one bucket (self-DoS), so
+  // next.config.mjs warns at build time in that configuration.
+  const trustProxy =
+    process.env.TRUST_PROXY === "1" || process.env.VERCEL === "1";
   if (trustProxy) {
     const forwarded = headerLookup("x-forwarded-for");
     if (forwarded) {

@@ -14,32 +14,21 @@ interface BlogCarouselSectionProps {
 const UNIQUE_COVERS: Record<string, string> = {
   "how-to-apply-to-azerbaijani-universities":
     "/images/blog/apply-azerbaijan.webp",
-  "top-universities-in-baku":
-    "/images/blog/baku-universities.webp",
-  "education-in-azerbaijan-language":
-    "/images/blog/azerbaijani-language.webp",
-  "cost-of-living-in-azerbaijan":
-    "/images/blog/cost-of-living.webp",
-  "scholarships-in-azerbaijan":
-    "/images/blog/scholarships.webp",
-  "why-study-in-azerbaijan":
-    "/images/blog/why-azerbaijan.webp",
-  "top-10-must-visit-places-in-azerbaijan":
-    "/images/blog/why-azerbaijan.webp",
-  "student-life-in-baku-azerbaijan":
-    "/images/blog/baku-universities.webp",
-  "best-universities-medicine-azerbaijan":
-    "/images/blog/apply-azerbaijan.webp",
+  "top-universities-in-baku": "/images/blog/baku-universities.webp",
+  "education-in-azerbaijan-language": "/images/blog/azerbaijani-language.webp",
+  "cost-of-living-in-azerbaijan": "/images/blog/cost-of-living.webp",
+  "scholarships-in-azerbaijan": "/images/blog/scholarships.webp",
+  "why-study-in-azerbaijan": "/images/blog/why-azerbaijan.webp",
+  "top-10-must-visit-places-in-azerbaijan": "/images/blog/why-azerbaijan.webp",
+  "student-life-in-baku-azerbaijan": "/images/blog/baku-universities.webp",
+  "best-universities-medicine-azerbaijan": "/images/blog/apply-azerbaijan.webp",
   "azerbaijan-best-budget-study-destination":
     "/images/blog/cost-of-living.webp",
   "azerbaijani-culture-traditions-guide":
     "/images/blog/azerbaijani-language.webp",
-  "azerbaijan-weather-climate-students":
-    "/images/blog/why-azerbaijan.webp",
-  "best-day-trips-from-baku":
-    "/images/blog/why-azerbaijan.webp",
-  "azerbaijan-vs-turkey-study-abroad":
-    "/images/blog/baku-universities.webp",
+  "azerbaijan-weather-climate-students": "/images/blog/why-azerbaijan.webp",
+  "best-day-trips-from-baku": "/images/blog/why-azerbaijan.webp",
+  "azerbaijan-vs-turkey-study-abroad": "/images/blog/baku-universities.webp",
   "student-visa-azerbaijan-complete-guide":
     "/images/blog/apply-azerbaijan.webp",
   "top-engineering-programs-azerbaijan":
@@ -51,7 +40,7 @@ export async function BlogCarouselSection({
 }: BlogCarouselSectionProps) {
   const t = await getTranslations({ locale, namespace: "HomePage.blog" });
 
-  const posts = await data.blog.list();
+  const posts = await data.blog.listSummaries();
   if (posts.length === 0) return null;
 
   // Only show posts that have their own unique cover (8 curated posts) so no
