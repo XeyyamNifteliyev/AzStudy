@@ -45,11 +45,13 @@ export async function FeaturedUniversities({
 
   const cards: FeaturedUniversityCardData[] = featured.map((u) => {
     const meta = metadata.get(u.id);
+    // PERF (§6.1): pass the already-localized name, NOT the full 18-locale
+    // nameI18n record — the carousel is client-side and only renders one
+    // locale, so shipping every translation bloats the RSC payload.
     return {
       id: u.id,
       slug: u.slug,
       name: lx(u.nameI18n, locale),
-      nameI18n: u.nameI18n,
       logoText: u.logoText,
       heroImage: u.heroImage,
       cityName: meta?.city?.name[locale] ?? "",

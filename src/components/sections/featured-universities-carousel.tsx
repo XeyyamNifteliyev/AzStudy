@@ -12,8 +12,6 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
-import { lx } from "@/lib/i18n/lx";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn, formatNumber } from "@/lib/utils";
@@ -21,8 +19,8 @@ import { cn, formatNumber } from "@/lib/utils";
 export interface FeaturedUniversityCardData {
   id: string;
   slug: string;
+  /** Already localized to the active locale (server-side projection). */
   name: string;
-  nameI18n?: Record<string, string>;
   logoText: string;
   heroImage: string;
   cityName: string;
@@ -67,7 +65,6 @@ export function FeaturedUniversitiesCarousel({
   cards,
   labels,
 }: FeaturedUniversitiesCarouselProps) {
-  const locale = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const touchX = useRef<number | null>(null);
@@ -168,7 +165,6 @@ export function FeaturedUniversitiesCarousel({
                 card={card}
                 labels={labels}
                 priority={i < perPage}
-                locale={locale}
               />
             </div>
           ))}
@@ -202,23 +198,21 @@ function CarouselCard({
   card,
   labels,
   priority,
-  locale,
 }: {
   card: FeaturedUniversityCardData;
   labels: FeaturedUniversitiesCarouselProps["labels"];
   priority: boolean;
-  locale: string;
 }) {
   return (
     <article className="flex w-full flex-col gap-2">
       <Link
         href={`/universities/${card.slug}`}
-        aria-label={lx(card.nameI18n, locale) || card.name}
+        aria-label={card.name}
         className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         <Image
           src={card.heroImage}
-          alt={lx(card.nameI18n, locale) || card.name}
+          alt={card.name}
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
@@ -236,7 +230,7 @@ function CarouselCard({
 
         <div className="absolute inset-x-0 bottom-0 rounded-lg p-3">
           <h3 className="line-clamp-2 text-base font-medium text-white">
-            {lx(card.nameI18n, locale) || card.name}
+            {card.name}
           </h3>
           <p className="line-clamp-2 text-sm text-white/80">
             <MapPin className="me-1 inline h-3.5 w-3.5" aria-hidden />

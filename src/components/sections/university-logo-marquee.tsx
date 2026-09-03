@@ -59,12 +59,13 @@ export async function UniversityLogoMarquee({
                   alt={`${lx(u.nameI18n, locale)} logo`}
                   width={160}
                   height={80}
-                  // PERF/BUG: marquee items move via a GPU-composited transform —
-                  // the lazy-loader's IntersectionObserver never fires during the
-                  // animation, leaving logos blank until a mouse move/scroll
-                  // forces an IO pass. Eager + low fetch priority loads them
-                  // immediately without competing with the LCP.
-                  loading="eager"
+                  // PERF (§12.4-I): logos are ~15KB webp and the marquee sits
+                  // below the fold, so lazy-loading avoids pulling ~1.3MB (90
+                  // copies) at page start. The track is GPU-composited; if the
+                  // lazy loader's IntersectionObserver ever fails to fire for
+                  // animating items (seen with the old eager hack), this is
+                  // the knob to revisit — verify visually in preview.
+                  loading="lazy"
                   fetchPriority="low"
                   decoding="async"
                   unoptimized={isSvgUrl(u.logoImage)}

@@ -16,6 +16,8 @@ import { cn } from "@/lib/utils";
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
+  /** Internal: this assistant bubble is still receiving streamed text. */
+  streaming?: boolean;
 }
 
 export function ChatWidget() {
@@ -108,6 +110,9 @@ export function ChatWidget() {
     setInput("");
     setLoading(true);
     setError(false);
+    // Accumulator for streamed text, visible to the catch below so a
+    // mid-stream abort keeps the partial reply instead of wiping it.
+    let partial = "";
 
     try {
       const res = await fetch("/api/chat", {
@@ -121,18 +126,104 @@ export function ChatWidget() {
           })),
         }),
       });
-      const data = await res.json();
-      if (!res.ok || data.error) throw new Error("api");
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.reply },
-      ]);
+
+      // Backwards-compatible fallback: a non-SSE response (e.g. a proxy or an
+      // older deploy) still carries the full reply as JSON.
+      const isStream =
+        (res.headers.get("content-type") ?? "").includes("text/event-stream") &&
+        res.body;
+      if (!res.ok) throw new Error("api");
+      if (!isStream) {
+        const data = await res.json();
+        if (data.error) throw new Error("api");
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: data.reply ?? "" },
+        ]);
+        return;
+      }
+
+      // SSE: read `data: {"content":"…"}` deltas and grow the assistant
+      // bubble in place — the reply appears as it is generated (TTFT ~0).
+      const reader = (res.body as ReadableStream<Uint8Array>).getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      const appendDelta = (chunk: string) => {
+        partial += chunk;
+        setMessages((prev) => {
+          const hasStreaming = prev.some((m) => m.streaming);
+          return hasStreaming
+            ? prev.map((m) =>
+                m.streaming
+                  ? {
+                      role: "assistant" as const,
+                      content: partial,
+                      streaming: true,
+                    }
+                  : m,
+              )
+            : [
+                ...prev,
+                {
+                  role: "assistant" as const,
+                  content: partial,
+                  streaming: true,
+                },
+              ];
+        });
+      };
+
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+        for (const raw of lines) {
+          const line = raw.trim();
+          if (!line.startsWith("data:")) continue;
+          const data = line.slice(5).trim();
+          if (!data || data === "[DONE]") continue;
+          try {
+            const json = JSON.parse(data) as {
+              content?: string;
+              error?: boolean;
+            };
+            if (json.error) throw new Error("stream-error");
+            if (json.content) appendDelta(json.content);
+          } catch (e) {
+            if (e instanceof Error && e.message === "stream-error") throw e;
+            // Ignore malformed keep-alive frames.
+          }
+        }
+      }
+
+      // Finalize: strip the transient flag so the bubble renders as a normal
+      // assistant message. A stream that never delivered text falls through to
+      // the error bubble below.
+      if (!partial) throw new Error("empty-stream");
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.streaming ? { role: "assistant" as const, content: partial } : m,
+        ),
+      );
     } catch {
-      setError(true);
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: t("error") },
-      ]);
+      if (partial) {
+        // Stream aborted mid-way (timeout / upstream error): keep the text
+        // the user already saw.
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.streaming ? { role: "assistant" as const, content: partial } : m,
+          ),
+        );
+      } else {
+        setError(true);
+        setMessages((prev) => [
+          ...prev.filter((m) => !m.streaming),
+          { role: "assistant", content: t("error") },
+        ]);
+      }
     } finally {
       setLoading(false);
     }
