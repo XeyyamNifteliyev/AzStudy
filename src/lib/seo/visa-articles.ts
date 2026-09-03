@@ -157,8 +157,14 @@ export const VISA_MARKETS = [
  * Generate the 15 localized student-visa articles. Merged into the blog list
  * by the repository layer (same pattern as university-articles.ts).
  */
+// PERF: memoized — see generateUniversityArticles() (blog pages call the
+// list several times per render; rebuilding 15 × 18 locales every call
+// pushed static generation past Next's 60s per-page limit).
+let cachedArticles: BlogPost[] | null = null;
+
 export function generateVisaArticles(): BlogPost[] {
-  return VISA_MARKETS.map((countrySlug) => {
+  if (cachedArticles) return cachedArticles;
+  cachedArticles = VISA_MARKETS.map((countrySlug) => {
     return {
       id: `visa-article-${countrySlug}`,
       slug: `student-visa-azerbaijan-from-${countrySlug}`,
@@ -177,6 +183,7 @@ export function generateVisaArticles(): BlogPost[] {
       faqs: generateFaqs(countrySlug),
     };
   });
+  return cachedArticles;
 }
 
 /** Check if a blog slug is a dynamically generated per-country visa article. */

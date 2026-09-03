@@ -8,13 +8,29 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 // FS-3: derived from the same knob the pg pool uses (src/lib/db.ts). Static
 // generation workers each hold a pool connection during a page build, so the
 // concurrency must never exceed PGPOOL_MAX — otherwise the pool starves and
-// builds hang. Defaults mirror src/lib/db.ts (1 during build).
+// builds hang.
+//
+// During `next build` the data layer prerenders from the in-memory seed
+// (src/lib/data/index.ts returns the seed layer for phase-production-build),
+// so marketing pages never touch the pool at build time — the pool cap only
+// matters for the rare build-time page that does hit Postgres. Defaulting the
+// worker count to ~4-8 (instead of 1) is what keeps a 4,600+ page build
+// (18 locales) inside Vercel/CI time limits; set NEXT_STATIC_GENERATION_MAX_
+// CONCURRENCY or PGPOOL_MAX explicitly to override.
+import os from "node:os";
+
 const pgpoolMax = Number(process.env.PGPOOL_MAX ?? 1);
+const workerDefault = Math.min(
+  typeof os.availableParallelism === "function" ? os.availableParallelism() : 4,
+  8,
+);
 const staticGenerationMaxConcurrency = Math.max(
   1,
   Math.min(
-    Number(process.env.NEXT_STATIC_GENERATION_MAX_CONCURRENCY ?? 1),
-    pgpoolMax,
+    Number(process.env.NEXT_STATIC_GENERATION_MAX_CONCURRENCY ?? workerDefault),
+    // Clamp to PGPOOL_MAX only when the operator explicitly set it; otherwise
+    // keep the pool at its conservative default while building in parallel.
+    process.env.PGPOOL_MAX ? pgpoolMax : 8,
   ),
 );
 const staticGenerationMinPagesPerWorker = Number(

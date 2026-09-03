@@ -186,10 +186,18 @@ function generateContent(
 /**
  * Generate blog articles for all universities in the seed data.
  * These are merged into the blog list by the repository layer.
+ *
+ * PERF: memoized — the blog list is queried several times per page render
+ * (post + related posts + breadcrumbs), and every call used to rebuild all
+ * 46 articles × 18 locales from scratch (~3 MB of strings), which pushed
+ * per-page static generation over Next's 60s limit at build time.
  */
+let cachedArticles: BlogPost[] | null = null;
+
 export function generateUniversityArticles(): BlogPost[] {
+  if (cachedArticles) return cachedArticles;
   const year = new Date().getFullYear();
-  return seedUniversities.map((uni) => {
+  cachedArticles = seedUniversities.map((uni) => {
     const city = getCityName(uni.cityId);
     const slug = `study-at-${uni.slug}`;
     const baseVars: Record<string, string> = {
@@ -223,6 +231,7 @@ export function generateUniversityArticles(): BlogPost[] {
       faqs: buildFaqs(uni.name, city, uni.isState),
     };
   });
+  return cachedArticles;
 }
 
 /** Locale-aware FAQ pairs (qI18n/aI18n override the EN fallback). */
