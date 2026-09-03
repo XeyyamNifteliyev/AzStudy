@@ -738,5 +738,11 @@
     "ctaBody": "Kirim pesan kepada kami — konsultan kami merespons dalam satu hari kerja, tanpa biaya.",
     "ctaButton": "Dapatkan saran gratis",
     "home": "Beranda"
+  },
+  "Consent": {
+    "title": "Kami menghargai privasi Anda",
+    "description": "Kami menggunakan cookie dan analitik untuk memahami bagaimana pengunjung menggunakan situs dan meningkatkannya. Analitik hanya berjalan setelah Anda menyetujui.",
+    "accept": "Izinkan analitik",
+    "decline": "Tolak"
   }
 }

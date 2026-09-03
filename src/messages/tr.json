@@ -738,5 +738,11 @@
     "ctaBody": "Send us a message — our advisors reply within one business day, free of charge.",
     "ctaButton": "Get free advice",
     "home": "Home"
+  },
+  "Consent": {
+    "title": "Gizliliğinize değer veriyoruz",
+    "description": "Ziyaretçilerin siteyi nasıl kullandığını anlamak ve geliştirmek için çerezler ve analitik kullanıyoruz. Analitik yalnızca onayınızdan sonra çalışır.",
+    "accept": "Analitiğe izin ver",
+    "decline": "Reddet"
   }
 }

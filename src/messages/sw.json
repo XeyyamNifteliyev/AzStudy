@@ -738,5 +738,11 @@
     "ctaBody": "Tutumie ujumbe — washauri wetu wanajibu ndani ya siku moja ya kazi, bila malipo.",
     "ctaButton": "Pata ushauri wa bure",
     "home": "Nyumbani"
+  },
+  "Consent": {
+    "title": "Tunaheshimu faraghiya yako",
+    "description": "Tunatumia vidakuti na uchambuzi kuelewa jinsi wageni wanavyotumia tovuti na kuiboresha. Uchambuzi huanza tu baada ya kukubali.",
+    "accept": "Ruhusu uchambuzi",
+    "decline": "Kataa"
   }
 }

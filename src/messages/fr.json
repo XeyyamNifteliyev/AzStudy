@@ -738,5 +738,11 @@
     "ctaBody": "Écrivez-nous — nos conseillers répondent sous un jour ouvré, gratuitement.",
     "ctaButton": "Obtenir un conseil gratuit",
     "home": "Accueil"
+  },
+  "Consent": {
+    "title": "Nous respectons votre vie privée",
+    "description": "Nous utilisons des cookies et des outils d'analyse pour comprendre comment les visiteurs utilisent le site et l'améliorer. L'analyse ne démarre qu'après votre accord.",
+    "accept": "Autoriser l'analyse",
+    "decline": "Refuser"
   }
 }

@@ -738,5 +738,11 @@
     "ctaBody": "Xabar yuboring — maslahatchilarimiz bir ish kuni ichida bepul javob beradi.",
     "ctaButton": "Bepul maslahat olish",
     "home": "Bosh sahifa"
+  },
+  "Consent": {
+    "title": "Sizning maxfiyligingizni qadrlaymiz",
+    "description": "Tashrif buyuruvchilar saytdan qanday foydalanishini tushunish va uni yaxshilash uchun cookie va analitikadan foydalanamiz. Analitika faqat roziligingizdan keyin ishga tushadi.",
+    "accept": "Analitikaga ruxsat berish",
+    "decline": "Rad etish"
   }
 }

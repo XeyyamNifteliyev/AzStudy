@@ -738,5 +738,11 @@
     "ctaBody": "Schreiben Sie uns — unsere Berater antworten innerhalb eines Werktags, kostenlos.",
     "ctaButton": "Kostenlose Beratung erhalten",
     "home": "Start"
+  },
+  "Consent": {
+    "title": "Wir schätzen Ihre Privatsphäre",
+    "description": "Wir verwenden Cookies und Analysedienste, um zu verstehen, wie Besucher die Website nutzen, und sie zu verbessern. Analytik läuft erst nach Ihrer Zustimmung.",
+    "accept": "Analytik erlauben",
+    "decline": "Ablehnen"
   }
 }

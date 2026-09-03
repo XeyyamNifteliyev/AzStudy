@@ -25,6 +25,7 @@ const CLIENT_NAMESPACES = [
   "Search",
   "Errors",
   "UniversitiesPage",
+  "Consent",
 ] as const;
 
 function pickClientMessages(
@@ -39,7 +40,7 @@ function pickClientMessages(
 import { routing, isRtl, isLocale, type AppLocale } from "@/i18n/routing";
 import { siteConfig, isIncompleteLocale } from "@/config/site";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Analytics } from "@/components/seo/analytics";
+import { ConsentManager } from "@/components/consent/consent-manager";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/json-ld";
 import "../globals.css";
 
@@ -125,8 +126,12 @@ export default async function LocaleLayout({
             {tCommon("skipToContent")}
           </a>
           {children}
+          {/* GDPR §4.4: analytics (GA4/Clarity) load only after the visitor
+              accepts via the consent banner — ConsentManager gates Analytics.
+              Must live INSIDE the provider: its banner reads the Consent
+              namespace through useTranslations. */}
+          <ConsentManager />
         </NextIntlClientProvider>
-        <Analytics />
       </body>
     </html>
   );

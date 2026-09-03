@@ -738,5 +738,11 @@
     "ctaBody": "Nala soo dir fariin — la-taliyayaashu way jawaabaan maalinta shaqo gudaheed, bilaash.",
     "ctaButton": "Hel tala bilaash ah",
     "home": "Bogga Hore"
+  },
+  "Consent": {
+    "title": "Waxaan qadaraynaa sirkaaga",
+    "description": "Waxaan u isticmaalnaa cookies iyo falanqeyn si aan u fahamno sida booqdayaashu u isticmaalaan bogga oo aan u horumarino. Falanqayntu waxay bilaabataa kaliya ka dib markaad ogolaato.",
+    "accept": "Ogolow falanqaynta",
+    "decline": "Diid"
   }
 }

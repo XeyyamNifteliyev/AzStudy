@@ -738,5 +738,11 @@
     "ctaBody": "Habar iberiň — maslahatçylarymyz bir iş gününiň dowamynda mugt jogap berýär.",
     "ctaButton": "Mugt maslahat al",
     "home": "Baş sahypa"
+  },
+  "Consent": {
+    "title": "Biz siziň şahsy syryňyza sarpa goýýarys",
+    "description": "Menzilleriň saýty nädip ulanýandygyna düşünmek we ony gowulandyrmak üçin kuki we analitika ulanýarys. Analitika diňe razylygyňyzdan soň işe girýär.",
+    "accept": "Analitika rugsat ber",
+    "decline": "Yüz öwürmek"
   }
 }
