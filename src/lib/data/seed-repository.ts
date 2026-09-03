@@ -592,33 +592,43 @@ class SeedScholarshipRepository implements ScholarshipRepository {
 
 class SeedBlogRepository implements BlogRepository {
   async list(): Promise<BlogPost[]> {
-    // AEO: merge hand-written posts with dynamically generated university articles
-    // (Klaster 5: 46 articles from seed data for topical authority)
-    const { generateUniversityArticles } =
-      await import("@/lib/seo/university-articles");
+    // AEO: merge hand-written posts with the dynamically generated,
+    // fully-localized article families (46 per-university + 15 per-country
+    // visa guides — both are 18-locale from templates in src/lib/seo).
+    const [{ generateUniversityArticles }, { generateVisaArticles }] =
+      await Promise.all([
+        import("@/lib/seo/university-articles"),
+        import("@/lib/seo/visa-articles"),
+      ]);
     const uniArticles = generateUniversityArticles();
+    const visaArticles = generateVisaArticles();
     return delay(
-      [...seedBlog, ...uniArticles].sort((a, b) =>
+      [...seedBlog, ...uniArticles, ...visaArticles].sort((a, b) =>
         b.publishedAt.localeCompare(a.publishedAt),
       ),
     );
   }
   async listSummaries(): Promise<BlogPostSummary[]> {
     // PERF §6.2: strip the body — index cards never render `content`.
-    const { generateUniversityArticles } =
-      await import("@/lib/seo/university-articles");
-    const uniArticles = generateUniversityArticles().map((a) => {
+    const [{ generateUniversityArticles }, { generateVisaArticles }] =
+      await Promise.all([
+        import("@/lib/seo/university-articles"),
+        import("@/lib/seo/visa-articles"),
+      ]);
+    const toSummary = (a: BlogPost): BlogPostSummary => {
       const { content: _content, ...summary } = a;
       return summary;
-    });
+    };
+    const uniArticles = generateUniversityArticles().map(toSummary);
+    const visaArticles = generateVisaArticles().map(toSummary);
     return delay(
-      [...seedBlog, ...uniArticles].sort((a, b) =>
+      [...seedBlog, ...uniArticles, ...visaArticles].sort((a, b) =>
         b.publishedAt.localeCompare(a.publishedAt),
       ),
     );
   }
   async getBySlug(slug: string): Promise<BlogPost | null> {
-    // Check hand-written posts first, then dynamic university articles
+    // Check hand-written posts first, then the dynamic article families
     const match = seedBlog.find((b) => b.slug === slug);
     if (match) return delay(match);
     const { generateUniversityArticles, isUniversityArticle } =
@@ -627,6 +637,11 @@ class SeedBlogRepository implements BlogRepository {
       return delay(
         generateUniversityArticles().find((a) => a.slug === slug) ?? null,
       );
+    }
+    const { generateVisaArticles, isVisaArticle } =
+      await import("@/lib/seo/visa-articles");
+    if (isVisaArticle(slug)) {
+      return delay(generateVisaArticles().find((a) => a.slug === slug) ?? null);
     }
     return delay(null);
   }

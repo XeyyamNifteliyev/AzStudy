@@ -14,12 +14,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { seedCountries } from "@/lib/seed/countries";
 import { lx } from "@/lib/i18n/lx";
+import { getCountryFaqTemplate, fillFaq } from "@/lib/seo/country-faq";
+import { faqPageJsonLd } from "@/lib/seo/json-ld";
 
 export const revalidate = 3600;
 
-const countryBySlug = new Map(
-  seedCountries.map((c) => [c.slug, c] as const),
-);
+const countryBySlug = new Map(seedCountries.map((c) => [c.slug, c] as const));
 
 // Every valid slug is pre-rendered once per locale so unknown slugs never
 // produce a soft-404 (they hit notFound() below instead).
@@ -94,13 +94,43 @@ export default async function StudyInAzerbaijanFromCountry({
 
   const countryName = lx(countryData.name, appLocale);
 
+  const pageUrl = `${siteConfig.url}/${locale}/study-in-azerbaijan-from/${country}`;
+
+  const subset = universitySubset(universities, country);
+  const uniNames = subset
+    .slice(0, 3)
+    .map((u) => lx(u.nameI18n ?? {}, appLocale) || u.name)
+    .join(", ");
+
+  // AEO: FAQ block built from the same data as the FAQPage JSON-LD below,
+  // so what AI engines extract always matches the visible content.
+  const faqT = getCountryFaqTemplate(appLocale);
+  const faqVars = { country: countryName, unis: uniNames };
+  // Visible copy (rendered in the details blocks)…
+  const faqItems = [
+    { question: fillFaq(faqT.q1, faqVars), answer: fillFaq(faqT.a1, faqVars) },
+    { question: fillFaq(faqT.q2, faqVars), answer: fillFaq(faqT.a2, faqVars) },
+    { question: fillFaq(faqT.q3, faqVars), answer: fillFaq(faqT.a3, faqVars) },
+  ];
+  // …and the FAQPage JSON-LD mirrors it exactly.
+  const faqs = faqItems.map((f, i) => ({
+    id: `country-${country}-faq-${i + 1}`,
+    entityType: "general" as const,
+    entityId: country,
+    question: { [appLocale]: f.question },
+    answer: { [appLocale]: f.answer },
+  }));
+
   return (
     <div>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: t("home"), url: `${siteConfig.url}/${locale}` },
-          { name: t("title"), url: `${siteConfig.url}/${locale}/study-in-azerbaijan-from/${country}` },
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: t("home"), url: `${siteConfig.url}/${locale}` },
+            { name: t("title"), url: pageUrl },
+          ]),
+          faqPageJsonLd(faqs, appLocale, pageUrl),
+        ]}
       />
 
       {/* Hero */}
@@ -128,8 +158,12 @@ export default async function StudyInAzerbaijanFromCountry({
                   <Plane className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{t("visaTitle")}</p>
-                  <p className="font-semibold text-foreground">{t("visaBody", { country: countryName })}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {t("visaTitle")}
+                  </p>
+                  <p className="font-semibold text-foreground">
+                    {t("visaBody", { country: countryName })}
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -140,8 +174,12 @@ export default async function StudyInAzerbaijanFromCountry({
                   <Banknote className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{t("currencyTitle")}</p>
-                  <p className="font-semibold text-foreground">{t("currencyBody", { country: countryName })}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {t("currencyTitle")}
+                  </p>
+                  <p className="font-semibold text-foreground">
+                    {t("currencyBody", { country: countryName })}
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -152,8 +190,12 @@ export default async function StudyInAzerbaijanFromCountry({
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{t("languageTitle")}</p>
-                  <p className="font-semibold text-foreground">{t("languageBody")}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {t("languageTitle")}
+                  </p>
+                  <p className="font-semibold text-foreground">
+                    {t("languageBody")}
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -168,8 +210,44 @@ export default async function StudyInAzerbaijanFromCountry({
             {t("popularTitle")}
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {universitySubset(universities, country).map((uni) => (
-              <UniversityCard key={uni.id} university={uni} locale={appLocale} />
+            {subset.map((uni) => (
+              <UniversityCard
+                key={uni.id}
+                university={uni}
+                locale={appLocale}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ — extractable answer blocks for AI engines (matches JSON-LD). */}
+      <section className="section-padding bg-background">
+        <div className="container-page mx-auto max-w-3xl">
+          <h2 className="font-display text-headline-lg text-foreground mb-8 text-center">
+            {t("faqTitle")}
+          </h2>
+          <div className="space-y-4">
+            {faqItems.map((f) => (
+              <details
+                key={f.question}
+                className="group rounded-lg border border-border bg-card p-5 open:shadow-flat-hover"
+              >
+                <summary className="cursor-pointer list-none font-display text-base font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <span className="flex items-center justify-between gap-4">
+                    {f.question}
+                    <span
+                      aria-hidden
+                      className="text-muted-foreground transition-transform group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {f.answer}
+                </p>
+              </details>
             ))}
           </div>
         </div>

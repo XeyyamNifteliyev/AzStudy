@@ -889,11 +889,16 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
         `select * from public.blog_posts order by published_at desc`,
       );
       const dbPosts = res.rows.map(rowBlogPost);
-      // AEO: merge DB posts with dynamically generated university articles
-      const { generateUniversityArticles } =
-        await import("@/lib/seo/university-articles");
+      // AEO: merge DB posts with the dynamically generated, fully-localized
+      // article families (46 per-university + 15 per-country visa guides).
+      const [{ generateUniversityArticles }, { generateVisaArticles }] =
+        await Promise.all([
+          import("@/lib/seo/university-articles"),
+          import("@/lib/seo/visa-articles"),
+        ]);
       const uniArticles = generateUniversityArticles();
-      return [...dbPosts, ...uniArticles].sort((a, b) =>
+      const visaArticles = generateVisaArticles();
+      return [...dbPosts, ...uniArticles, ...visaArticles].sort((a, b) =>
         b.publishedAt.localeCompare(a.publishedAt),
       );
     },
@@ -907,13 +912,18 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
          order by published_at desc`,
       );
       const dbPosts = res.rows.map(rowBlogPostSummary);
-      const { generateUniversityArticles } =
-        await import("@/lib/seo/university-articles");
-      const uniArticles = generateUniversityArticles().map((a) => {
+      const [{ generateUniversityArticles }, { generateVisaArticles }] =
+        await Promise.all([
+          import("@/lib/seo/university-articles"),
+          import("@/lib/seo/visa-articles"),
+        ]);
+      const toSummary = (a: BlogPost): BlogPostSummary => {
         const { content: _content, ...summary } = a;
         return summary;
-      });
-      return [...dbPosts, ...uniArticles].sort((a, b) =>
+      };
+      const uniArticles = generateUniversityArticles().map(toSummary);
+      const visaArticles = generateVisaArticles().map(toSummary);
+      return [...dbPosts, ...uniArticles, ...visaArticles].sort((a, b) =>
         b.publishedAt.localeCompare(a.publishedAt),
       );
     },
@@ -923,13 +933,18 @@ export function createPgDataLayer(getPool: () => Pool): DataLayer {
         [slug],
       );
       if (res.rows[0]) return rowBlogPost(res.rows[0]);
-      // Check dynamic university articles
+      // Check dynamic article families (university + per-country visa)
       const { generateUniversityArticles, isUniversityArticle } =
         await import("@/lib/seo/university-articles");
       if (isUniversityArticle(slug)) {
         return (
           generateUniversityArticles().find((a) => a.slug === slug) ?? null
         );
+      }
+      const { generateVisaArticles, isVisaArticle } =
+        await import("@/lib/seo/visa-articles");
+      if (isVisaArticle(slug)) {
+        return generateVisaArticles().find((a) => a.slug === slug) ?? null;
       }
       return null;
     },
