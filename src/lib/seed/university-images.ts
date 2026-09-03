@@ -5,103 +5,189 @@
  */
 export const universityHeroImages: Record<string, string> = {
   // === Original 16 ===
-  "baku-state-university": "/images/universities/baku-state-university/hero.webp",
-  "azerbaijan-diplomatic-academy": "/images/universities/azerbaijan-diplomatic-academy/hero.webp",
-  "azerbaijan-university-architecture-construction": "/images/universities/azerbaijan-university-architecture-construction/hero.webp",
-  "sumqayit-state-university": "/images/universities/sumqayit-state-university/hero.webp",
-  "gance-state-university": "/images/universities/gance-state-university/hero.webp",
-  "gance-state-technological-university": "/images/universities/gance-state-technological-university/hero.webp",
-  "naxcivan-medical-university": "/images/universities/naxcivan-medical-university/hero.webp",
-  "azerbaijan-medical-university": "/images/universities/azerbaijan-medical-university/hero.webp",
-  "azerbaijan-state-university-economics": "/images/universities/azerbaijan-state-university-economics/hero.webp",
+  "baku-state-university":
+    "/images/universities/baku-state-university/hero.webp",
+  "azerbaijan-diplomatic-academy":
+    "/images/universities/azerbaijan-diplomatic-academy/hero.webp",
+  "azerbaijan-university-architecture-construction":
+    "/images/universities/azerbaijan-university-architecture-construction/hero.webp",
+  "sumqayit-state-university":
+    "/images/universities/sumqayit-state-university/hero.webp",
+  "gance-state-university":
+    "/images/universities/gance-state-university/hero.webp",
+  "gance-state-technological-university":
+    "/images/universities/gance-state-technological-university/hero.webp",
+  "naxcivan-medical-university":
+    "/images/universities/naxcivan-medical-university/hero.webp",
+  "azerbaijan-medical-university":
+    "/images/universities/azerbaijan-medical-university/hero.webp",
+  "azerbaijan-state-university-economics":
+    "/images/universities/azerbaijan-state-university-economics/hero.webp",
   "western-university": "/images/universities/western-university/hero.webp",
   "khazar-university": "/images/universities/khazar-university/hero.webp",
-  "baku-engineering-university": "/images/universities/baku-engineering-university/hero.webp",
-  "azerbaijan-state-pedagogical-university": "/images/universities/azerbaijan-state-pedagogical-university/hero.webp",
-  "lankaran-state-university": "/images/universities/lankaran-state-university/hero.webp",
-  "mingachevir-state-university": "/images/universities/mingachevir-state-university/hero.webp",
+  "baku-engineering-university":
+    "/images/universities/baku-engineering-university/hero.webp",
+  "azerbaijan-state-pedagogical-university":
+    "/images/universities/azerbaijan-state-pedagogical-university/hero.webp",
+  "lankaran-state-university":
+    "/images/universities/lankaran-state-university/hero.webp",
+  "mingachevir-state-university":
+    "/images/universities/mingachevir-state-university/hero.webp",
   // === New Baku State ===
-  "azerbaijan-state-oil-industry-university": "/images/universities/azerbaijan-state-oil-industry-university/hero.webp",
-  "azerbaijan-technical-university": "/images/universities/azerbaijan-technical-university/hero.webp",
-  "baku-slavyan-university": "/images/universities/baku-slavyan-university/hero.webp",
-  "azerbaijan-university-languages": "/images/universities/azerbaijan-university-languages/hero.webp",
+  "azerbaijan-state-oil-industry-university":
+    "/images/universities/azerbaijan-state-oil-industry-university/hero.webp",
+  "azerbaijan-technical-university":
+    "/images/universities/azerbaijan-technical-university/hero.webp",
+  "baku-slavyan-university":
+    "/images/universities/baku-slavyan-university/hero.webp",
+  "azerbaijan-university-languages":
+    "/images/universities/azerbaijan-university-languages/hero.webp",
   "baku-music-academy": "/images/universities/baku-music-academy/hero.webp",
-  "azerbaijan-state-culture-arts-university": "/images/universities/azerbaijan-state-culture-arts-university/hero.webp",
-  "azerbaijan-state-academy-arts": "/images/universities/azerbaijan-state-academy-arts/hero.webp",
-  "azerbaijan-national-conservatory": "/images/universities/azerbaijan-national-conservatory/hero.webp",
-  "turkey-azerbaijan-university": "/images/universities/turkey-azerbaijan-university/hero.webp",
-  "azerbaijan-state-sports-academy": "/images/universities/azerbaijan-state-sports-academy/hero.webp",
-  "presidential-academy-state-governance": "/images/universities/presidential-academy-state-governance/hero.webp",
-  "azerbaijan-state-maritime-academy": "/images/universities/azerbaijan-state-maritime-academy/hero.webp",
-  "national-aviation-academy": "/images/universities/national-aviation-academy/hero.webp",
-  "baku-higher-oil-school": "/images/universities/baku-higher-oil-school/hero.webp",
-  "azerbaijan-tourism-management-university": "/images/universities/azerbaijan-tourism-management-university/hero.webp",
-  "lomonosov-moscow-state-university-baku": "/images/universities/lomonosov-moscow-state-university-baku/hero.webp",
-  "sechenov-first-moscow-medical-baku": "/images/universities/sechenov-first-moscow-medical-baku/hero.webp",
-  "baku-choreography-academy": "/images/universities/baku-choreography-academy/hero.webp",
-  "azerbaijan-institute-theology": "/images/universities/azerbaijan-institute-theology/hero.webp",
+  "azerbaijan-state-culture-arts-university":
+    "/images/universities/azerbaijan-state-culture-arts-university/hero.webp",
+  "azerbaijan-state-academy-arts":
+    "/images/universities/azerbaijan-state-academy-arts/hero.webp",
+  "azerbaijan-national-conservatory":
+    "/images/universities/azerbaijan-national-conservatory/hero.webp",
+  "turkey-azerbaijan-university":
+    "/images/universities/turkey-azerbaijan-university/hero.webp",
+  "azerbaijan-state-sports-academy":
+    "/images/universities/azerbaijan-state-sports-academy/hero.webp",
+  "presidential-academy-state-governance":
+    "/images/universities/presidential-academy-state-governance/hero.webp",
+  "azerbaijan-state-maritime-academy":
+    "/images/universities/azerbaijan-state-maritime-academy/hero.webp",
+  "national-aviation-academy":
+    "/images/universities/national-aviation-academy/hero.webp",
+  "baku-higher-oil-school":
+    "/images/universities/baku-higher-oil-school/hero.webp",
+  "azerbaijan-tourism-management-university":
+    "/images/universities/azerbaijan-tourism-management-university/hero.webp",
+  "lomonosov-moscow-state-university-baku":
+    "/images/universities/lomonosov-moscow-state-university-baku/hero.webp",
+  "sechenov-first-moscow-medical-baku":
+    "/images/universities/sechenov-first-moscow-medical-baku/hero.webp",
+  "baku-choreography-academy":
+    "/images/universities/baku-choreography-academy/hero.webp",
+  "azerbaijan-institute-theology":
+    "/images/universities/azerbaijan-institute-theology/hero.webp",
   // === New Baku Private ===
-  "western-caspian-university": "/images/universities/western-caspian-university/hero.webp",
-  "azerbaijan-university": "/images/universities/azerbaijan-university/hero.webp",
-  "odlar-yurdu-university": "/images/universities/odlar-yurdu-university/hero.webp",
-  "baku-eurasian-university": "/images/universities/baku-eurasian-university/hero.webp",
-  "baku-girls-university": "/images/universities/baku-girls-university/hero.webp",
-  "azerbaijan-cooperative-university": "/images/universities/azerbaijan-cooperative-university/hero.webp",
-  "baku-business-university": "/images/universities/baku-business-university/hero.webp",
-  "azerbaijan-academy-labor-social-relations": "/images/universities/azerbaijan-academy-labor-social-relations/hero.webp",
+  "western-caspian-university":
+    "/images/universities/western-caspian-university/hero.webp",
+  "azerbaijan-university":
+    "/images/universities/azerbaijan-university/hero.webp",
+  "odlar-yurdu-university":
+    "/images/universities/odlar-yurdu-university/hero.webp",
+  "baku-eurasian-university":
+    "/images/universities/baku-eurasian-university/hero.webp",
+  "baku-girls-university":
+    "/images/universities/baku-girls-university/hero.webp",
+  "azerbaijan-cooperative-university":
+    "/images/universities/azerbaijan-cooperative-university/hero.webp",
+  "baku-business-university":
+    "/images/universities/baku-business-university/hero.webp",
+  "azerbaijan-academy-labor-social-relations":
+    "/images/universities/azerbaijan-academy-labor-social-relations/hero.webp",
   // === Outside Baku ===
-  "azerbaijan-state-agricultural-university": "/images/universities/azerbaijan-state-agricultural-university/hero.webp",
-  "naxchivan-state-university": "/images/universities/naxchivan-state-university/hero.webp",
-  "naxchivan-mteachers-institute": "/images/universities/naxchivan-mteachers-institute/hero.webp",
+  "azerbaijan-state-agricultural-university":
+    "/images/universities/azerbaijan-state-agricultural-university/hero.webp",
+  "naxchivan-state-university":
+    "/images/universities/naxchivan-state-university/hero.webp",
+  "naxchivan-mteachers-institute":
+    "/images/universities/naxchivan-mteachers-institute/hero.webp",
   "qarabagh-university": "/images/universities/qarabagh-university/hero.webp",
 };
 
 /** Logo images — all from sec.az (official Azerbaijani university logos) */
 export const universityLogoImages: Record<string, string> = {
-  "baku-state-university": "/images/universities/logos/baku-state-university-logo.webp",
-  "azerbaijan-diplomatic-academy": "/images/universities/logos/azerbaijan-diplomatic-academy-logo.png",
-  "azerbaijan-university-languages": "/images/universities/logos/azerbaijan-university-languages-logo.webp",
-  "azerbaijan-state-agricultural-university": "/images/universities/logos/azerbaijan-state-agricultural-university-logo.webp",
-  "azerbaijan-state-sports-academy": "/images/universities/logos/azerbaijan-state-sports-academy-logo.webp",
-  "azerbaijan-state-maritime-academy": "/images/universities/logos/azerbaijan-state-maritime-academy-logo.webp",
-  "azerbaijan-state-university-economics": "/images/universities/logos/azerbaijan-state-university-economics-logo.webp",
-  "azerbaijan-state-culture-arts-university": "/images/universities/logos/azerbaijan-state-culture-arts-university-logo.webp",
-  "azerbaijan-state-oil-industry-university": "/images/universities/logos/azerbaijan-state-oil-industry-university-logo.webp",
-  "azerbaijan-state-pedagogical-university": "/images/universities/logos/azerbaijan-state-pedagogical-university-logo.webp",
-  "azerbaijan-state-academy-arts": "/images/universities/logos/azerbaijan-state-academy-arts-logo.png",
-  "azerbaijan-institute-theology": "/images/universities/logos/azerbaijan-institute-theology-logo.png",
-  "azerbaijan-cooperative-university": "/images/universities/logos/azerbaijan-cooperative-university-logo.png",
-  "azerbaijan-university-architecture-construction": "/images/universities/logos/azerbaijan-university-architecture-construction-logo.png",
-  "azerbaijan-national-conservatory": "/images/universities/logos/azerbaijan-national-conservatory-logo.webp",
-  "azerbaijan-technical-university": "/images/universities/logos/azerbaijan-technical-university-logo.png",
-  "azerbaijan-medical-university": "/images/universities/logos/azerbaijan-medical-university-logo.webp",
-  "azerbaijan-tourism-management-university": "/images/universities/logos/azerbaijan-tourism-management-university-logo.png",
-  "azerbaijan-university": "/images/universities/logos/azerbaijan-university-logo.webp",
-  "baku-higher-oil-school": "/images/universities/logos/baku-higher-oil-school-logo.png",
-  "baku-eurasian-university": "/images/universities/logos/baku-eurasian-university-logo.webp",
-  "baku-business-university": "/images/universities/logos/baku-business-university-logo.webp",
-  "baku-engineering-university": "/images/universities/logos/baku-engineering-university-logo.webp",
-  "baku-slavyan-university": "/images/universities/logos/baku-slavyan-university-logo.webp",
-  "baku-choreography-academy": "/images/universities/logos/baku-choreography-academy-logo.webp",
-  "azerbaijan-academy-labor-social-relations": "/images/universities/logos/azerbaijan-academy-labor-social-relations-logo.webp",
-  "gance-state-university": "/images/universities/logos/gance-state-university-logo.png",
-  "lankaran-state-university": "/images/universities/logos/lankaran-state-university-logo.webp",
-  "national-aviation-academy": "/images/universities/logos/national-aviation-academy-logo.png",
-  "mingachevir-state-university": "/images/universities/logos/mingachevir-state-university-logo.png",
-  "naxchivan-state-university": "/images/universities/logos/naxchivan-state-university-logo.png",
-  "odlar-yurdu-university": "/images/universities/logos/odlar-yurdu-university-logo.webp",
-  "presidential-academy-state-governance": "/images/universities/logos/presidential-academy-state-governance-logo.webp",
-  "qarabagh-university": "/images/universities/logos/qarabagh-university-logo.png",
-  "western-caspian-university": "/images/universities/logos/western-caspian-university-logo.png",
-  "sumqayit-state-university": "/images/universities/logos/sumqayit-state-university-logo.png",
-  "turkey-azerbaijan-university": "/images/universities/logos/turkey-azerbaijan-university-logo.png",
-  "baku-music-academy": "/images/universities/logos/baku-music-academy-logo.png",
-  "khazar-university": "/images/universities/logos/khazar-university-logo.png",
-  "sechenov-first-moscow-medical-baku": "/images/universities/logos/sechenov-first-moscow-medical-baku-logo.png",
-  "lomonosov-moscow-state-university-baku": "/images/universities/logos/lomonosov-moscow-state-university-baku-logo.png",
-  "gance-state-technological-university": "/images/universities/logos/gance-state-technological-university-logo.png",
-  "naxcivan-medical-university": "/images/universities/logos/naxcivan-medical-university-logo.webp",
+  "baku-state-university":
+    "/images/universities/logos/baku-state-university-logo.webp",
+  "azerbaijan-diplomatic-academy":
+    "/images/universities/logos/azerbaijan-diplomatic-academy-logo.webp",
+  "azerbaijan-university-languages":
+    "/images/universities/logos/azerbaijan-university-languages-logo.webp",
+  "azerbaijan-state-agricultural-university":
+    "/images/universities/logos/azerbaijan-state-agricultural-university-logo.webp",
+  "azerbaijan-state-sports-academy":
+    "/images/universities/logos/azerbaijan-state-sports-academy-logo.webp",
+  "azerbaijan-state-maritime-academy":
+    "/images/universities/logos/azerbaijan-state-maritime-academy-logo.webp",
+  "azerbaijan-state-university-economics":
+    "/images/universities/logos/azerbaijan-state-university-economics-logo.webp",
+  "azerbaijan-state-culture-arts-university":
+    "/images/universities/logos/azerbaijan-state-culture-arts-university-logo.webp",
+  "azerbaijan-state-oil-industry-university":
+    "/images/universities/logos/azerbaijan-state-oil-industry-university-logo.webp",
+  "azerbaijan-state-pedagogical-university":
+    "/images/universities/logos/azerbaijan-state-pedagogical-university-logo.webp",
+  "azerbaijan-state-academy-arts":
+    "/images/universities/logos/azerbaijan-state-academy-arts-logo.webp",
+  "azerbaijan-institute-theology":
+    "/images/universities/logos/azerbaijan-institute-theology-logo.webp",
+  "azerbaijan-cooperative-university":
+    "/images/universities/logos/azerbaijan-cooperative-university-logo.webp",
+  "azerbaijan-university-architecture-construction":
+    "/images/universities/logos/azerbaijan-university-architecture-construction-logo.webp",
+  "azerbaijan-national-conservatory":
+    "/images/universities/logos/azerbaijan-national-conservatory-logo.webp",
+  "azerbaijan-technical-university":
+    "/images/universities/logos/azerbaijan-technical-university-logo.webp",
+  "azerbaijan-medical-university":
+    "/images/universities/logos/azerbaijan-medical-university-logo.webp",
+  "azerbaijan-tourism-management-university":
+    "/images/universities/logos/azerbaijan-tourism-management-university-logo.webp",
+  "azerbaijan-university":
+    "/images/universities/logos/azerbaijan-university-logo.webp",
+  "baku-higher-oil-school":
+    "/images/universities/logos/baku-higher-oil-school-logo.webp",
+  "baku-eurasian-university":
+    "/images/universities/logos/baku-eurasian-university-logo.webp",
+  "baku-business-university":
+    "/images/universities/logos/baku-business-university-logo.webp",
+  "baku-engineering-university":
+    "/images/universities/logos/baku-engineering-university-logo.webp",
+  "baku-slavyan-university":
+    "/images/universities/logos/baku-slavyan-university-logo.webp",
+  "baku-choreography-academy":
+    "/images/universities/logos/baku-choreography-academy-logo.webp",
+  "azerbaijan-academy-labor-social-relations":
+    "/images/universities/logos/azerbaijan-academy-labor-social-relations-logo.webp",
+  "gance-state-university":
+    "/images/universities/logos/gance-state-university-logo.webp",
+  "lankaran-state-university":
+    "/images/universities/logos/lankaran-state-university-logo.webp",
+  "national-aviation-academy":
+    "/images/universities/logos/national-aviation-academy-logo.webp",
+  "mingachevir-state-university":
+    "/images/universities/logos/mingachevir-state-university-logo.webp",
+  "naxchivan-state-university":
+    "/images/universities/logos/naxchivan-state-university-logo.webp",
+  "odlar-yurdu-university":
+    "/images/universities/logos/odlar-yurdu-university-logo.webp",
+  "presidential-academy-state-governance":
+    "/images/universities/logos/presidential-academy-state-governance-logo.webp",
+  "qarabagh-university":
+    "/images/universities/logos/qarabagh-university-logo.webp",
+  "western-caspian-university":
+    "/images/universities/logos/western-caspian-university-logo.webp",
+  "sumqayit-state-university":
+    "/images/universities/logos/sumqayit-state-university-logo.webp",
+  "turkey-azerbaijan-university":
+    "/images/universities/logos/turkey-azerbaijan-university-logo.webp",
+  "baku-music-academy":
+    "/images/universities/logos/baku-music-academy-logo.webp",
+  "khazar-university": "/images/universities/logos/khazar-university-logo.webp",
+  "sechenov-first-moscow-medical-baku":
+    "/images/universities/logos/sechenov-first-moscow-medical-baku-logo.webp",
+  "lomonosov-moscow-state-university-baku":
+    "/images/universities/logos/lomonosov-moscow-state-university-baku-logo.webp",
+  "gance-state-technological-university":
+    "/images/universities/logos/gance-state-technological-university-logo.webp",
+  "naxcivan-medical-university":
+    "/images/universities/logos/naxcivan-medical-university-logo.webp",
 
-  "western-university": "/images/universities/logos/western-university-logo.png",
-  "baku-girls-university": "/images/universities/logos/baku-girls-university-logo.webp",
+  "western-university":
+    "/images/universities/logos/western-university-logo.webp",
+  "baku-girls-university":
+    "/images/universities/logos/baku-girls-university-logo.webp",
 };
