@@ -105,6 +105,33 @@ function countryLocalizedName(countrySlug: string, locale: string): string {
 }
 
 /**
+ * Per-market cover images — distinct, education-themed campus shots so the
+ * 15 visa cards don't look like duplicated posts. Sourced from the site's
+ * own university hero images (no people photos).
+ */
+export const VISA_MARKET_COVERS: Record<string, string> = {
+  pakistan: "/images/universities/baku-state-university/hero.webp",
+  nigeria: "/images/universities/azerbaijan-medical-university/hero.webp",
+  uzbekistan: "/images/universities/azerbaijan-university-languages/hero.webp",
+  kazakhstan:
+    "/images/universities/azerbaijan-state-oil-industry-university/hero.webp",
+  egypt: "/images/universities/azerbaijan-university/hero.webp",
+  india: "/images/universities/baku-engineering-university/hero.webp",
+  bangladesh:
+    "/images/universities/azerbaijan-state-university-economics/hero.webp",
+  iran: "/images/universities/azerbaijan-technical-university/hero.webp",
+  iraq: "/images/universities/khazar-university/hero.webp",
+  afghanistan: "/images/universities/gance-state-university/hero.webp",
+  turkey:
+    "/images/universities/azerbaijan-university-architecture-construction/hero.webp",
+  russia:
+    "/images/universities/lomonosov-moscow-state-university-baku/hero.webp",
+  syria: "/images/universities/western-caspian-university/hero.webp",
+  yemen: "/images/universities/sumqayit-state-university/hero.webp",
+  algeria: "/images/universities/national-aviation-academy/hero.webp",
+};
+
+/**
  * Key source markets for the per-country visa articles (matches the markets
  * the old seed stubs covered — the 15 most active study-abroad corridors).
  */
@@ -140,7 +167,8 @@ export function generateVisaArticles(): BlogPost[] {
       content: generateContent(countrySlug),
       author: "AzStudy Visa Team",
       publishedAt: "2025-09-01",
-      coverImage: "/images/blog/apply-azerbaijan.webp",
+      coverImage:
+        VISA_MARKET_COVERS[countrySlug] ?? "/images/blog/apply-azerbaijan.webp",
       category: localized("category", countrySlug, false),
       readingMinutes: 7,
       updatedAt: "2025-09-01",
