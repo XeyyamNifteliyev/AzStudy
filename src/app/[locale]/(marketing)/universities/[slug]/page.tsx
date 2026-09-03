@@ -75,16 +75,19 @@ function RelatedFallback() {
 }
 
 // ISR — content rarely changes; rebuild only every hour (or on-demand revalidation).
-// SE-5/P2: pre-render the featured universities at build time so their first
-// visit (and Google's first crawl) is a static cache hit instead of a cold SSR
-// + DB round-trip. Non-featured slugs still render on-demand and are cached.
+// SE-5/P2: pre-render EVERY university at build time so their first visit (and
+// Google's first crawl) is a static cache hit instead of a cold SSR + DB
+// round-trip. dynamicParams = false then rejects unknown slugs (incl. removed
+// universities such as azerbaijan-aviation-university) at the routing layer
+// with a real 404 — notFound() inside a streamed render would otherwise return
+// HTTP 200 (soft-404).
 export const revalidate = 3600;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const universities = await data.universities.list();
-  const featured = universities.filter((u) => u.featured).slice(0, 30);
   return routing.locales.flatMap((locale) =>
-    featured.map((u) => ({ locale, slug: u.slug })),
+    universities.map((u) => ({ locale, slug: u.slug })),
   );
 }
 
@@ -100,14 +103,17 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "UniversityDetail" });
   // s.md 3.2: thin-content locale-lar üçün noindex — hreflang-a zərər
   // vurmadan, axtarış motorlarını bu səhifələri indeksləməməyə çağırırıq.
-  const hasDescription = !!university.description[locale as keyof typeof university.description];
+  const hasDescription =
+    !!university.description[locale as keyof typeof university.description];
   const thinLocale = isThinUniversityLocale(locale);
 
   return buildPageMetadata({
     locale,
     path: `/universities/${slug}`,
     title: t("metaTitle", { name: lx(university.nameI18n, locale) }),
-    description: t("metaDescription", { name: lx(university.nameI18n, locale) }),
+    description: t("metaDescription", {
+      name: lx(university.nameI18n, locale),
+    }),
     image: university.heroImage,
     // Thin locale: noindex, follow (sitemap/hreflang poisoned deyil,
     // amma bu səhifələr indekslənməməlidir)

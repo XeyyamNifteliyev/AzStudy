@@ -21,8 +21,11 @@ export const revalidate = 3600;
 
 const countryBySlug = new Map(seedCountries.map((c) => [c.slug, c] as const));
 
-// Every valid slug is pre-rendered once per locale so unknown slugs never
-// produce a soft-404 (they hit notFound() below instead).
+// Every valid slug is pre-rendered once per locale. Unknown slugs are
+// rejected at the routing layer with a real 404 (dynamicParams = false) —
+// notFound() in a streamed render would otherwise return HTTP 200 (soft-404).
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return fullyTranslatedLocales.flatMap((locale) =>
     seedCountries.map((c) => ({ locale, country: c.slug })),

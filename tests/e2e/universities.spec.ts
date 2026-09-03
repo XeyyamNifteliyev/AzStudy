@@ -17,22 +17,20 @@ test.describe("University filters", () => {
   test("updates the filter URL without dropping other query parameters", async ({
     page,
   }) => {
-    await page.goto("/en/universities?sort=name&city=istanbul");
+    await page.goto("/en/universities?sort=name&city=baku");
 
     const sidebar = page.getByRole("complementary", { name: /filters/i });
-    await sidebar
-      .getByRole("searchbox", { name: /search/i })
-      .fill("Bahcesehir");
+    await sidebar.getByRole("searchbox", { name: /search/i }).fill("Khazar");
 
     await expect
       .poll(() => new URL(page.url()).searchParams.get("sort"))
       .toBe("name");
     await expect
       .poll(() => new URL(page.url()).searchParams.get("city"))
-      .toBe("istanbul");
+      .toBe("baku");
     await expect
       .poll(() => new URL(page.url()).searchParams.get("search"))
-      .toBe("Bahcesehir");
+      .toBe("Khazar");
   });
 
   test("changes sort through the URL and reorders the listing", async ({
@@ -65,8 +63,11 @@ test.describe("University filters", () => {
       .toBe("1500");
     const resultCards = page.locator("main a[href*='/universities/']");
     await expect.poll(() => resultCards.count()).toBeGreaterThan(0);
+    // ADA ($10k/yr) is far above the $1.5k cap — must be filtered out.
     await expect(
-      page.locator("main a[href*='/universities/bahcesehir-university']"),
+      page.locator(
+        "main a[href*='/universities/azerbaijan-diplomatic-academy']",
+      ),
     ).toHaveCount(0);
     const cardTexts = await resultCards.allTextContents();
     expect(cardTexts.length).toBeGreaterThan(0);
@@ -81,7 +82,7 @@ test.describe("University filters", () => {
     page,
   }) => {
     await page.goto(
-      "/en/universities?sort=name&maxTuition=12500&city=istanbul&ref=campaign",
+      "/en/universities?sort=name&maxTuition=12500&city=baku&ref=campaign",
     );
 
     await page
@@ -93,16 +94,18 @@ test.describe("University filters", () => {
   });
 
   test("clear all cancels a pending search update", async ({ page }) => {
-    await page.goto("/en/universities?search=Bahcesehir&ref=campaign");
+    await page.goto("/en/universities?search=Khazar&ref=campaign");
 
     const sidebar = page.getByRole("complementary", { name: /filters/i });
-    await sidebar.getByRole("searchbox", { name: /search/i }).fill("Istanbul");
+    await sidebar.getByRole("searchbox", { name: /search/i }).fill("Ganja");
     await sidebar.getByRole("button", { name: /clear all/i }).click();
 
     await expect.poll(() => new URL(page.url()).search).toBe("?ref=campaign");
     await expect(page).toHaveURL(/\/en\/universities\?ref=campaign$/);
     await expect(
-      page.getByRole("complementary", { name: /filters/i }).getByRole("searchbox", { name: /search/i }),
+      page
+        .getByRole("complementary", { name: /filters/i })
+        .getByRole("searchbox", { name: /search/i }),
     ).toHaveValue("");
   });
 
@@ -125,11 +128,11 @@ test.describe("University filters", () => {
 
     await page.getByRole("button", { name: /filters/i }).click();
     const dialog = page.getByRole("dialog", { name: /filters/i });
-    await dialog.getByRole("searchbox", { name: /search/i }).fill("Bahcesehir");
+    await dialog.getByRole("searchbox", { name: /search/i }).fill("Khazar");
 
     await expect(dialog).toBeVisible();
     await expect
       .poll(() => new URL(page.url()).searchParams.get("search"))
-      .toBe("Bahcesehir");
+      .toBe("Khazar");
   });
 });

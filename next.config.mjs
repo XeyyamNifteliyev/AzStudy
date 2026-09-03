@@ -51,13 +51,21 @@ function assertEnv() {
   // SEO canonical/hreflang/sitemap all depend on the public site URL — a
   // placeholder here silently emits wrong canonicals.
   if (!process.env.NEXT_PUBLIC_SITE_URL) missing.push("NEXT_PUBLIC_SITE_URL");
-  // Supabase keys — always required (CRM always uses PgCrmRepository)
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL)
-    missing.push("NEXT_PUBLIC_SUPABASE_URL");
-  if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
-    missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
-  if (!process.env.SUPABASE_SERVICE_ROLE_KEY)
-    missing.push("SUPABASE_SERVICE_ROLE_KEY");
+  // CI (GitHub Actions) smoke builds have no Supabase project and prerender
+  // all marketing pages from the in-memory seed layer, so the keys are not
+  // needed there. Real deployments still hard-require them below: Vercel
+  // always sets VERCEL=1, and a self-hosted production build has CI unset.
+  const isCiSmokeBuild = !!process.env.CI && !process.env.VERCEL;
+  if (!isCiSmokeBuild) {
+    // Supabase keys — required for the CRM (always PgCrmRepository) and the
+    // marketing session refresh (middleware).
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL)
+      missing.push("NEXT_PUBLIC_SUPABASE_URL");
+    if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+      missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
+    if (!process.env.SUPABASE_SERVICE_ROLE_KEY)
+      missing.push("SUPABASE_SERVICE_ROLE_KEY");
+  }
   if (missing.length) {
     throw new Error(
       `Missing required environment variables: ${missing.join(", ")}. ` +

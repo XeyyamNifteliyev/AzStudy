@@ -106,6 +106,13 @@ const BLOG_CATEGORIES: Record<
 // refreshes them instantly if content is ever edited.
 export const revalidate = 21600;
 
+// SEO: every valid slug (posts + category URLs) is enumerated below, so an
+// unknown slug is rejected at the routing layer with a real 404 BEFORE the
+// page renders/streams. Without this, notFound() inside a streamed response
+// returns HTTP 200 (soft-404) — Google keeps dead URLs (e.g. removed stub
+// slugs) indexed.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = await data.blog.list();
   // Include both blog post slugs and category slugs

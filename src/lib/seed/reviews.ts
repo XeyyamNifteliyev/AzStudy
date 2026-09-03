@@ -253,7 +253,7 @@ export const seedReviews: Review[] = [
   },
   {
     id: "r-6",
-    universityId: "u-khazar",
+    universityId: "u-ku",
     authorName: "Emre Yilmaz",
     authorCountry: "🇹🇷 Turkey",
     authorInitials: "EY",

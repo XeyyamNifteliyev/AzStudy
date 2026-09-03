@@ -380,17 +380,22 @@ class SeedProgramRepository implements ProgramRepository {
     category: string,
   ): Promise<import("@/lib/data/repositories").ProgramCategoryDetail> {
     const cat = seedCategories.find((c) => c.slug === category) ?? null;
+    // DEFENSIVE: never crash on a stale seed row — resolve every foreign key
+    // and drop rows whose university/city is missing (mirrors getAllPrograms).
     const items = seedUniversityPrograms
       .filter((up) => {
         const p = seedPrograms.find((pr) => pr.id === up.programId);
         return p?.categorySlug === category;
       })
       .map((up) => {
-        const program = seedPrograms.find((p) => p.id === up.programId)!;
+        const program = seedPrograms.find((p) => p.id === up.programId);
         const university = seedUniversities.find(
           (u) => u.id === up.universityId,
-        )!;
-        const city = seedCities.find((c) => c.id === university.cityId)!;
+        );
+        const city = university
+          ? seedCities.find((c) => c.id === university.cityId)
+          : undefined;
+        if (!program || !university || !city) return null;
         return {
           ...program,
           university,
@@ -401,6 +406,7 @@ class SeedProgramRepository implements ProgramRepository {
           scholarshipAvailable: up.scholarshipAvailable,
         };
       })
+      .filter((item): item is NonNullable<typeof item> => item !== null)
       .sort((a, b) => a.tuitionFee - b.tuitionFee);
 
     const citySlugs = [...new Set(items.map((i) => i.city.slug))];
@@ -451,10 +457,11 @@ class SeedProgramRepository implements ProgramRepository {
         return p?.categorySlug === category && u?.cityId === city.id;
       })
       .map((up) => {
-        const program = seedPrograms.find((p) => p.id === up.programId)!;
+        const program = seedPrograms.find((p) => p.id === up.programId);
         const university = seedUniversities.find(
           (u) => u.id === up.universityId,
-        )!;
+        );
+        if (!program || !university) return null;
         return {
           ...program,
           university,
@@ -463,6 +470,7 @@ class SeedProgramRepository implements ProgramRepository {
           language: up.language,
         };
       })
+      .filter((item): item is NonNullable<typeof item> => item !== null)
       .sort((a, b) => a.tuitionFee - b.tuitionFee);
 
     return {
